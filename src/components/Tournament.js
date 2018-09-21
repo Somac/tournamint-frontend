@@ -4,6 +4,7 @@ const Tournament = ({tournament}) => {
     return (
         <div>
             <p>{tournament.name}</p>
+            <p>{tournament.teams.length}</p>
         </div>
     )
 }

@@ -6,7 +6,7 @@ const TournamentList = (props) => (
     <div>
         <h2>Tournament list</h2>
         {props.tournaments.map(tournament =>
-            <Tournament tournament={tournament}/>    
+            <Tournament key={tournament.id} tournament={tournament}/>    
         )}
     </div>
 )
