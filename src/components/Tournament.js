@@ -1,10 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
-const Tournament = ({tournament}) => {
+const Tournament = ({ tournament }) => {
     return (
-        <div>
-            <p>{tournament.name}</p>
-            <p>{tournament.teams.length}</p>
+        <div className='col-4'>
+            <div className='box'>
+                <Link to={`/tournaments/${tournament.slug}`}>{tournament.name}</Link>
+                <p>{tournament.teams.length}</p>
+            </div>
         </div>
     )
 }
