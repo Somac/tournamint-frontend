@@ -1,6 +1,6 @@
 import React from 'react'
-import FormGroup from './FormGroup'
-import { reduxForm, Field } from 'redux-form';
+import FormGroup from '../components/FormGroup'
+import { reduxForm } from 'redux-form';
 
 let LoginForm = (props) => {
     const { handleSubmit } = props

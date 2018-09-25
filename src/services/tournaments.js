@@ -12,8 +12,8 @@ const getOne = async (id) => {
     return response.data
 }
 
-const addNew = async (content) => {
-    const response = await axios.post(url, { content })
+const addNew = async (data) => {
+    const response = await axios.post(url, data)
     return response.data
 }
 

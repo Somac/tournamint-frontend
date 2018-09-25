@@ -1,5 +1,5 @@
 import React from 'react'
-import FormGroup from './FormGroup'
+import FormGroup from '../components/FormGroup'
 import { reduxForm, Field } from 'redux-form';
 
 let TournamentForm = (props) => {

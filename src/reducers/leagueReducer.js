@@ -4,6 +4,8 @@ const leagueReducer = (store = [], action) => {
     switch (action.type) {
     case 'GET_LEAGUES':
         return action.data
+    case 'ADD_LEAGUE':
+        return [...store, action.data]
     default:
         return store
     }
@@ -15,6 +17,16 @@ export const getLeagues = () => {
         dispatch({
             type: 'GET_LEAGUES',
             data: leagues
+        })
+    }
+}
+
+export const addLeague = (data) => {
+    return async (dispatch) => {
+        const league = await leagueService.addLeague(data)
+        dispatch({
+            type: 'ADD_LEAGUE',
+            data: league
         })
     }
 }

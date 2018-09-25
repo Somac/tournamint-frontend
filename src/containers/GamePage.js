@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class NewGame extends Component {
+class GamePage extends Component {
     render() {
         return (
             <div>
@@ -10,4 +10,4 @@ class NewGame extends Component {
     }
 }
 
-export default NewGame
+export default GamePage

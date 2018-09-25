@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import NavLink from '../components/NavLink'
+import NavLink from './NavLink'
 import { Link } from 'react-router-dom'
 
 class MainMenu extends Component {

@@ -6,12 +6,12 @@ import FrontPage from './containers/FrontPage'
 import TournamentPage from './containers/TournamentPage'
 import TournamentsPage from './containers/TournamentsPage'
 import NewTournament from './containers/NewTournament'
-import MainMenu from './containers/MainMenu'
-import Footer from './containers/Footer'
+import MainMenu from './components/MainMenu'
+import Footer from './components/Footer'
 import LeaguesPage from './containers/LeaguesPage'
 import NewLeague from './containers/NewLeague'
 import GamesPage from './containers/GamesPage'
-import NewGame from './containers/NewGame'
+import GamePage from './containers/GamePage'
 import LoginPage from './containers/LoginPage'
 
 class App extends Component {
@@ -35,8 +35,8 @@ class App extends Component {
                         <Route exact path='/leagues' render={() => <LeaguesPage />} />
                         <Route exact path='/new/league' render={() => <NewLeague />} />
                         <Route exact path='/games' render={() => <GamesPage />} />
-                        <Route exact path='/new/game' render={() => <NewGame />} />
                         <Route exact path='/login' render={() => <LoginPage />} />
+                        <Route exact path='/games/:id' render={({ match }) => <GamePage gameId={match.params.id} />} />
                     </div>
                     <Footer />
                 </div>

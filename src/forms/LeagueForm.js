@@ -1,5 +1,5 @@
 import React from 'react'
-import FormGroup from './FormGroup'
+import FormGroup from '../components/FormGroup'
 import { reduxForm, Field } from 'redux-form'
 
 let LeagueForm = (props) => {
@@ -8,7 +8,19 @@ let LeagueForm = (props) => {
         <form onSubmit={handleSubmit}>
             <FormGroup
                 name='name'
-                label='Liigan nimi'
+                label='Liigan nimi *'
+                type='text'
+                component='input'
+            />
+            <FormGroup
+                name='apiUrlTeams'
+                label='API Url joukkue'
+                type='text'
+                component='input'
+            />
+            <FormGroup
+                name='apiUrlPlayers'
+                label='API Url pelaajat'
                 type='text'
                 component='input'
             />
@@ -19,6 +31,7 @@ let LeagueForm = (props) => {
                     {games.map(game => <option key={game._id} value={game._id}>{game.name}</option>)}
                 </Field>
             </div>
+            <button className='btn btn-primary'>Tallenna</button>
         </form>
     )
 }
