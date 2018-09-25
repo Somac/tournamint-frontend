@@ -4,12 +4,14 @@ import tournamentReducer from './reducers/tournamentReducer'
 import leagueReducer from './reducers/leagueReducer'
 import gameReducer from './reducers/gameReducer'
 import { reducer as formReducer } from 'redux-form'
+import teamReducer from './reducers/teamReducer';
 
 const reducer = combineReducers({
     tournaments: tournamentReducer,
     leagues: leagueReducer,
     games: gameReducer,
-    form: formReducer
+    form: formReducer,
+    teams: teamReducer
 })
 
 export const store = createStore(

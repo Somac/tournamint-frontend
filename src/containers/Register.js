@@ -1,24 +1,22 @@
 import React, { Component } from 'react'
-import LoginForm from '../forms/LoginForm'
+import RegisterForm from '../forms/RegisterForm'
 
-class LoginPage extends Component {
-
-    login = (values) => {
+class Register extends Component {
+    register = (values) => {
         console.log(values)
     }
-
     render() {
         return (
             <div>
-                <h2 className='text-center my-5'>Kirjaudu sisään</h2>
+                <h2 className='text-center my-5'>Rekisteröidy</h2>
                 <div className='row d-flex justify-content-center'>
                     <div className='col-12 col-md-6 box'>
-                        <LoginForm onSubmit={this.login} />
+                        <RegisterForm onSubmit={this.register} />
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }
 
-export default LoginPage
+export default Register

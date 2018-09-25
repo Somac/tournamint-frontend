@@ -7,7 +7,7 @@ const FormGroup = ({ name, label, options }) => {
             <label htmlFor={name}>{label}</label>
             <Field component='select' className="form-control" name={name} >
                 <option></option>
-                {options.map(o => <option value={o.value}>{o.name}</option>)}
+                {options ? options.map(o => <option value={o.value}>{o.name}</option>) : ''}
             </Field>
         </div>
     )

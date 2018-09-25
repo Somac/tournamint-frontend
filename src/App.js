@@ -13,6 +13,9 @@ import NewLeague from './containers/NewLeague'
 import GamesPage from './containers/GamesPage'
 import GamePage from './containers/GamePage'
 import LoginPage from './containers/LoginPage'
+import TeamsPage from './containers/TeamsPage'
+import NewTeam from './containers/NewTeam'
+import Register from './containers/Register'
 
 class App extends Component {
     componentDidMount = async () => {
@@ -37,6 +40,9 @@ class App extends Component {
                         <Route exact path='/games' render={() => <GamesPage />} />
                         <Route exact path='/login' render={() => <LoginPage />} />
                         <Route exact path='/games/:id' render={({ match }) => <GamePage gameId={match.params.id} />} />
+                        <Route exact path='/teams' render={() => <TeamsPage />} />
+                        <Route exact path='/new/team' render={() => <NewTeam />} />
+                        <Route exact path='/register' render={() => <Register />} />
                     </div>
                     <Footer />
                 </div>

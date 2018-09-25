@@ -8,8 +8,9 @@ class NewTeam extends Component {
     state = {
         redirect: false
     }
+
     componentDidMount = async () => {
-        await this.props.getGames()
+
     }
 
     addTeam = async (values) => {
@@ -25,8 +26,12 @@ class NewTeam extends Component {
         }
         return (
             <div>
-                <h2 className='text-center my-5'>Lisää uusi Liiga</h2>
-                <TeamForm onSubmit={this.addTeam} games={this.props.games} />
+                <h2 className='text-center my-5'>Lisää uusi joukkue</h2>
+                <div className='row d-flex justify-content-center'>
+                    <div className='col-12 col-md-6 box'>
+                        <TeamForm onSubmit={this.addTeam} games={this.props.games} />
+                    </div>
+                </div>
             </div>
         )
     }

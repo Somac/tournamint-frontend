@@ -20,3 +20,19 @@ body {
     line-height: 60px;
     background-color: #f8f9fa;
 }
+
+.navbar-tournamint {
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    color: #000;
+}
+
+.navbar-tournamint ul li a {
+    color: #000;
+}
+
+.card-img-top {
+    width: 200px;
+    height: 150px;
+    object-fit: contain;
+}
