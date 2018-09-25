@@ -1,12 +1,12 @@
 import axios from 'axios'
 
-const url = 'http://localhost:3001/api/leagues'
+const url = 'http://localhost:3001/api/games'
 
-const getAllLeagues = async () => {
+const getAllGames = async () => {
     const response = await axios.get(url)
     return response.data
 }
 
 export default {
-    getAllLeagues
+    getAllGames
 }

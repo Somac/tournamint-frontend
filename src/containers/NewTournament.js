@@ -16,7 +16,7 @@ class NewTournament extends Component {
     render() {
         return (
             <div>
-                <h2>Lisää uusi</h2>
+                <h2 className='text-center my-5'>Lisää uusi turnaus</h2>
                 <TournamentForm onSubmit={this.addTournament} leagues={this.props.leagues}/>
             </div>
         )

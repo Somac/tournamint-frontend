@@ -33,9 +33,9 @@ export const getOneTournament = (id) => {
     }
 }
 
-export const addNew = (content) => {
+export const addNew = (data) => {
     return async (dispatch) => {
-        const newTournament = await tournamentService.addNew(content)
+        const newTournament = await tournamentService.addNew(data)
         dispatch({
             type: 'NEW_TOURNAMENT',
             data: newTournament
