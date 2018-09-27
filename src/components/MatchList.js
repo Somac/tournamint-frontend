@@ -3,12 +3,12 @@ import MatchBox from './MatchBox'
 
 const MatchList = ({ matches }) => {
     return (
-        <React.Fragment>
+        <div className='pb-3'>
             <h2 className='text-center my-5 pb-3'>Ottelut</h2>
             {matches.map(match =>
                 <MatchBox key={match._id} match={match} />    
             )}
-        </React.Fragment>
+        </div>
     )
 }
 

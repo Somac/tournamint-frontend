@@ -2,18 +2,21 @@ import React from 'react'
 import CardBox from './CardBox'
 
 const TeamList = ({ teams }) => {
+    console.log(teams)
     return (
         <div className='row'>
             <div className='col-12'>
-                <h2 className='my-3 text-center'>Turnauksen joukkueet</h2>
+                <h2 className='my-5 text-center'>Turnauksen joukkueet</h2>
             </div>
             {teams.map(team =>
                 <CardBox
                     key={team._id}
-                    text={team.description}
+                    text={team.gamerName}
                     name={team.name}
                     link={`/teams/${team.slug}`}
-                    logo={team.logo} />
+                    logo={team.logo} 
+                    size='3'
+                />
             )}
         </div>
     )

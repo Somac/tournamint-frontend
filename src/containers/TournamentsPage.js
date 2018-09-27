@@ -21,7 +21,8 @@ class TournamentsPage extends React.Component {
                             key={tournament.id}
                             text={tournament.description}
                             name={tournament.name}
-                            link={`/tournaments/${tournament.slug}`} />) :
+                            link={`/tournaments/${tournament.slug}`}   
+                        />) :
                         <h1>Turnauksia ei löytynyt</h1>}
                 </div>
             </div>

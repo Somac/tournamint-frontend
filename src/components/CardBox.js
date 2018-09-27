@@ -1,9 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const CardBox = ({ link, name, text, logo, table }) => {
+const CardBox = ({ link, name, text, logo, table, size }) => {
+    if(size === undefined) {
+        size = 4
+    }
     return (
-        <div className='col-12 col-md-4 my-3'>
+        <div className={`col-12 col-md-${size} my-3`}>
             <div className='card box'>
                 {logo ?
                     <img className="card-img-top mx-auto" src={`http://localhost:3001/${logo}`} alt={name}></img>
