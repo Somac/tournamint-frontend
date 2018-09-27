@@ -28,20 +28,21 @@ class TeamsPage extends React.Component {
 
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <h2 className='text-center my-5'>Joukkueet</h2>
                 <LinkButton link='/new/team' text='Lisää uusi' />
                 <div className='row'>
                     {this.props.teams.map(team =>
                         <CardBox
                             key={team.id}
-                            text={this.teamDescription(team)}
+                            table={this.teamDescription(team)}
+                            text={team.description}
                             name={team.name}
                             link={`/teams/${team.slug}`}
                             logo={team.logo} />
                     )}
                 </div>
-            </div>
+            </React.Fragment>
         )
     }
 }

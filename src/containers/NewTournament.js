@@ -15,14 +15,14 @@ class NewTournament extends Component {
 
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <h2 className='text-center my-5'>Lisää uusi turnaus</h2>
                 <div className='row d-flex justify-content-center'>
                     <div className='col-12 col-md-6 box'>
                         <TournamentForm onSubmit={this.addTournament} leagues={this.props.leagues} />
                     </div>
                 </div>
-            </div >
+            </React.Fragment>
         )
     }
 }

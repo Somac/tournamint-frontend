@@ -25,14 +25,14 @@ class NewLeague extends Component {
             )
         }
         return (
-            <div>
+            <React.Fragment>
                 <h2 className='text-center my-5'>Lisää uusi Liiga</h2>
                 <div className='row d-flex justify-content-center'>
                     <div className='col-6 box'>
                         <LeagueForm onSubmit={this.addLeague} games={this.props.games} />
                     </div>
                 </div>
-            </div>
+            </React.Fragment>
         )
     }
 }

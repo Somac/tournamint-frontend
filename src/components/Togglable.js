@@ -16,7 +16,7 @@ class Togglable extends Component {
         const hideWhenVisible = { display: this.state.visible ? 'none' : '' }
         const showWhenVisible = { display: this.state.visible ? '' : 'none' }
         return (
-            <div>
+            <React.Fragment>
                 <div style={hideWhenVisible}>
                     <button className='btn btn-light mx-auto d-flex my-3' onClick={this.toggleVisibility}>{this.props.label}</button>
                 </div>
@@ -30,7 +30,7 @@ class Togglable extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </React.Fragment>
         )
     }
 }

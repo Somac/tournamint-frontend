@@ -1,7 +1,7 @@
 import React from 'react'
 import FormGroup from '../components/FormGroup'
 import FormGroupSelect from '../components/FormGroupSelect'
-import { reduxForm, Field } from 'redux-form'
+import { reduxForm } from 'redux-form'
 
 let TeamForm = (props) => {
     const { handleSubmit, leagues, tournaments, players } = props

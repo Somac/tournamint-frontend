@@ -13,7 +13,7 @@ const tournamentReducer = (store = [], action) => {
     }
 }
 
-export const tournamentInitialization = () => {
+export const getTournaments = () => {
     return async (dispatch) => {
         const tournaments = await tournamentService.getAll()
         dispatch({
@@ -23,9 +23,9 @@ export const tournamentInitialization = () => {
     }
 }
 
-export const getOneTournament = (id) => {
+export const getOneTournament = (slug) => {
     return async (dispatch) => {
-        const tournament = await tournamentService.getOne(id)
+        const tournament = await tournamentService.getOne(slug)
         dispatch({
             type: 'GET_ONE_TOURNAMENT',
             data: tournament

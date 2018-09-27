@@ -7,14 +7,14 @@ class Register extends Component {
     }
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <h2 className='text-center my-5'>Rekisteröidy</h2>
                 <div className='row d-flex justify-content-center'>
                     <div className='col-12 col-md-6 box'>
                         <RegisterForm onSubmit={this.register} />
                     </div>
                 </div>
-            </div>
+            </React.Fragment>
         );
     }
 }

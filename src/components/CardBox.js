@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const CardBox = ({ link, name, text, logo }) => {
+const CardBox = ({ link, name, text, logo, table }) => {
     return (
         <div className='col-12 col-md-4 my-3'>
             <div className='card box'>
@@ -11,7 +11,8 @@ const CardBox = ({ link, name, text, logo }) => {
                 }
                 <div className='card-body'>
                     <h5 className='card-title text-center'>{name}</h5>
-                    <p className='card-text text-center'>{text}</p>
+                    <p className='card-text text-center'><em>{text}</em></p>
+                    {table ? table : ''}
                     <Link className='btn btn-primary mx-auto d-flex' to={link}>Lue lisää</Link>
                 </div>
             </div>
