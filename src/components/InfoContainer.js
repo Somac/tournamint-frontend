@@ -1,7 +1,6 @@
 import React from 'react';
 
 const InfoContainer = ({header, rows}) => {
-    console.log(rows)
     return (
         <div className='box'>
             <h5 className='text-center my-3'>{header}</h5>

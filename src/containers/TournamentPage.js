@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getOneTournament } from '../reducers/tournamentReducer'
 import InfoContainer from '../components/InfoContainer'
+import TeamList from '../components/TeamList'
+import MatchList from '../components/MatchList'
 
 class TournamentPage extends Component {
     componentDidMount = async () => {
@@ -17,21 +19,32 @@ class TournamentPage extends Component {
         )
         const yesTournament = () => {
             const d = new Date(tournament.createdAt)
-            const createdDate = `${d.getDate()}.${d.getMonth()+1}.${d.getFullYear()} klo ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
+            const createdDate = `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()} klo ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
+            const gamesPlayed =
+                tournament.matches.filter(({ completed }) => completed === true).length
             return (
-                <div>
+                <React.Fragment>
                     <h2 className='text-center mt-5'>{tournament.name}</h2>
                     <p className='text-center mb-5'><small>Luotu: {createdDate}</small></p>
                     <p className='text-center'>{tournament.description}</p>
-                    <InfoContainer header={'testi'} rows={[{ head: 'test', value: 'test' }, { head: 'test2', value: 'test2' }]} />
-                </div>
+                    <InfoContainer
+                        header={'Turnaus info'}
+                        rows={[
+                            { head: 'Luotu', value: createdDate },
+                            { head: 'Joukkueita', value: `${tournament.teams.length} joukkuetta` },
+                            { head: 'Otteluita pelattu', value: `${gamesPlayed} / ${tournament.matches.length}` }
+                        ]}
+                    />
+                    <TeamList teams={tournament.teams} />
+                    <MatchList matches={tournament.matches} />
+                </React.Fragment>
             )
         }
         return (
             <React.Fragment>
-                {tournament === [] ?
-                    noTournament() :
-                    yesTournament()
+                {tournament.name ?
+                    yesTournament() :
+                    noTournament()
                 }
             </React.Fragment>
         )
