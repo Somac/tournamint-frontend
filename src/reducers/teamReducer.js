@@ -6,6 +6,8 @@ const teamReducer = (store = [], action) => {
         return action.data
     case 'ADD_TEAM':
         return [...store, action.data]
+    case 'GET_ONE_TEAM':
+        return action.data
     default:
         return store
     }
@@ -30,5 +32,15 @@ export const addTeam = (data) => {
         })
     }
 }
+
+export const getOneTeam = (slug) => {
+    return async (dispatch) => {
+        const team = await teamService.getOneTeam(slug)
+        dispatch({
+            type: 'GET_ONE_TEAM',
+            data: team
+        })
+    }
+} 
 
 export default teamReducer

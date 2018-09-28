@@ -5,7 +5,10 @@ const tournamentReducer = (store = [], action) => {
     case 'INIT_TOURNAMENTS':
         return action.data
     case 'GET_ONE_TOURNAMENT':
-        return action.data
+        return store.map(tournament =>
+            tournament.slug === action.slug ?
+                action.data : tournament
+        )
     case 'NEW_TOURNAMENT':
         return [...store, action.data]
     default:
@@ -28,7 +31,8 @@ export const getOneTournament = (slug) => {
         const tournament = await tournamentService.getOne(slug)
         dispatch({
             type: 'GET_ONE_TOURNAMENT',
-            data: tournament
+            data: tournament,
+            slug
         })
     }
 }

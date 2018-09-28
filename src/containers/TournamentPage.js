@@ -6,14 +6,22 @@ import TeamList from '../components/TeamList'
 import MatchList from '../components/MatchList'
 
 class TournamentPage extends Component {
+    state = {
+        componentDidMount: false
+    }
     componentDidMount = async () => {
         const slug = this.props.tournamentSlug
+        console.log(this.props)
         await this.props.getOneTournament(slug)
+        this.setState({componentDidMount:true})
+        this.forceUpdate()
     }
 
-
     render() {
-        const { tournament } = this.props
+        console.log('render')
+        const { tournaments } = this.props
+        console.log('tournaments',tournaments)
+        const tournament = tournaments.find(tournament => tournament.slug === this.props.tournamentSlug)
         const noTournament = () => (
             <div>Turnausta ei löytynyt</div>
         )
@@ -42,7 +50,7 @@ class TournamentPage extends Component {
         }
         return (
             <React.Fragment>
-                {tournament.name ?
+                {tournament ?
                     yesTournament() :
                     noTournament()
                 }
@@ -51,9 +59,9 @@ class TournamentPage extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
     return {
-        tournament: state.tournaments
+        tournaments: state.tournaments
     }
 }
 

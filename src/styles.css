@@ -4,11 +4,11 @@
 }
 
 .box-hover {
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 }
 
 .box-hover:hover {
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 html {
@@ -53,4 +53,39 @@ a {
 a:hover {
     color: #000;
     text-decoration: none
+}
+
+.completed {
+    border-left: 5px solid #92f764;
+}
+
+.not-completed {
+    border-left: 5px solid rgb(255, 251, 14);
+}
+
+.lds-circle {
+    display: inline-block;
+    width: 51px;
+    height: 51px;
+    margin: 6px;
+    border-radius: 50%;
+    background: #000;
+    animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+@keyframes lds-circle {
+    0%,
+    100% {
+        animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+    }
+    0% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(1800deg);
+        animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+    }
+    100% {
+        transform: rotateY(3600deg);
+    }
 }

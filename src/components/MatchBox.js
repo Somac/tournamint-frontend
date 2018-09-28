@@ -26,9 +26,10 @@ class MatchBox extends Component {
         const { homeTeam, awayTeam, goals } = match
         const homeGoals = goals.filter(({ homeTeam }) => homeTeam === true).length
         const awayGoals = goals.filter(({ awayTeam }) => awayTeam === true).length
+        const boxStyle = match.completed ? 'completed' : 'not-completed'
         return (
             <Link to={`/matches/${match.slug}`}>
-                <div className='row box box-hover d-flex align-items-center my-5'>
+                <div className={`row box box-hover d-flex align-items-center my-5 ${boxStyle}`}>
                     <TeamScore team={homeTeam} goals={homeGoals} away={false} />
                     <div className='col'><h1>VS</h1></div>
                     <TeamScore team={awayTeam} goals={awayGoals} away={true} />

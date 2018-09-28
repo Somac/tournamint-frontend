@@ -4,8 +4,13 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import MainMenu from './components/MainMenu'
 import Footer from './components/Footer'
 import Routes from './components/Routes'
+import { getTournaments } from './reducers/tournamentReducer'
 
 class App extends Component {
+    componentDidMount = async () => {
+        this.props.getTournaments()
+    }
+
     render() {
         return (
             <Router>
@@ -22,5 +27,6 @@ class App extends Component {
 }
 
 export default connect(
-    null
+    null,
+    { getTournaments }
 )(App)
