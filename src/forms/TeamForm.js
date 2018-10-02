@@ -7,7 +7,7 @@ let TeamForm = (props) => {
     const { handleSubmit, leagues, tournaments, players } = props
     return (
         <form onSubmit={handleSubmit}>
-            <FormGroup
+            {/* <FormGroup
                 name='name'
                 label='Joukkueen nimi'
                 type='text'
@@ -27,7 +27,7 @@ let TeamForm = (props) => {
                 name='players'
                 label='Pelaajat'
                 options={players}
-            />
+            /> */}
             <button className='btn btn-primary'>Tallenna</button>
         </form>
     )

@@ -1,16 +1,17 @@
 import React from 'react'
-import { Field } from 'redux-form'
 
-const FormGroup = ({name, label, component, type}) => {
+const FormGroup = ({ input, name, label, type, meta: { touched, error, warning } }) => {
+    let classes = ['form-control']
+    if(touched && error) {
+        classes = classes.concat('is-invalid')
+    }
     return (
         <div className="form-group">
             <label htmlFor={name}>{label}</label>
-            <Field
-                component={component}
-                type={type}
-                className="form-control"
-                name={name}
-            />
+            <input className={classes.join(' ')} {...input} placeholder={label} type={type} />
+            {touched &&
+                ((error && <span className='error-fdbck'>{error}</span>) ||
+                    (warning && <span>{warning}</span>))}
         </div>
     )
 }

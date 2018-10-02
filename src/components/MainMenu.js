@@ -1,6 +1,16 @@
 import React, { Component } from 'react'
 import NavLink from './NavLink'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+
+const RightNav = () => {
+    return (
+        <div>
+
+        </div>
+    );
+};
+
 
 class MainMenu extends Component {
     render() {
@@ -19,8 +29,13 @@ class MainMenu extends Component {
                             <NavLink link='/games' name='Games' />
                         </ul>
                         <ul className='navbar-nav ml-auto'>
-                            <NavLink link='/register' name='Register' />
-                            <NavLink link='/login' name='Login' />
+                            {this.props.user === null ?
+                                <React.Fragment>
+                                    <NavLink link='/register' name='Register' />
+                                    <NavLink link='/login' name='Login' />
+                                </React.Fragment> :
+                                <NavLink link='/logout' name='Logout' />
+                            }
                         </ul>
                     </div>
                 </div>
@@ -28,5 +43,12 @@ class MainMenu extends Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        user: state.user
+    }
+}
 
-export default MainMenu
+export default connect(
+    mapStateToProps
+)(MainMenu)

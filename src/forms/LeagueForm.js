@@ -6,24 +6,21 @@ let LeagueForm = (props) => {
     const { handleSubmit, games } = props
     return (
         <form onSubmit={handleSubmit}>
-            <FormGroup
+            <Field 
                 name='name'
                 label='Liigan nimi *'
                 type='text'
-                component='input'
-            />
-            <FormGroup
+                component={FormGroup} />
+            <Field 
                 name='apiUrlTeams'
                 label='API Url joukkue'
                 type='text'
-                component='input'
-            />
-            <FormGroup
+                component={FormGroup} />
+            <Field 
                 name='apiUrlPlayers'
                 label='API Url pelaajat'
                 type='text'
-                component='input'
-            />
+                component={FormGroup} />
             <div className='form-group'>
                 <label htmlFor='game'>Peli</label>
                 <Field component='select' className="form-control" name='game'>

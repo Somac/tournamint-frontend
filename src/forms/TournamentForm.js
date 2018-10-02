@@ -6,7 +6,7 @@ let TournamentForm = (props) => {
     const { handleSubmit, leagues } = props
     return (
         <form onSubmit={handleSubmit}>
-            <FormGroup
+            {/* <FormGroup
                 name='name'
                 label='Turnauksen nimi'
                 type='text'
@@ -24,7 +24,7 @@ let TournamentForm = (props) => {
                     <option>Valitse liiga</option>
                     {leagues.map(league => <option key={league._id} value={league._id}>{league.name}</option>)}
                 </Field>
-            </div>
+            </div> */}
             <button className='btn btn-primary'>Tallenna</button>
         </form>
     )

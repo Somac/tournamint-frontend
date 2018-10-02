@@ -12,6 +12,11 @@ const addLeague = async (data) => {
     return response.data
 }
 
+const getOneLeague = async (id) =>{
+    const response = await axios.get(`${url}/${id}`)
+    return response.data
+}
+
 export default {
-    getAllLeagues, addLeague
+    getAllLeagues, addLeague, getOneLeague
 }

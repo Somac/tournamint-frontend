@@ -6,6 +6,11 @@ const leagueReducer = (store = [], action) => {
         return action.data
     case 'ADD_LEAGUE':
         return [...store, action.data]
+    case 'GET_ONE_LEAGUE':
+        return store.map(league =>
+            league._id === action.id ?
+                action.data : league
+        )
     default:
         return store
     }
@@ -27,6 +32,17 @@ export const addLeague = (data) => {
         dispatch({
             type: 'ADD_LEAGUE',
             data: league
+        })
+    }
+}
+
+export const getOneLeague = (id) => {
+    return async (dispatch) => {
+        const league = await leagueService.getOneLeague(id)
+        dispatch({
+            type: 'GET_ONE_LEAGUE',
+            data: league,
+            id
         })
     }
 }

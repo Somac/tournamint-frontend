@@ -11,16 +11,13 @@ class TournamentPage extends Component {
     }
     componentDidMount = async () => {
         const slug = this.props.tournamentSlug
-        console.log(this.props)
         await this.props.getOneTournament(slug)
         this.setState({componentDidMount:true})
         this.forceUpdate()
     }
 
     render() {
-        console.log('render')
         const { tournaments } = this.props
-        console.log('tournaments',tournaments)
         const tournament = tournaments.find(tournament => tournament.slug === this.props.tournamentSlug)
         const noTournament = () => (
             <div>Turnausta ei löytynyt</div>

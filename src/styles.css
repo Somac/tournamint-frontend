@@ -89,3 +89,7 @@ a:hover {
         transform: rotateY(3600deg);
     }
 }
+
+.error-fdbck {
+    color: rgb(219, 63, 63)
+}

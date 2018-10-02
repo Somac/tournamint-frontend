@@ -1,19 +1,24 @@
-export const loadState = () => {
+export const loadUserState = () => {
     try {
         const serializedState = localStorage.getItem('loggedUser')
-        if(serializedState === null) {
-            return undefined
-        }
         return JSON.parse(serializedState)
     } catch(e) {
-        return undefined
+        return null
     }
 }
 
-export const saveState = (state) => {
+export const saveUserState = (user) => {
     try {
-        const serializedState = JSON.stringify(state)
+        const serializedState = JSON.stringify(user)
         localStorage.setItem('loggedUser', serializedState)
+    } catch(e) {
+        //
+    }
+}
+
+export const removeUserState = () => {
+    try {
+        localStorage.removeItem('loggedUser')
     } catch(e) {
         //
     }

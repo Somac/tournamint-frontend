@@ -1,23 +1,13 @@
 import React from 'react'
 import FormGroup from '../components/FormGroup'
-import { reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 
 let LoginForm = (props) => {
     const { handleSubmit } = props
     return (
         <form onSubmit={handleSubmit}>
-            <FormGroup
-                name='username'
-                label='Käyttäjätunnus'
-                type='text'
-                component='input'
-            />
-            <FormGroup
-                name='password'
-                label='Salasana'
-                type='password'
-                component='input'
-            />
+            <Field name='username' label='Käyttäjätunnus' type='text' component={FormGroup} />
+            <Field name='password' label='Salasana' type='password' component={FormGroup} />
             <button className='btn btn-primary'>Login</button>
         </form>
     )

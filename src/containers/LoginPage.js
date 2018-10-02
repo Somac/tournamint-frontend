@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import LoginForm from '../forms/LoginForm'
+import { login } from '../reducers/userReducer'
+import { Redirect } from 'react-router'
 
 class LoginPage extends Component {
-
-    login = (values) => {
-        console.log(values)
+    login = async (values) => {
+        await this.props.login(values)
     }
 
     render() {
+        if(this.props.user !== null) {
+            return(<Redirect to='/me' />)
+        }
         return (
             <div>
                 <h2 className='text-center my-5'>Kirjaudu sisään</h2>
@@ -21,4 +26,13 @@ class LoginPage extends Component {
     }
 }
 
-export default LoginPage
+const mapStateToProps = (state) => {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    { login }
+)(LoginPage)
