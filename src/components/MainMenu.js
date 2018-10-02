@@ -3,13 +3,19 @@ import NavLink from './NavLink'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-const RightNav = () => {
+const RightNav = ({ user }) => {
+    if(user === null) {
+        return (
+            <React.Fragment>
+                <NavLink link='/register' name='Register' />
+                <NavLink link='/login' name='Login' />
+            </React.Fragment>
+        )
+    }
     return (
-        <div>
-
-        </div>
-    );
-};
+        <NavLink link='/logout' name='Logout' />
+    )
+}
 
 
 class MainMenu extends Component {
@@ -29,13 +35,7 @@ class MainMenu extends Component {
                             <NavLink link='/games' name='Games' />
                         </ul>
                         <ul className='navbar-nav ml-auto'>
-                            {this.props.user === null ?
-                                <React.Fragment>
-                                    <NavLink link='/register' name='Register' />
-                                    <NavLink link='/login' name='Login' />
-                                </React.Fragment> :
-                                <NavLink link='/logout' name='Logout' />
-                            }
+                            <RightNav user={this.props.user} />
                         </ul>
                     </div>
                 </div>

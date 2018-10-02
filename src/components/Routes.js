@@ -15,7 +15,9 @@ import NotFound from '../containers/NotFound'
 import TeamPage from '../containers/TeamPage'
 import LeaguePage from '../containers/LeaguePage'
 import Logout from '../containers/Logout'
+import MePage from '../containers/MePage'
 import { Route, Switch } from 'react-router-dom'
+import PlayerPage from '../containers/PlayerPage'
 
 class Routes extends Component {
     render() {
@@ -36,6 +38,8 @@ class Routes extends Component {
                 <Route exact path='/teams/:slug' render={({ match }) => <TeamPage teamSlug={match.params.slug} />} />
                 <Route exact path='/leagues/:id' render={({ match }) => <LeaguePage leagueId={match.params.id} />} />
                 <Route exact path='/logout' render={() => <Logout />} />
+                <Route exact path='/me' render={() => <MePage />} />
+                <Route exact path='/players/:id' render={({ match }) => <PlayerPage playerId={match.params.id} />} />
                 <Route render={() => <NotFound />} />
             </Switch>
         );

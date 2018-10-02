@@ -7,7 +7,7 @@ const userReducer = (store = null, action) => {
     case 'LOAD_DATA_FROM_STORAGE':
         return loadUserState()
     case 'REGISTER':
-        return action.data
+        return store
     case 'LOGIN':
         saveUserState(action.data)
         return action.data

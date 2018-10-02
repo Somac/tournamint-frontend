@@ -38,6 +38,7 @@ class TeamPage extends Component {
         const playerHeaders = ['#', 'POS', 'Nimi', 'GP', 'G', 'A', 'P']
         const { team, players, tournaments, matches, playerArray } = this.state
         console.log(team)
+        console.log(tournaments, matches)
         return (
             <React.Fragment>
                 <img className="mx-auto mt-5 d-flex" src={`http://localhost:3001/${team.logo}`} alt={team.shortHand}></img>
