@@ -22,7 +22,7 @@ class Togglable extends Component {
                 </div>
                 <div style={showWhenVisible}>
                     <div className='row'>
-                        <div className='col-12 d-flex justify-content-center'>
+                        <div className='col-12'>
                             <div className='box'>
                                 <button className='btn btn-link d-flex ml-auto' onClick={this.toggleVisibility}>{this.props.cancelLabel}</button>
                                 {this.props.children}

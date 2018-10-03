@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getOneTeam } from '../reducers/teamReducer'
 import PlayerBox from '../components/PlayerBox'
 import Table from '../components/Table'
+import Togglable from '../components/Togglable'
 
 class TeamPage extends Component {
     state = {
@@ -43,7 +44,10 @@ class TeamPage extends Component {
             <React.Fragment>
                 <img className="mx-auto mt-5 d-flex" src={`http://localhost:3001/${team.logo}`} alt={team.shortHand}></img>
                 <h2 className='text-center mb-5 mt-3'>{team.name}</h2>
-                <Table headers={playerHeaders} body={playerArray} />
+                <Togglable label='Näytä pistepörssi' cancelLabel='Piilota'>
+                    <Table headers={playerHeaders} body={playerArray} />
+                </Togglable> 
+                <h1 className='text-center my-5'>Pelaajat</h1>
                 <div className='row'>
                     {players.map(player => <PlayerBox key={player._id} player={player} />)}
                 </div>
