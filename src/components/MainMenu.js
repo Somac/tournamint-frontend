@@ -13,7 +13,10 @@ const RightNav = ({ user }) => {
         )
     }
     return (
-        <NavLink link='/logout' name='Logout' />
+        <React.Fragment>
+            <NavLink link='/me' name='My profile' />
+            <NavLink link='/logout' name='Logout' />
+        </React.Fragment>
     )
 }
 

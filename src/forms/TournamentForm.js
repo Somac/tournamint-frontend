@@ -1,22 +1,93 @@
 import React from 'react'
-import FormGroup from '../components/FormGroup'
-import { reduxForm, Field } from 'redux-form';
-import FormGroupTextArea from '../components/FormGroupTextArea';
-import FormGroupSelect from '../components/FormGroupSelect';
+import FormGroup from './formComponents/FormGroup'
+import { reduxForm, Field, formValueSelector } from 'redux-form';
+import FormGroupTextArea from './formComponents/FormGroupTextArea';
+import FormGroupSelect from './formComponents/FormGroupSelect';
+import { connect } from 'react-redux'
+
+const SelectedTeam = ({team}) => {
+    return (
+        <div className='col-6 col-md-3'>
+            <img className='mx-auto d-flex card-img-top' src={`http://localhost:3001/${team.logo}`} alt={team.shortHand} />
+            <p className='text-center'>{team.shortHand} / {team.gamerName}</p>
+        </div>
+    )
+}
 
 let TournamentForm = (props) => {
-    const { handleSubmit, leagues } = props
+    const { handleSubmit, leagues, teams, selectedLeague, teamChange, selectedTeams, leagueChange } = props
     const leagueOptions = leagues.map(league => { return { value: league._id, name: league.name } })
+    const teamOptions = teams
+        .filter(({ league }) => league === selectedLeague)
+        .map(team => {
+            return { value: team.id, name: team.name }
+        })
+    const onTeamChange = (event, newTeam) => {
+        event.preventDefault()
+        teamChange(newTeam)
+    }
+
+    const onLeagueChange = () => {
+        leagueChange()
+    }
     return (
         <form onSubmit={handleSubmit}>
-            <Field name='name' type='text' component={FormGroup} label='Turnauksen nimi' />
-            <Field name='description' component={FormGroupTextArea} className='form-control' label='Kuvaus' />
-            <Field name='league' component={FormGroupSelect} label='Liiga' options={leagueOptions} />
+            <Field
+                name='name'
+                type='text'
+                component={FormGroup}
+                label='Turnauksen nimi'
+            />
+            <Field
+                name='description'
+                component={FormGroupTextArea}
+                label='Kuvaus'
+            />
+            <Field
+                name='league'
+                component={FormGroupSelect}
+                label='Liiga'
+                options={leagueOptions}
+                onChange={onLeagueChange}
+            />
+            <Field
+                name='team'
+                onChange={onTeamChange}
+                component={FormGroupSelect}
+                label='Joukkueet'
+                options={teamOptions}
+            />
+            {selectedTeams.length === 0 ? '' :
+                <div className='box-2 my-3'>
+                    <h3 className='text-center'>Valitut joukkueet:</h3>
+                    <div className='row'>
+                        {selectedTeams
+                            .map(t =>
+                                <SelectedTeam key={t.id} team={t} />
+                            )
+                        }
+                    </div>
+                </div>
+            }
             <button className='btn btn-primary'>Tallenna</button>
         </form>
     )
 }
 
-export default TournamentForm = reduxForm({
+TournamentForm = reduxForm({
     form: 'tournament'
 })(TournamentForm)
+
+const selector = formValueSelector('tournament')
+TournamentForm = connect(
+    state => {
+        const selectedLeague = selector(state, 'league')
+        const selectedTeam = selector(state, 'team')
+        return {
+            selectedLeague,
+            selectedTeam
+        }
+    }
+)(TournamentForm)
+
+export default TournamentForm

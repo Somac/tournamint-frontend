@@ -4,6 +4,7 @@ import { getOneTeam } from '../reducers/teamReducer'
 import PlayerBox from '../components/PlayerBox'
 import Table from '../components/Table'
 import Togglable from '../components/Togglable'
+import Loading from '../components/Loading'
 
 class TeamPage extends Component {
     state = {
@@ -11,7 +12,8 @@ class TeamPage extends Component {
         players: [],
         tournaments: [],
         matches: [],
-        playerArray: []
+        playerArray: [],
+        fetching: true
     }
     componentDidMount = async () => {
         const slug = this.props.teamSlug
@@ -20,26 +22,33 @@ class TeamPage extends Component {
         const { team } = this.props
         const { players, tournaments, matches } = team
 
+        const gamesPlayed = matches.filter(({ completed }) => completed === true).length
+
         const playerArray = players.map(player => {
-            return [player.jerseyNumber, player.position, player.name, 0, 0, 0, 0]
+            const goals = player.goals.length
+            const assists = player.assists.length
+            const points = goals + assists
+            return [player.jerseyNumber, player.position, player.name, gamesPlayed, goals, assists, points]
         })
 
-        playerArray.sort((a, b) => { return a[0] - b[0] })
+        playerArray.sort((a, b) => { return a[1] - b[1] })
 
         this.setState({
             team,
             players,
             tournaments,
             matches,
-            playerArray
+            playerArray,
+            fetching: false
         })
     }
 
     render() {
         const playerHeaders = ['#', 'POS', 'Nimi', 'GP', 'G', 'A', 'P']
         const { team, players, tournaments, matches, playerArray } = this.state
-        console.log(team)
-        console.log(tournaments, matches)
+        if (this.state.fetching) {
+            return (<Loading />)
+        }
         return (
             <React.Fragment>
                 <img className="mx-auto mt-5 d-flex" src={`http://localhost:3001/${team.logo}`} alt={team.shortHand}></img>

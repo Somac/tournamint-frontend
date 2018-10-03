@@ -5,6 +5,7 @@ import playerService from '../services/players'
 import InfoContainer from '../components/InfoContainer'
 import Loading from '../components/Loading'
 import Flag from 'react-world-flags'
+import { Link } from 'react-router-dom'
 
 class PlayerPage extends Component {
     constructor(props) {
@@ -53,10 +54,33 @@ class PlayerPage extends Component {
         return Math.floor(p2kg * pounds)
     }
 
+    positionToText = (position) => {
+        switch(position) {
+        case 'G':
+            return 'Goalie'
+        case 'RW':
+            return 'Right Wing'
+        case 'C':
+            return 'Center'
+        case 'LW':
+            return 'Left wing'
+        case 'W':
+            return 'Winger'
+        case 'D':
+            return 'Defenseman'
+        case 'LD':
+            return 'Left defenseman'
+        case 'RD':
+            return 'Right defenseman'
+        default:
+            return position
+        }
+    }
+
     render() {
         const { players } = this.props
         const { playerHeight, playerWeight, playerAge, birthDate, flag, img, onErrorImg } = this.state
-        if(this.state.fetching) {
+        if (this.state.fetching) {
             return (<Loading />)
         }
         return (
@@ -66,6 +90,7 @@ class PlayerPage extends Component {
                     <Flag className='rounded-circle flag' code={flag} fallback={<span>Unknown</span>} />
                     {players.name}
                 </h1>
+                <h3 className='text-center'>#{players.jerseyNumber} {this.positionToText(players.position)}</h3>
                 <div className='row mt-5'>
                     <div className='col-12 col-md-6'>
                         <InfoContainer
@@ -83,7 +108,16 @@ class PlayerPage extends Component {
                         <InfoContainer
                             header={'Turnaustiedot'}
                             rows={[
-                                {head:'Joukkue', value: players.team.name}
+                                { head: 'Joukkue', value: players.team.name },
+                                { head: 'Turnaukset', value: players.team.tournaments
+                                        .map(tournament => {
+                                            let link = `/tournaments/${tournament.slug}`
+                                            return (<Link key={tournament._id} to={link}>{tournament.name}</Link>)
+                                        })
+                                },
+                                { head: 'Maalit', value: players.goals.length },
+                                { head: 'Syötöt', value: players.assists.length },
+                                { head: 'Pisteet', value: players.goals.length + players.assists.length }
                             ]}
                         />
                     </div>

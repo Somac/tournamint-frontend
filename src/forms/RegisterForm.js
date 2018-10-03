@@ -1,5 +1,5 @@
 import React from 'react'
-import FormGroup from '../components/FormGroup'
+import FormGroup from './formComponents/FormGroup'
 import { Field, reduxForm } from 'redux-form';
 
 const validate = values => {
