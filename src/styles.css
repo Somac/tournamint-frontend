@@ -74,7 +74,7 @@ a:hover {
     height: 51px;
     margin: 6px;
     border-radius: 50%;
-    background: #000;
+    background: rgb(0, 225, 255);
     animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
 
@@ -106,3 +106,7 @@ a:hover {
     margin-right: 10px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
+
+.form-control::-webkit-input-placeholder {
+    color: #ccc;
+  }

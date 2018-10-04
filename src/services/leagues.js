@@ -17,6 +17,11 @@ const getOneLeague = async (id) =>{
     return response.data
 }
 
+const getExternalTeams = async (url) => {
+    const response = await axios.get(url)
+    return response.data
+} 
+
 export default {
-    getAllLeagues, addLeague, getOneLeague
+    getAllLeagues, addLeague, getOneLeague, getExternalTeams
 }

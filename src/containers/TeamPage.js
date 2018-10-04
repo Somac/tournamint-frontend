@@ -31,7 +31,11 @@ class TeamPage extends Component {
             return [player.jerseyNumber, player.position, player.name, gamesPlayed, goals, assists, points]
         })
 
-        playerArray.sort((a, b) => { return a[1] - b[1] })
+        playerArray.sort((a, b) => {
+            if (a[2] < b[2]) return -1
+            if (a[2] > b[2]) return 1
+            return 0
+        })
 
         this.setState({
             team,
@@ -55,10 +59,18 @@ class TeamPage extends Component {
                 <h2 className='text-center mb-5 mt-3'>{team.name}</h2>
                 <Togglable label='Näytä pistepörssi' cancelLabel='Piilota'>
                     <Table headers={playerHeaders} body={playerArray} />
-                </Togglable> 
+                </Togglable>
                 <h1 className='text-center my-5'>Pelaajat</h1>
                 <div className='row'>
-                    {players.map(player => <PlayerBox key={player._id} player={player} />)}
+                    {players
+                        .sort((a, b) => {
+                            if(a.name < b.name) return -1
+                            if(a.name > b.name) return 1
+                            return 0
+                        })
+                        .map(player => <PlayerBox key={player._id} player={player} />)
+                        
+                    }
                 </div>
             </React.Fragment>
         )

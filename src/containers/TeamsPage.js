@@ -10,39 +10,25 @@ class TeamsPage extends React.Component {
         await this.props.getTeams()
     }
 
-    // teamDescription = (team) => {
-    //     return (
-    //         <table className='table'>
-    //             <tbody>
-    //                 <tr>
-    //                     <td>Lyhenne</td>
-    //                     <td>{team.shortHand}</td>
-    //                 </tr>
-    //                 <tr>
-    //                     <td>Pelaajan nimi</td>
-    //                     <td>{team.gamerName}</td>
-    //                 </tr>
-    //             </tbody>
-    //         </table>
-    //     )
-    // }
-
     render() {
+        console.log('RENDERING teamspagee')
         return (
             <React.Fragment>
                 <h2 className='text-center my-5'>Joukkueet</h2>
                 <LinkButton link='/new/team' text='Lisää uusi' />
                 <div className='row'>
                     {Array.isArray(this.props.teams) ?
-                        this.props.teams.map(team =>
+                        this.props.teams.map(team => {
+                            console.log(team.id)
+                            return(
                             <SmallCardBox
                                 key={team.id}
                                 shortHand={team.shortHand}
                                 link={`/teams/${team.slug}`}
                                 logo={team.logo}
                                 gamerName={team.gamerName}
-                            />
-                        ) :
+                            />)
+                        }) :
                         <Loading />}
                 </div>
             </React.Fragment>

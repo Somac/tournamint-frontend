@@ -5,7 +5,7 @@ import FormGroupTextArea from './formComponents/FormGroupTextArea';
 import FormGroupSelect from './formComponents/FormGroupSelect';
 import { connect } from 'react-redux'
 
-const SelectedTeam = ({team}) => {
+const SelectedTeam = ({ team }) => {
     return (
         <div className='col-6 col-md-3'>
             <img className='mx-auto d-flex card-img-top' src={`http://localhost:3001/${team.logo}`} alt={team.shortHand} />
@@ -20,8 +20,9 @@ let TournamentForm = (props) => {
     const teamOptions = teams
         .filter(({ league }) => league === selectedLeague)
         .map(team => {
-            return { value: team.id, name: team.name }
+            return { value: team.id, name: `${team.name} - ${team.gamerName}` }
         })
+    const advanceOptions = [...Array(selectedTeams.length)].map((item, i) => ({ value: i+1, name: i+1 }))
     const onTeamChange = (event, newTeam) => {
         event.preventDefault()
         teamChange(newTeam)
@@ -43,6 +44,13 @@ let TournamentForm = (props) => {
                 component={FormGroupTextArea}
                 label='Kuvaus'
             />
+            <Field
+                name='rounds'
+                component={FormGroup}
+                type='number'
+                label='Runkosarjan kierrokset'
+            />
+            <hr />
             <Field
                 name='league'
                 component={FormGroupSelect}
@@ -69,6 +77,12 @@ let TournamentForm = (props) => {
                     </div>
                 </div>
             }
+            <Field
+                name='toAdvance'
+                component={FormGroupSelect}
+                label='Playoff viivan yläpuolella'
+                options={advanceOptions}
+            />
             <button className='btn btn-primary'>Tallenna</button>
         </form>
     )

@@ -1,30 +1,32 @@
 import React from 'react'
 
-const handleChange = (handler) => ({target: {files}}) =>
-  handler(files.length ? {file: files[0], name: files[0].name} : {});
+const adaptFileEventToValue = delegate =>
+    e => delegate(e.target.files[0])
 
 const FileInput = ({
-  input: {onChange, onBlur, value: omitValue, ...inputProps},
-  meta: omitMeta,
-  ...props
-}) => (
-  <input type="file"
-    onChange={handleChange(onChange)} onBlur={handleChange(onBlur)}
-    {...inputProps} {...props} />
-);
-
-const FormGroupFileInput = ({ input, name, label, type, meta: { touched, error, warning } }) => {
-
-    let classes = ['form-control']
-    if (touched && error) {
-        classes = classes.concat('is-invalid')
-    }
+    input: {
+        value: omitValue,
+        onChange,
+        onBlur,
+        ...inputProps,
+    },
+    meta: omitMeta,
+    ...props,
+    name, label
+}) => {
     return (
         <div className="form-group">
             <label htmlFor={name}>{label}</label>
-            <FileInput />
+            <input
+                className='form-control-file'
+                onChange={adaptFileEventToValue(onChange)}
+                onBlur={adaptFileEventToValue(onBlur)}
+                type="file"
+                {...inputProps}
+                {...props}
+            />
         </div>
     )
 }
 
-export default FormGroupFileInput
+export default FileInput
