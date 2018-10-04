@@ -2,7 +2,6 @@ import React from 'react'
 import CardBox from './CardBox'
 
 const TeamList = ({ teams }) => {
-    console.log(teams)
     return (
         <div className='row'>
             <div className='col-12'>

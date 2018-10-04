@@ -52,14 +52,10 @@ class NewTeam extends Component {
 
     render() {
         if (this.state.rendering) {
-            return (
-                <Loading />
-            )
+            return <Loading />
         }
         if (this.state.redirect) {
-            return (
-                <Redirect to='/teams' />
-            )
+            return <Redirect to='/teams' />
         }
         return (
             <div>

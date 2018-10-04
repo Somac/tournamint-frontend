@@ -3,6 +3,7 @@ import FormGroup from './formComponents/FormGroup'
 import { reduxForm, Field, formValueSelector } from 'redux-form';
 import FormGroupTextArea from './formComponents/FormGroupTextArea';
 import FormGroupSelect from './formComponents/FormGroupSelect';
+import FormGroupCheckbox from './formComponents/FormGroupCheckbox'
 import { connect } from 'react-redux'
 
 const SelectedTeam = ({ team }) => {
@@ -22,7 +23,7 @@ let TournamentForm = (props) => {
         .map(team => {
             return { value: team.id, name: `${team.name} - ${team.gamerName}` }
         })
-    const advanceOptions = [...Array(selectedTeams.length)].map((item, i) => ({ value: i+1, name: i+1 }))
+    const advanceOptions = [...Array(selectedTeams.length)].map((item, i) => ({ value: i + 1, name: i + 1 }))
     const onTeamChange = (event, newTeam) => {
         event.preventDefault()
         teamChange(newTeam)
@@ -31,6 +32,13 @@ let TournamentForm = (props) => {
     const onLeagueChange = () => {
         leagueChange()
     }
+
+    // name: String, XX
+    // description: String, XX
+    // rounds: Number, XX
+    // toAdvance: Number, XX
+    // league: { type: mongoose.Schema.Types.ObjectId, ref: 'League' }, XX
+    // teams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Team' }], XX
     return (
         <form onSubmit={handleSubmit}>
             <Field
@@ -68,7 +76,7 @@ let TournamentForm = (props) => {
             {selectedTeams.length === 0 ? '' :
                 <div className='box-2 my-3'>
                     <h3 className='text-center'>Valitut joukkueet:</h3>
-                    <div className='row'>
+                    <div className='row d-flex justify-content-center'>
                         {selectedTeams
                             .map(t =>
                                 <SelectedTeam key={t.id} team={t} />
@@ -82,6 +90,12 @@ let TournamentForm = (props) => {
                 component={FormGroupSelect}
                 label='Playoff viivan yläpuolella'
                 options={advanceOptions}
+            />
+            <Field
+                name='generateMatches'
+                component={FormGroupCheckbox}
+                label='Generoi turnauksen ottelut automaattisesti'
+                isChecked
             />
             <button className='btn btn-primary'>Tallenna</button>
         </form>
