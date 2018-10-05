@@ -5,6 +5,7 @@ import { getLeagues } from '../reducers/leagueReducer'
 import { getTeams } from '../reducers/teamReducer'
 import TournamentForm from '../forms/TournamentForm'
 import Loading from '../components/Loading'
+import Submitting from '../components/Submitting'
 import { Redirect } from 'react-router'
 
 class NewTournament extends Component {
@@ -13,7 +14,8 @@ class NewTournament extends Component {
         this.state = {
             fetching: true,
             selectedTeams: [],
-            redirect: false
+            redirect: false,
+            submitting: false
         }
     }
 
@@ -24,9 +26,11 @@ class NewTournament extends Component {
     }
 
     addTournament = async (values) => {
+        this.setState({ submitting: true })
         const teams = this.state.selectedTeams.map(t => t.id)
         const dataToSend = { ...values, teams }
         await this.props.addNew(dataToSend)
+        this.setState({ redirect: true })
     }
 
     teamChange = (team) => {
@@ -55,6 +59,9 @@ class NewTournament extends Component {
         }
         if (this.state.redirect) {
             return <Redirect to='/tournaments' />
+        }
+        if (this.state.submitting) {
+            return <Submitting />
         }
         return (
             <React.Fragment>

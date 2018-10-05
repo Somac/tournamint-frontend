@@ -1,18 +1,22 @@
 import tournamentService from '../services/tournaments'
 
+const timeout = (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 const tournamentReducer = (store = [], action) => {
     switch (action.type) {
-    case 'INIT_TOURNAMENTS':
-        return action.data
-    case 'GET_ONE_TOURNAMENT':
-        return store.map(tournament =>
-            tournament.slug === action.slug ?
-                action.data : tournament
-        )
-    case 'NEW_TOURNAMENT':
-        return [...store, action.data]
-    default:
-        return store
+        case 'INIT_TOURNAMENTS':
+            return action.data
+        case 'GET_ONE_TOURNAMENT':
+            return store.map(tournament =>
+                tournament.slug === action.slug ?
+                    action.data : tournament
+            )
+        case 'NEW_TOURNAMENT':
+            return [...store, action.data]
+        default:
+            return store
     }
 }
 

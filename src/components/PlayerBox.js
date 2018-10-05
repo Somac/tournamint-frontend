@@ -11,6 +11,7 @@ class PlayerBox extends React.Component {
                 <Link to={`/players/${player._id}`} >
                     <div className='box box-hover mb-3'>
                         <img className='mx-auto d-flex rounded-circle' onError={(e) => e.target.src = onError} src={img} alt={player.name} />
+                        <h3 className='text-center mt-3'>#{player.jerseyNumber}</h3>
                         <p className='text-center'>{player.name}</p>
                     </div>
                 </Link>

@@ -18,8 +18,14 @@ class App extends Component {
             <Router>
                 <React.Fragment>
                     <MainMenu />
-                    <div className='container'>
-                        <Routes />
+                    <div className='container-fluid'>
+                        <div className='row'>
+                            <div className='d-none d-lg-flex col-lg-1 col-xl-2'></div>
+                            <div className='col-12 col-lg-10 col-xl-8'>
+                                <Routes />
+                            </div>
+                            <div className='d-none d-lg-flex col-lg-1 col-xl-2'></div>
+                        </div>
                     </div>
                     <Footer />
                 </React.Fragment>

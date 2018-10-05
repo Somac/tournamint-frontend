@@ -12,7 +12,7 @@
 }
 
 .box-2 {
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     padding: 10px;
 }
 
@@ -109,4 +109,9 @@ a:hover {
 
 .form-control::-webkit-input-placeholder {
     color: #ccc;
-  }
+}
+
+.card {
+    border: 0px;
+    border-radius: 0;
+}

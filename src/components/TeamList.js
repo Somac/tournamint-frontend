@@ -3,7 +3,7 @@ import CardBox from './CardBox'
 
 const TeamList = ({ teams }) => {
     return (
-        <div className='row'>
+        <div className='row d-flex justify-content-center'>
             <div className='col-12'>
                 <h2 className='my-5 text-center'>Turnauksen joukkueet</h2>
             </div>

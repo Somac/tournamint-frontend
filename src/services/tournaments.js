@@ -2,9 +2,12 @@ import axios from 'axios'
 import { loadUserState } from '../localStorage'
 
 const url = 'http://localhost:3001/api/tournaments'
+let config = {}
 
-const config = {
-    headers: { 'Authorization': "bearer " + loadUserState().token }
+if (loadUserState()) {
+    config = {
+        headers: { 'Authorization': "bearer " + loadUserState().token }
+    }
 }
 
 const getAll = async () => {

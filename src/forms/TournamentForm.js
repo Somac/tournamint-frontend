@@ -103,7 +103,8 @@ let TournamentForm = (props) => {
 }
 
 TournamentForm = reduxForm({
-    form: 'tournament'
+    form: 'tournament',
+    initialValues: { generateMatches: true }
 })(TournamentForm)
 
 const selector = formValueSelector('tournament')

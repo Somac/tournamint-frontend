@@ -11,7 +11,6 @@ class TeamsPage extends React.Component {
     }
 
     render() {
-        console.log('RENDERING teamspagee')
         return (
             <React.Fragment>
                 <h2 className='text-center my-5'>Joukkueet</h2>
@@ -19,7 +18,6 @@ class TeamsPage extends React.Component {
                 <div className='row'>
                     {Array.isArray(this.props.teams) ?
                         this.props.teams.map(team => {
-                            console.log(team.id)
                             return(
                             <SmallCardBox
                                 key={team.id}
