@@ -1,9 +1,5 @@
 import tournamentService from '../services/tournaments'
 
-const timeout = (ms) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 const tournamentReducer = (store = [], action) => {
     switch (action.type) {
         case 'INIT_TOURNAMENTS':

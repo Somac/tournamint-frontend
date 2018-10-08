@@ -1,14 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getOneMatch } from '../reducers/matchReducer'
+import { getOneMatch, completeMatch } from '../reducers/matchReducer'
+import { postGoal } from '../reducers/goalReducer'
 import MatchBox from '../components/MatchBox'
 import Loading from '../components/Loading'
 import { Link } from 'react-router-dom'
-import GoalForm from '../forms/GoalForm'
+import HomeGoalForm from '../forms/HomeGoalForm'
+import AwayGoalForm from '../forms/AwayGoalForm'
+import GoalList from '../components/GoalList'
+import SubmitMatchForm from '../forms/SubmitMatchForm'
 
 class MatchPage extends Component {
     state = {
-        componentDidMount: false
+        componentDidMount: false,
+        componendDidUpdate: true
     }
 
     componentDidMount = async () => {
@@ -17,14 +22,29 @@ class MatchPage extends Component {
         this.setState({ componentDidMount: true })
     }
 
+    componentDidUpdate = async () => {
+        if (this.state.componendDidUpdate === false) {
+            const slug = this.props.matchSlug
+            await this.props.getOneMatch(slug)
+            this.setState({ componendDidUpdate: true })
+        }
+    }
+
+
     addGoal = (values) => {
-        console.log(values)
+        const goal = { ...values, match: this.props.match._id }
+        this.props.postGoal(goal)
+        this.setState({ componendDidUpdate: false })
+    }
+
+    submitMatch = () => {
+        this.props.completeMatch(this.props.match._id)
+        this.setState({ componendDidUpdate: false })
     }
 
     render() {
-        console.log(this.props.match)
         const { match } = this.props
-        if (this.state.componentDidMount) {
+        if (this.state.componentDidMount && this.state.componendDidUpdate) {
             return (
                 <React.Fragment>
                     <h2 className='text-center mt-5'>{match.homeTeam.name} vs {match.awayTeam.name}</h2>
@@ -39,17 +59,21 @@ class MatchPage extends Component {
                                 <div className='col-6'>
                                     <div className='box'>
                                         <h3>Lisää maali kotijoukkueelle</h3>
-                                        <GoalForm onSubmit={this.addGoal} players={match.homeTeam.players} />
+                                        <HomeGoalForm onSubmit={this.addGoal} players={match.homeTeam.players} initialValues={{ homeTeam: true }} />
                                     </div>
                                 </div>
                                 <div className='col-6'>
                                     <div className='box'>
                                         <h3>Lisää maali vierasjoukkueelle</h3>
-                                        <GoalForm onSubmit={this.addGoal} players={match.awayTeam.players} />
+                                        <AwayGoalForm onSubmit={this.addGoal} players={match.awayTeam.players} initialValues={{ awayTeam: true }} />
                                     </div>
+                                </div>
+                                <div className='col-12 d-flex justify-content-center my-5'>
+                                    <SubmitMatchForm onSubmit={this.submitMatch} match={match} />
                                 </div>
                             </React.Fragment>
                         }
+                        <GoalList goals={match.goals} homeLogo={match.homeTeam.logo} awayLogo={match.awayTeam.logo} />
                     </div>
                 </React.Fragment>
             )
@@ -66,5 +90,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
     mapStateToProps,
-    { getOneMatch }
+    { getOneMatch, postGoal, completeMatch }
 )(MatchPage)

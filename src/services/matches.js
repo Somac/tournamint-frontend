@@ -20,6 +20,11 @@ const getTournamentMatches = async (id) => {
     return response.data
 }
 
+const completeMatch = async (id) => {
+    const response = await axios.put(`${url}/${id}/complete`)
+    return response.data
+}
+
 export default {
-    getAllMatches, getOneMatch, getTournamentMatches
+    getAllMatches, getOneMatch, getTournamentMatches, completeMatch
 }

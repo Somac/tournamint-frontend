@@ -1,6 +1,10 @@
 import React from 'react'
 import FormGroupSelect from './formComponents/FormGroupSelect'
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, reset } from 'redux-form'
+
+const afterSubmit = (result, dispatch) => {
+    dispatch(reset('homegoal'))
+}
 
 let GoalForm = (props) => {
     const { handleSubmit, players } = props
@@ -9,13 +13,23 @@ let GoalForm = (props) => {
     return (
         <form onSubmit={handleSubmit}>
             <Field name='scorer' component={FormGroupSelect} label='Maalintekijä' options={optionsTest} />
-            <Field name='first' component={FormGroupSelect} label='1. syöttäjä' options={optionsTest} />
-            <Field name='second' component={FormGroupSelect} label='2. syöttäjä' options={optionsTest} />
+            <Field name='firstAssist' component={FormGroupSelect} label='1. syöttäjä' options={optionsTest} />
+            <Field name='secondAssist' component={FormGroupSelect} label='2. syöttäjä' options={optionsTest} />
             <button className='btn btn-primary'>Tallenna</button>
         </form>
     )
 }
 
+const mapStateToProps = (state, ownProps) => {
+    return {
+        initialValues: {
+            homeTeam: ownProps.homeTeam || false,
+            awayTeam: ownProps.awayTeam || false
+        }
+    }
+}
+
 export default GoalForm = reduxForm({
-    form: 'goal'
-})(GoalForm)
+    form: 'homegoal',
+    onSubmitSuccess: afterSubmit,
+}, mapStateToProps)(GoalForm)

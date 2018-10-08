@@ -10,6 +10,7 @@ import userReducer from './reducers/userReducer'
 import playerReducer from './reducers/playerReducer'
 import tournamentMatchReducer from './reducers/tournamentMatchReducer'
 import matchReducer from './reducers/matchReducer'
+import goalReducer from './reducers/goalReducer'
 
 const reducer = combineReducers({
     tournaments: tournamentReducer,
@@ -20,7 +21,8 @@ const reducer = combineReducers({
     user: userReducer,
     players: playerReducer,
     tournamentMatches: tournamentMatchReducer,
-    match: matchReducer
+    match: matchReducer,
+    goals: goalReducer
 })
 
 export const store = createStore(
