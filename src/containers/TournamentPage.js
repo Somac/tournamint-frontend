@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getOneTournament } from '../reducers/tournamentReducer'
 import { getTournamentMatches } from '../reducers/tournamentMatchReducer'
+import { initFilter } from '../reducers/matchFilterReducer'
 import InfoContainer from '../components/InfoContainer'
 import TeamList from '../components/TeamList'
 import MatchList from '../components/MatchList'
@@ -11,23 +12,25 @@ class TournamentPage extends Component {
     state = {
         componentDidMount: false
     }
+
     componentDidMount = async () => {
         const slug = this.props.tournamentSlug
         await this.props.getOneTournament(slug)
         await this.props.getTournamentMatches(slug)
+        await this.props.initFilter()
         this.setState({ componentDidMount: true })
         this.forceUpdate()
     }
 
     render() {
-        const { tournaments, tournamentMatches } = this.props
+        const { tournaments, tournamentMatches, filter } = this.props
         const tournament = tournaments.find(tournament => tournament.slug === this.props.tournamentSlug)
         const noTournament = () => (
             <div>Turnausta ei löytynyt</div>
         )
         const yesTournament = () => {
             const d = new Date(tournament.createdAt)
-            const createdDate = `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()} klo ${d.getHours()}:${(d.getMinutes()<10?'0':'')}${d.getMinutes()}:${(d.getSeconds()<10?'0':'')}${d.getSeconds()}`
+            const createdDate = `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()} klo ${d.getHours()}:${(d.getMinutes() < 10 ? '0' : '')}${d.getMinutes()}:${(d.getSeconds() < 10 ? '0' : '')}${d.getSeconds()}`
             const gamesPlayed =
                 tournamentMatches.filter(({ completed }) => completed === true).length
             return (
@@ -46,7 +49,7 @@ class TournamentPage extends Component {
                         ]}
                     />
                     <TeamList teams={tournament.teams} />
-                    <MatchList matches={tournamentMatches} rounds={tournament.rounds} />
+                    <MatchList matches={tournamentMatches} rounds={tournament.rounds} teams={tournament.teams} />
                 </React.Fragment>
             )
         }
@@ -64,14 +67,45 @@ class TournamentPage extends Component {
     }
 }
 
+const matchesToShow = (matches, filterState) => {
+    const { filter, team } = filterState
+    if (filter === 'ALL') {
+        if (team === 'ALL') {
+            return matches
+        }
+        const homeMatches = matches.filter(match => match.homeTeam._id === team)
+        const awayMatches = matches.filter(match => match.awayTeam._id === team)
+        return [...homeMatches, ...awayMatches]
+    } else if (filter === 'COMPLETED') {
+        const completedMatches = matches.filter(match => match.completed === true)
+        if (team === 'ALL') {
+            return completedMatches
+        }
+        const homeMatches = completedMatches.filter(match => match.homeTeam._id === team)
+        const awayMatches = completedMatches.filter(match => match.awayTeam._id === team)
+        return [...homeMatches, ...awayMatches]
+    } else if (filter === 'NOT_COMPLETED') {
+        const incompleteMatches = matches.filter(match => match.completed !== true)
+        if (team === 'ALL') {
+            return incompleteMatches
+        }
+        const homeMatches = incompleteMatches.filter(match => match.homeTeam._id === team)
+        const awayMatches = incompleteMatches.filter(match => match.awayTeam._id === team)
+        return [...homeMatches, ...awayMatches]
+    }
+    return []
+}
+
 const mapStateToProps = (state, props) => {
+    console.log(state)
     return {
         tournaments: state.tournaments,
-        tournamentMatches: state.tournamentMatches
+        tournamentMatches: matchesToShow(state.tournamentMatches, state.matchFilters),
+        filter: state.matchFilters
     }
 }
 
 export default connect(
     mapStateToProps,
-    { getOneTournament, getTournamentMatches }
+    { getOneTournament, getTournamentMatches, initFilter }
 )(TournamentPage)

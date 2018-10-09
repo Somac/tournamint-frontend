@@ -8,6 +8,12 @@ class Togglable extends Component {
         }
     }
 
+    componentDidMount() {
+        if (this.props.visible) {
+            this.setState({ visible: true })
+        }
+    }
+
     toggleVisibility = () => {
         this.setState({ visible: !this.state.visible })
     }

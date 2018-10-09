@@ -10,11 +10,11 @@ const TeamList = ({ teams }) => {
             {teams.map(team =>
                 <CardBox
                     key={team._id}
-                    text={team.gamerName}
-                    name={team.name}
+                    text={team.name}
+                    name={team.gamerName}
                     link={`/teams/${team.slug}`}
                     logo={team.logo} 
-                    size='3'
+                    size='2'
                 />
             )}
         </div>

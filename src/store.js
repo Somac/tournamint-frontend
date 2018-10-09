@@ -11,6 +11,7 @@ import playerReducer from './reducers/playerReducer'
 import tournamentMatchReducer from './reducers/tournamentMatchReducer'
 import matchReducer from './reducers/matchReducer'
 import goalReducer from './reducers/goalReducer'
+import matchFilterReducer from './reducers/matchFilterReducer'
 
 const reducer = combineReducers({
     tournaments: tournamentReducer,
@@ -22,10 +23,11 @@ const reducer = combineReducers({
     players: playerReducer,
     tournamentMatches: tournamentMatchReducer,
     match: matchReducer,
-    goals: goalReducer
+    goals: goalReducer,
+    matchFilters: matchFilterReducer
 })
 
 export const store = createStore(
     reducer,
-    applyMiddleware(thunk)
+    applyMiddleware(thunk, logger)
 )

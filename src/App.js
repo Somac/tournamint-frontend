@@ -20,11 +20,11 @@ class App extends Component {
                     <MainMenu />
                     <div className='container-fluid'>
                         <div className='row'>
-                            <div className='d-none d-lg-flex col-lg-1 col-xl-2'></div>
-                            <div className='col-12 col-lg-10 col-xl-8'>
+                            <div className='d-none d-xl-flex  col-xl-1'></div>
+                            <div className='col-12 col-lg-12 col-xl-10'>
                                 <Routes />
                             </div>
-                            <div className='d-none d-lg-flex col-lg-1 col-xl-2'></div>
+                            <div className='d-none d-xl-flex col-xl-1'></div>
                         </div>
                     </div>
                     <Footer />

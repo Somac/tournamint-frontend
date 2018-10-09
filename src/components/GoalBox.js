@@ -6,7 +6,7 @@ const GoalBox = ({ goal }) => {
     let boxClass = ''
     let assists = goal.firstAssist ? goal.firstAssist.name : false
     let logo = ''
-    goal.secondAssist ? assists += `, ${goal.secondAssist.name}` : ''
+    if(goal.secondAssist) assists += `, ${goal.secondAssist.name}`
     if(assists) {
         assists = `(${assists})`
     }
@@ -29,7 +29,7 @@ const GoalBox = ({ goal }) => {
                         <React.Fragment>
                             <img className='rounded-circle small-img' onError={(e) => e.target.src = onError} src={img} alt={goal.scorer.name} />
                             <b>{goal.scorer.name}</b> {assists}
-                            <img onError={(e) => e.target.src = ''} src={`http://localhost:3001/${goal.logo}`} className='bg-logo' />
+                            <img alt='' onError={(e) => e.target.src = ''} src={`http://localhost:3001/${goal.logo}`} className='bg-logo' />
                         </React.Fragment>
                         : 'Maali'}
                 </div>

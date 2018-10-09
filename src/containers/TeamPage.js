@@ -5,6 +5,7 @@ import PlayerBox from '../components/PlayerBox'
 import Togglable from '../components/Togglable'
 import Loading from '../components/Loading'
 import ReactTable from 'react-table'
+import CardBox from '../components/CardBox'
 
 class TeamPage extends Component {
     state = {
@@ -13,7 +14,6 @@ class TeamPage extends Component {
         tournaments: [],
         matches: [],
         fetching: true,
-        reactColumns: [],
         reactPlayerArray: []
     }
     componentDidMount = async () => {
@@ -40,6 +40,20 @@ class TeamPage extends Component {
             }
         })
 
+        this.setState({
+            team,
+            players,
+            tournaments,
+            matches,
+            fetching: false,
+            reactPlayerArray
+        })
+    }
+
+    render() {
+        const { team, players, tournaments, matches, reactPlayerArray } = this.state
+        const completedMatches = matches.filter(match => match.completed === true).length
+        const incompleteMatches = matches.filter(match => match.completed === false).length
         const reactColumns = [
             { Header: '#', accessor: 'jersey' },
             { Header: 'POS', accessor: 'position' },
@@ -49,22 +63,6 @@ class TeamPage extends Component {
             { Header: 'A', accessor: 'a' },
             { Header: 'P', accessor: 'p' }
         ]
-
-        this.setState({
-            team,
-            players,
-            tournaments,
-            matches,
-            fetching: false,
-            reactColumns,
-            reactPlayerArray
-        })
-    }
-
-    render() {
-        const { team, players, tournaments, matches, reactPlayerArray, reactColumns } = this.state
-        const completedMatches = matches.filter(match => match.completed === true).length
-        const incompleteMatches = matches.filter(match => match.completed === false).length
         console.log(completedMatches, incompleteMatches)
         if (this.state.fetching) {
             return (<Loading />)
@@ -87,30 +85,41 @@ class TeamPage extends Component {
                         defaultSorted={defaultSort}
                     />
                 </Togglable>
-                <h1 className='text-center my-5'>Turnaukset</h1>
-                <div className='row'>
-                    <div className='col-12'>
-                        <div className='box'>
-                            {tournaments.map(tournament => {
-                                return (
-                                    <p>{tournament.name}</p>
-                                )
-                            })}
+                <Togglable label='Näytä turnaukset' cancelLabel='Piilota'>
+                    <h3 className='text-center my-5'>Turnaukset</h3>
+                    <div className='row'>
+                        <div className='col-12'>
+                            <div className='box'>
+                                <div className='row'>
+                                    {tournaments.map(tournament => {
+                                        return (
+                                            <CardBox
+                                                key={tournament.id}
+                                                text={tournament.description}
+                                                name={tournament.name}
+                                                link={`/tournaments/${tournament.slug}`}
+                                                size='2'
+                                            />)
+                                    })}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <h1 className='text-center my-5'>Pelaajat</h1>
-                <div className='row'>
-                    {players
-                        .sort((a, b) => {
-                            if (a.name < b.name) return -1
-                            if (a.name > b.name) return 1
-                            return 0
-                        })
-                        .map(player => <PlayerBox key={player._id} player={player} />)
+                </Togglable>
+                <Togglable label='Näytä pelaajat' cancelLabel='Piilota'>
+                    <h3 className='text-center my-5'>Pelaajat</h3>
+                    <div className='row'>
+                        {players
+                            .sort((a, b) => {
+                                if (a.name < b.name) return -1
+                                if (a.name > b.name) return 1
+                                return 0
+                            })
+                            .map(player => <PlayerBox key={player._id} player={player} />)
 
-                    }
-                </div>
+                        }
+                    </div>
+                </Togglable>
             </React.Fragment>
         )
     }
