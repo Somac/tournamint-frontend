@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-const url = 'http://localhost:3001/api/matches'
+const url = '/api/matches'
 const tournamentMatchUrl = (id) => {
-    return `http://localhost:3001/api/tournaments/${id}/matches`
+    return `/api/tournaments/${id}/matches`
 }
 
 const getAllMatches = async () => {

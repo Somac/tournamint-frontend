@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 
 const TeamScore = ({ team, goals, away }) => {
     const homeAway = away ? 'Away' : 'Home'
@@ -24,7 +23,7 @@ const TeamScore = ({ team, goals, away }) => {
 
 class MatchBoxNoLink extends Component {
     render() {
-        const { match, tournamentLink } = this.props
+        const { match } = this.props
         const { homeTeam, awayTeam, goals } = match
         const homeGoals = goals.filter(({ homeTeam }) => homeTeam === true).length
         const awayGoals = goals.filter(({ awayTeam }) => awayTeam === true).length

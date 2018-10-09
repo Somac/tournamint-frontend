@@ -5,7 +5,6 @@ const GoalBox = ({ goal }) => {
     let img = `https://nhl.bamcontent.com/images/headshots/current/168x168/${goal.scorer.apiId}.jpg`
     let boxClass = ''
     let assists = goal.firstAssist ? goal.firstAssist.name : false
-    let logo = ''
     if(goal.secondAssist) assists += `, ${goal.secondAssist.name}`
     if(assists) {
         assists = `(${assists})`

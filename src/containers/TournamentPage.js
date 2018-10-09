@@ -17,7 +17,7 @@ class TournamentPage extends Component {
     componentDidMount = async () => {
         const slug = this.props.tournamentSlug
         await this.props.getOneTournament(slug)
-        await this.props.getTournamentMatches(slug)<
+        await this.props.getTournamentMatches(slug)
         await this.props.getTournamentStandings(slug)
         this.setState({ componentDidMount: true })
         this.forceUpdate()

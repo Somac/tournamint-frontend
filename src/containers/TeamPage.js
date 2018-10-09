@@ -51,9 +51,7 @@ class TeamPage extends Component {
     }
 
     render() {
-        const { team, players, tournaments, matches, reactPlayerArray } = this.state
-        const completedMatches = matches.filter(match => match.completed === true).length
-        const incompleteMatches = matches.filter(match => match.completed === false).length
+        const { team, players, tournaments, reactPlayerArray } = this.state
         const reactColumns = [
             { Header: '#', accessor: 'jersey' },
             { Header: 'POS', accessor: 'position' },

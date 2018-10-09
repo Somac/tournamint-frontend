@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url = 'http://localhost:3001/api/teams'
+const url = '/api/teams'
 
 const getAllTeams = async () => {
     const response = await axios.get(url)
