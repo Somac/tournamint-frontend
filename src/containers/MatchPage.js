@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getOneMatch, completeMatch } from '../reducers/matchReducer'
 import { postGoal } from '../reducers/goalReducer'
-import MatchBox from '../components/MatchBox'
+import MatchBoxNoLink from '../components/MatchBoxNoLink'
 import Loading from '../components/Loading'
 import { Link } from 'react-router-dom'
 import HomeGoalForm from '../forms/HomeGoalForm'
@@ -13,20 +13,33 @@ import SubmitMatchForm from '../forms/SubmitMatchForm'
 class MatchPage extends Component {
     state = {
         componentDidMount: false,
-        componendDidUpdate: true
+        componendDidUpdate: true,
+        possibleTie: undefined,
+        scoreEven: undefined
     }
 
     componentDidMount = async () => {
         const slug = this.props.matchSlug
         await this.props.getOneMatch(slug)
-        this.setState({ componentDidMount: true })
+        const homeGoals = this.props.match.goals.filter(({ homeTeam }) => homeTeam === true).length
+        const awayGoals = this.props.match.goals.filter(({ awayTeam }) => awayTeam === true).length
+        const scoreEven = homeGoals === awayGoals ? true : false
+        const possibleTie = homeGoals - awayGoals === 1 || homeGoals - awayGoals === -1 ? true : false
+        this.setState({ componentDidMount: true, possibleTie, scoreEven })
     }
 
-    componentDidUpdate = async () => {
+    componentDidUpdate = async (prevProps) => {
         if (this.state.componendDidUpdate === false) {
             const slug = this.props.matchSlug
             await this.props.getOneMatch(slug)
             this.setState({ componendDidUpdate: true })
+        }
+        if (prevProps.match !== this.props.match) {
+            const homeGoals = this.props.match.goals.filter(({ homeTeam }) => homeTeam === true).length
+            const awayGoals = this.props.match.goals.filter(({ awayTeam }) => awayTeam === true).length
+            const scoreEven = homeGoals === awayGoals ? true : false
+            const possibleTie = homeGoals - awayGoals === 1 || homeGoals - awayGoals === -1 ? true : false
+            this.setState({ possibleTie, scoreEven })
         }
     }
 
@@ -37,8 +50,8 @@ class MatchPage extends Component {
         this.setState({ componendDidUpdate: false })
     }
 
-    submitMatch = () => {
-        this.props.completeMatch(this.props.match._id)
+    submitMatch = (values) => {
+        this.props.completeMatch(this.props.match._id, values)
         this.setState({ componendDidUpdate: false })
     }
 
@@ -52,7 +65,7 @@ class MatchPage extends Component {
                     <h4 className='text-center'>Kierros: {match.round}</h4>
                     <div className='row'>
                         <div className='col-12'>
-                            <MatchBox match={match} tournamentLink={match.tournament.slug} />
+                            <MatchBoxNoLink match={match} />
                         </div>
                         {match.completed ? '' :
                             <React.Fragment>
@@ -69,7 +82,7 @@ class MatchPage extends Component {
                                     </div>
                                 </div>
                                 <div className='col-12 d-flex justify-content-center my-5'>
-                                    <SubmitMatchForm onSubmit={this.submitMatch} match={match} />
+                                    <SubmitMatchForm onSubmit={this.submitMatch} match={match} possibleTie={this.state.possibleTie} scoreEven={this.state.scoreEven} />
                                 </div>
                             </React.Fragment>
                         }

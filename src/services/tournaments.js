@@ -25,6 +25,11 @@ const addNew = async (data) => {
     return response.data
 }
 
+const getTournamentStandings = async (slug) => {
+    const response = await axios.get(`${url}/${slug}/standings`)
+    return response.data
+} 
+
 export default {
-    getAll, getOne, addNew
+    getAll, getOne, addNew, getTournamentStandings
 }

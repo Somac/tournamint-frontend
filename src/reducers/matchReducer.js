@@ -24,9 +24,9 @@ export const getOneMatch = (slug) => {
     }
 }
 
-export const completeMatch = (id) => {
+export const completeMatch = (id, data) => {
     return async (dispatch) => {
-        const match = await matchService.completeMatch(id)
+        const match = await matchService.completeMatch(id, data)
         dispatch({
             type: 'COMPLETE_MATCH',
             data: match

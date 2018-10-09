@@ -15,7 +15,6 @@ const GoalBox = ({ goal }) => {
     } else {
         boxClass = 'justify-content-end'
     }
-    console.log(logo)
     return (
         <div className={`d-flex flex-row align-items-center my-3 ${boxClass}`}>
             {!goal.homeTeam ?

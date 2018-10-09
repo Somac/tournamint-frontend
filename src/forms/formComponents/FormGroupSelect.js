@@ -6,7 +6,7 @@ const FormGroupSelect = ({ options, input, name, label, meta: { touched, error, 
             <label htmlFor={name}>{label}</label>
             <select {...input} className="form-control" name={name} >
                 <option defaultValue value='null'>Valitse</option>
-                {options ? options.map(o => <option key={o.value} value={o.value}>{o.name}</option>) : ''}
+                {options ? options.map(o => <option key={o.value} value={o.value} disabled={o.disabled ? true : null}>{o.name}</option>) : ''}
             </select>
         </div>
     )

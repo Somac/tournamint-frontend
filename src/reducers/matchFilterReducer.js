@@ -1,7 +1,5 @@
 const matchFilterReducer = (store = { filter: 'ALL', team: 'ALL' }, action) => {
     switch (action.type) {
-        case 'INIT_FILTER':
-            return { filter: 'ALL', team: 'ALL' }
         case 'FILTER':
             return { ...store, filter: action.filter }
         case 'TEAM_FILTER':
@@ -23,10 +21,6 @@ export const teamFilter = (filter) => {
         type: 'TEAM_FILTER',
         filter
     }
-}
-
-export const initFilter = () => {
-    return { type: 'INIT_FILTER' }
 }
 
 export default matchFilterReducer

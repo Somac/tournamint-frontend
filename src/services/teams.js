@@ -13,7 +13,6 @@ const getOneTeam = async (slug) => {
 }
 
 const addTeam = async (data) => {
-    console.log('adding TEAM :D:D:D',data)
     const response = await axios.post(url, data)
     return response.data
 }

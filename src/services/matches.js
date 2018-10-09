@@ -20,8 +20,8 @@ const getTournamentMatches = async (id) => {
     return response.data
 }
 
-const completeMatch = async (id) => {
-    const response = await axios.put(`${url}/${id}/complete`)
+const completeMatch = async (id, data) => {
+    const response = await axios.put(`${url}/${id}/complete`, data)
     return response.data
 }
 

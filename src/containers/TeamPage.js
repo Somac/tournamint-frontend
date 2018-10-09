@@ -63,7 +63,6 @@ class TeamPage extends Component {
             { Header: 'A', accessor: 'a' },
             { Header: 'P', accessor: 'p' }
         ]
-        console.log(completedMatches, incompleteMatches)
         if (this.state.fetching) {
             return (<Loading />)
         }

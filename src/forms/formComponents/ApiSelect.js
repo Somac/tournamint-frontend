@@ -15,7 +15,6 @@ class ApiSelect extends Component {
 
     componentDidUpdate = async (prevProps) => {
         if (this.props.apiUrl && prevProps.apiUrl !== this.props.apiUrl) {
-            console.log('cdu')
             const getTeams = await leagueService.getExternalTeams(this.props.apiUrl)
             if (JSON.stringify(this.state.teams) !== JSON.stringify(getTeams.teams)) {
                 const externalTeams = getTeams.teams.map(team => {
@@ -27,8 +26,6 @@ class ApiSelect extends Component {
                 })
                 this.setState({ externalTeams, teams: getTeams.teams })
             }
-        } else {
-            console.log('c didnt update:DDDDddddd')
         }
     }
 

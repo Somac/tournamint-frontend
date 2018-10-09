@@ -1,20 +1,25 @@
 import React from 'react'
 import FormGroupSelect from './formComponents/FormGroupSelect'
-import { Field, reduxForm, reset } from 'redux-form'
+import { Field, reduxForm, reset, formValueSelector } from 'redux-form'
+import { connect } from 'react-redux'
 
 const afterSubmit = (result, dispatch) => {
     dispatch(reset('homegoal'))
 }
 
-let GoalForm = (props) => {
-    const { handleSubmit, players } = props
+let HomeGoalForm = (props) => {
+    const { handleSubmit, players, scorer, firstAssist } = props
     const sortedPlayers = players.sort((a, b) => a.jerseyNumber - b.jerseyNumber)
-    const optionsTest = sortedPlayers.map(player => { return { value: player._id, name: `#${player.jerseyNumber} - ${player.name}` } })
+    const scorers = sortedPlayers.map(player => { return { value: player._id, name: `#${player.jerseyNumber} - ${player.name}`, disabled: false } })
+    const assisters = scorers.map(assister => assister.value === scorer ? { ...assister, disabled: true } : assister)
+    const secondAssister = assisters.map(assister => assister.value === firstAssist ? {...assister, disabled: true} : assister)
     return (
         <form onSubmit={handleSubmit}>
-            <Field name='scorer' component={FormGroupSelect} label='Maalintekijä' options={optionsTest} />
-            <Field name='firstAssist' component={FormGroupSelect} label='1. syöttäjä' options={optionsTest} />
-            <Field name='secondAssist' component={FormGroupSelect} label='2. syöttäjä' options={optionsTest} />
+            <Field name='scorer' component={FormGroupSelect} label='Maalintekijä' options={scorers} />
+            {scorer === undefined || scorer === 'null' ? '' :
+                <Field name='firstAssist' component={FormGroupSelect} label='1. syöttäjä' options={assisters} />}
+            {firstAssist === undefined || firstAssist === 'null' ? '' :
+                <Field name='secondAssist' component={FormGroupSelect} label='2. syöttäjä' options={secondAssister} />}
             <button className='btn btn-primary'>Tallenna</button>
         </form>
     )
@@ -29,7 +34,19 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-export default GoalForm = reduxForm({
+
+HomeGoalForm = reduxForm({
     form: 'homegoal',
     onSubmitSuccess: afterSubmit,
-}, mapStateToProps)(GoalForm)
+}, mapStateToProps)(HomeGoalForm)
+
+const selector = formValueSelector('homegoal')
+HomeGoalForm = connect(
+    state => {
+        const scorer = selector(state, 'scorer')
+        const firstAssist = selector(state, 'firstAssist')
+        return { scorer, firstAssist }
+    }
+)(HomeGoalForm)
+
+export default HomeGoalForm

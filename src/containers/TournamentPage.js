@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getOneTournament } from '../reducers/tournamentReducer'
 import { getTournamentMatches } from '../reducers/tournamentMatchReducer'
-import { initFilter } from '../reducers/matchFilterReducer'
+import { getTournamentStandings } from '../reducers/tournamentStandingsReducer'
 import InfoContainer from '../components/InfoContainer'
 import TeamList from '../components/TeamList'
 import MatchList from '../components/MatchList'
 import Loading from '../components/Loading'
+import ReactTable from 'react-table'
 
 class TournamentPage extends Component {
     state = {
@@ -16,15 +17,33 @@ class TournamentPage extends Component {
     componentDidMount = async () => {
         const slug = this.props.tournamentSlug
         await this.props.getOneTournament(slug)
-        await this.props.getTournamentMatches(slug)
-        await this.props.initFilter()
+        await this.props.getTournamentMatches(slug)<
+        await this.props.getTournamentStandings(slug)
         this.setState({ componentDidMount: true })
         this.forceUpdate()
     }
 
     render() {
-        const { tournaments, tournamentMatches, filter } = this.props
+        const { tournaments, tournamentMatches, tournamentMatchesNoFilter, tournamentStandings } = this.props
         const tournament = tournaments.find(tournament => tournament.slug === this.props.tournamentSlug)
+        const standingsColumns = [
+            { Header: 'Team', accessor: 'team' },
+            { Header: 'GP', accessor: 'gp' },
+            { Header: 'W', accessor: 'w' },
+            { Header: 'L', accessor: 'l' },
+            { Header: 'OT', accessor: 'ot' },
+            { Header: 'PTS', accessor: 'pts' },
+            { Header: 'GF', accessor: 'gf' },
+            { Header: 'GA', accessor: 'ga' },
+            { Header: 'HOME', accessor: 'home' },
+            { Header: 'AWAY', accessor: 'away' }
+        ]
+        const defaultSort = [
+            {
+                id: 'pts',
+                desc: true
+            }
+        ]
         const noTournament = () => (
             <div>Turnausta ei löytynyt</div>
         )
@@ -32,7 +51,7 @@ class TournamentPage extends Component {
             const d = new Date(tournament.createdAt)
             const createdDate = `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()} klo ${d.getHours()}:${(d.getMinutes() < 10 ? '0' : '')}${d.getMinutes()}:${(d.getSeconds() < 10 ? '0' : '')}${d.getSeconds()}`
             const gamesPlayed =
-                tournamentMatches.filter(({ completed }) => completed === true).length
+                tournamentMatchesNoFilter.filter(({ completed }) => completed === true).length
             return (
                 <React.Fragment>
                     <h2 className='text-center mt-5'>{tournament.name}</h2>
@@ -43,10 +62,19 @@ class TournamentPage extends Component {
                         rows={[
                             { head: 'Luotu', value: createdDate },
                             { head: 'Joukkueita', value: `${tournament.teams.length} joukkuetta` },
-                            { head: 'Otteluita pelattu', value: `${gamesPlayed} / ${tournamentMatches.length}` },
+                            { head: 'Otteluita pelattu', value: `${gamesPlayed} / ${tournamentMatchesNoFilter.length}` },
                             { head: 'Kierroksia', value: tournament.rounds },
                             { head: 'Playoff-viiva', value: tournament.toAdvance }
                         ]}
+                    />
+                    <h2 className='text-center mt-5'>Sarjataulukko</h2>
+                    <ReactTable
+                        className='my-5'
+                        data={tournamentStandings}
+                        columns={standingsColumns}
+                        defaultPageSize={tournament.teams.length}
+                        defaultSorted={defaultSort}
+                        showPagination={false}
                     />
                     <TeamList teams={tournament.teams} />
                     <MatchList matches={tournamentMatches} rounds={tournament.rounds} teams={tournament.teams} />
@@ -93,19 +121,19 @@ const matchesToShow = (matches, filterState) => {
         const awayMatches = incompleteMatches.filter(match => match.awayTeam._id === team)
         return [...homeMatches, ...awayMatches]
     }
-    return []
+    return matches
 }
 
-const mapStateToProps = (state, props) => {
-    console.log(state)
+const mapStateToProps = (state) => {
     return {
         tournaments: state.tournaments,
         tournamentMatches: matchesToShow(state.tournamentMatches, state.matchFilters),
-        filter: state.matchFilters
+        tournamentMatchesNoFilter: state.tournamentMatches,
+        tournamentStandings: state.tournamentStandings
     }
 }
 
 export default connect(
     mapStateToProps,
-    { getOneTournament, getTournamentMatches, initFilter }
+    { getOneTournament, getTournamentMatches, getTournamentStandings }
 )(TournamentPage)

@@ -135,3 +135,11 @@ a:hover {
     z-index: 0;
     opacity: .1;
 }
+
+.ReactTable .rt-tbody .rt-td {
+    text-align: center
+}
+
+.ReactTable .rt-thead .rt-th, .ReactTable .rt-thead .rt-td {
+    padding: 10px 5px
+}

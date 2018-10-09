@@ -1,11 +1,13 @@
 import React from 'react'
-import { reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
+import FormGroupCheckbox from './formComponents/FormGroupCheckbox'
 
 let SubmitMatchForm = (props) => {
-    const { handleSubmit } = props
+    const { handleSubmit, possibleTie, scoreEven } = props
     return (
         <form onSubmit={handleSubmit}>
-            <button className='btn btn-primary'>Submit Match</button>
+            {possibleTie ? <Field component={FormGroupCheckbox} name='ot' label='Tasapeli' /> : ''}
+            <button className='btn btn-primary' disabled={scoreEven}>Submit Match</button>
         </form>
     )
 }
