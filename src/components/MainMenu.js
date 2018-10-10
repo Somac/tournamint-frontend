@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const RightNav = ({ user }) => {
-    if(user === null) {
+    if (user === null) {
         return (
             <React.Fragment>
                 <NavLink link='/register' name='Register' />
@@ -22,15 +22,28 @@ const RightNav = ({ user }) => {
 
 
 class MainMenu extends Component {
+    state = {
+        visible: false
+    }
+
+    openNavBar = () => {
+        this.setState({ visible: !this.state.visible })
+        console.log(this.state.visible)
+    }
+
     render() {
+        const showWhenVisible = { display: this.state.visible ? 'block' : 'none' }
+        const changed = this.state.visible ? 'change' : ''
         return (
             <nav className='navbar navbar-expand-lg navbar-tournamint'>
                 <div className='container'>
                     <Link className='navbar-brand' to='/'>tournamint</Link>
-                    <button className='navbar-toggler' type='button'>
-                        <span className='navbar-toggler-icon'></span>
+                    <button className={`navbar-toggler ${changed}`} type='button' onClick={this.openNavBar}>
+                        <div className='bar1'></div>
+                        <div className='bar2'></div>
+                        <div className='bar3'></div>
                     </button>
-                    <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+                    <div className='collapse navbar-collapse' style={showWhenVisible}>
                         <ul className='navbar-nav mr-auto'>
                             <NavLink link='/tournaments' name='Tournaments' />
                             <NavLink link='/teams' name='Teams' />

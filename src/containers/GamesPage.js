@@ -20,9 +20,11 @@ class GamesPage extends Component {
             <div>
                 <h2 className='text-center my-5'>Pelit</h2>
                 <Togglable label='Lisää uusi peli' cancelLabel='x'>
-                    <GameForm onSubmit={this.addGame} />
+                    <div className='box'>
+                        <GameForm onSubmit={this.addGame} />
+                    </div>
                 </Togglable>
-                <div className='row'>
+                <div className='row justify-content-center'>
                     {this.props.games.map(x =>
                         <CardBox
                             key={x._id}

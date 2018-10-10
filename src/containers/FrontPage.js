@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 
 class FrontPage extends Component {
+    componentDidMount() {
+        document.title = 'tournamint - Etusivu'
+    }
+    
     render() {
         return (
             <React.Fragment>

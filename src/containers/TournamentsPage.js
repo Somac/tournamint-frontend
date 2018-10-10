@@ -9,7 +9,7 @@ class TournamentsPage extends React.Component {
             <div>
                 <h2 className='text-center my-5'>Turnaukset</h2>
                 <LinkButton link='/new/tournament' text='Lisää uusi' />
-                <div className='row'>
+                <div className='row d-flex justify-content-center'>
                     {this.props.tournaments.map(tournament =>
                         <CardBox
                             key={tournament.id}

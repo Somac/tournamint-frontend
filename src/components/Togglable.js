@@ -29,10 +29,8 @@ class Togglable extends Component {
                 <div style={showWhenVisible}>
                     <div className='row'>
                         <div className='col-12'>
-                            <div className='box'>
-                                <button className='btn btn-link d-flex ml-auto' onClick={this.toggleVisibility}>{this.props.cancelLabel}</button>
-                                {this.props.children}
-                            </div>
+                            <button className='btn btn-danger d-flex ml-auto' onClick={this.toggleVisibility}>{this.props.cancelLabel}</button>
+                            {this.props.children}
                         </div>
                     </div>
                 </div>
