@@ -11,7 +11,7 @@ class Footer extends Component {
                             <p className='py-3 m-0'>tournamint app</p>
                         </div>
                         <div className='col d-flex align-items-center justify-content-end'>
-                            <a href='https://github.com/Somac/tournamint-frontend' target='_blank' rel='noopener noreferrer'><img src={githubLogo} alt='github' class='github-logo' /></a>
+                            <a href='https://github.com/Somac/tournamint-frontend' target='_blank' rel='noopener noreferrer'><img src={githubLogo} alt='github' className='github-logo' /></a>
                         </div>
                     </div>
                 </div>
