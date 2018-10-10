@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { apiUrl } from '../config'
 
-const url = '/api/teams'
+const url = `${apiUrl}/api/teams`
 
 const getAllTeams = async () => {
     const response = await axios.get(url)

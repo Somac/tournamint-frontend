@@ -1,8 +1,10 @@
 import axios from 'axios'
+import { apiUrl } from '../config'
 
-const url = '/api/matches'
+const url = `${apiUrl}/api/matches`
+
 const tournamentMatchUrl = (id) => {
-    return `/api/tournaments/${id}/matches`
+    return `${apiUrl}/api/tournaments/${id}/matches`
 }
 
 const getAllMatches = async () => {

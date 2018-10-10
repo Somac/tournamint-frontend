@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { apiUrl } from '../config'
 
-const url = '/api/users'
+const url = `${apiUrl}/api/users`
 
 const addUser = async (data) => {
     const response = await axios.post(url, data)

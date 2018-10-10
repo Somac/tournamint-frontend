@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { apiUrl } from '../config'
 
-const url = '/api/leagues'
+const url = `${apiUrl}/api/leagues`
 
 const getAllLeagues = async () => {
     const response = await axios.get(url)

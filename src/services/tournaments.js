@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { loadUserState } from '../localStorage'
+import { apiUrl } from '../config'
 
-const url = '/api/tournaments'
+const url = `${apiUrl}/api/tournaments`
 let config = {}
 
 if (loadUserState()) {
