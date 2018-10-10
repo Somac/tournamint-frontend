@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { apiUrl } from '../config'
 
 const SmallCardBox = ({ link, shortHand, logo, gamerName }) => {
     return (
@@ -7,7 +8,7 @@ const SmallCardBox = ({ link, shortHand, logo, gamerName }) => {
             <Link to={link}>
                 <div className='card box box-hover'>
                     {logo ?
-                        <img className="card-img-top mx-auto" src={`/${logo}`} alt={shortHand}></img>
+                        <img className="card-img-top mx-auto" src={`${apiUrl}/${logo}`} alt={shortHand}></img>
                         : ''
                     }
                     <div className='card-body'>

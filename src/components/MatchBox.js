@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { apiUrl } from '../config'
 
 const TeamScore = ({ team, goals, away }) => {
     const homeAway = away ? 'Away' : 'Home'
@@ -11,7 +12,7 @@ const TeamScore = ({ team, goals, away }) => {
                 </div>}
             <div className='col-3 col-md-4'>
                 <p className='text-center'><b>{homeAway}</b></p>
-                <img className="mx-auto d-flex match-box-img" src={`/${team.logo}`} alt={team.name}></img>
+                <img className="mx-auto d-flex match-box-img" src={`${apiUrl}/${team.logo}`} alt={team.name}></img>
                 <p className='text-center'>{team.name}</p>
             </div >
             {away ?

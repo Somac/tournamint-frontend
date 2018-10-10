@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { apiUrl } from '../config'
 
 const CardBox = ({ link, name, text, logo, table, size }) => {
     if(size === undefined) {
@@ -9,7 +10,7 @@ const CardBox = ({ link, name, text, logo, table, size }) => {
         <div className={`col-12 col-md-${size} my-3`}>
             <div className='card box'>
                 {logo ?
-                    <img className="card-img-top mx-auto" src={`/${logo}`} alt={name}></img>
+                    <img className="card-img-top mx-auto" src={`${apiUrl}/${logo}`} alt={name}></img>
                     : <div></div>
                 }
                 <div className='card-body'>

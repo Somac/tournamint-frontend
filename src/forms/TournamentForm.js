@@ -5,11 +5,12 @@ import FormGroupTextArea from './formComponents/FormGroupTextArea';
 import FormGroupSelect from './formComponents/FormGroupSelect';
 import FormGroupCheckbox from './formComponents/FormGroupCheckbox'
 import { connect } from 'react-redux'
+import { apiUrl } from '../config'
 
 const SelectedTeam = ({ team }) => {
     return (
         <div className='col-6 col-md-3'>
-            <img className='mx-auto d-flex card-img-top' src={`/${team.logo}`} alt={team.shortHand} />
+            <img className='mx-auto d-flex card-img-top' src={`${apiUrl}/${team.logo}`} alt={team.shortHand} />
             <p className='text-center'>{team.shortHand} / {team.gamerName}</p>
         </div>
     )

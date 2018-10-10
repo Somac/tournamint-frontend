@@ -6,6 +6,7 @@ import Togglable from '../components/Togglable'
 import Loading from '../components/Loading'
 import ReactTable from 'react-table'
 import CardBox from '../components/CardBox'
+import { apiUrl } from '../config'
 
 class TeamPage extends Component {
     state = {
@@ -72,7 +73,7 @@ class TeamPage extends Component {
         ]
         return (
             <React.Fragment>
-                <img className="mx-auto mt-5 d-flex" src={`/${team.logo}`} alt={team.shortHand}></img>
+                <img className="mx-auto mt-5 d-flex" src={`${apiUrl}/${team.logo}`} alt={team.shortHand}></img>
                 <h2 className='text-center mb-5 mt-3'>{team.name}</h2>
                 <Togglable label='Näytä pistepörssi' cancelLabel='Piilota'>
                     <ReactTable
