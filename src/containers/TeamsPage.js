@@ -15,7 +15,7 @@ class TeamsPage extends React.Component {
             <React.Fragment>
                 <h2 className='text-center my-5'>Joukkueet</h2>
                 <LinkButton link='/new/team' text='Lisää uusi' />
-                <div className='row'>
+                <div className='row justify-content-center'>
                     {Array.isArray(this.props.teams) ?
                         this.props.teams.map(team => {
                             return(
