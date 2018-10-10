@@ -11,7 +11,7 @@ const TeamScore = ({ team, goals, away }) => {
                 </div>}
             <div className='col-3 col-md-4'>
                 <p className='text-center'><b>{homeAway}</b></p>
-                <img className="mx-auto d-flex match-box-img" src={`http://localhost:3001/${team.logo}`} alt={team.name}></img>
+                <img className="mx-auto d-flex match-box-img" src={`/${team.logo}`} alt={team.name}></img>
                 <p className='text-center'>{team.name}</p>
             </div >
             {away ?

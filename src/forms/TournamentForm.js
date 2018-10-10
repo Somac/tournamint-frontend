@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 const SelectedTeam = ({ team }) => {
     return (
         <div className='col-6 col-md-3'>
-            <img className='mx-auto d-flex card-img-top' src={`http://localhost:3001/${team.logo}`} alt={team.shortHand} />
+            <img className='mx-auto d-flex card-img-top' src={`/${team.logo}`} alt={team.shortHand} />
             <p className='text-center'>{team.shortHand} / {team.gamerName}</p>
         </div>
     )

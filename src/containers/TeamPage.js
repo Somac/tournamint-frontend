@@ -72,7 +72,7 @@ class TeamPage extends Component {
         ]
         return (
             <React.Fragment>
-                <img className="mx-auto mt-5 d-flex" src={`http://localhost:3001/${team.logo}`} alt={team.shortHand}></img>
+                <img className="mx-auto mt-5 d-flex" src={`/${team.logo}`} alt={team.shortHand}></img>
                 <h2 className='text-center mb-5 mt-3'>{team.name}</h2>
                 <Togglable label='Näytä pistepörssi' cancelLabel='Piilota'>
                     <ReactTable
@@ -84,23 +84,17 @@ class TeamPage extends Component {
                 </Togglable>
                 <Togglable label='Näytä turnaukset' cancelLabel='Piilota'>
                     <h3 className='text-center my-5'>Turnaukset</h3>
-                    <div className='row'>
-                        <div className='col-12'>
-                            <div className='box'>
-                                <div className='row'>
-                                    {tournaments.map(tournament => {
-                                        return (
-                                            <CardBox
-                                                key={tournament.id}
-                                                text={tournament.description}
-                                                name={tournament.name}
-                                                link={`/tournaments/${tournament.slug}`}
-                                                size='2'
-                                            />)
-                                    })}
-                                </div>
-                            </div>
-                        </div>
+                    <div className='row justify-content-center'>
+                        {tournaments.map(tournament => {
+                            return (
+                                <CardBox
+                                    key={tournament.id}
+                                    text={tournament.description}
+                                    name={tournament.name}
+                                    link={`/tournaments/${tournament.slug}`}
+                                    size='2'
+                                />)
+                        })}
                     </div>
                 </Togglable>
                 <Togglable label='Näytä pelaajat' cancelLabel='Piilota'>
