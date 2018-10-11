@@ -18,4 +18,9 @@ const getExternalInfo = async (id, url) => {
     return response.data
 }
 
-export default { getPlayers, getOnePlayer, getExternalInfo }
+const addPlayer = async (data) => {
+    const response = await axios.post(url, data)
+    return response.data
+}
+
+export default { getPlayers, getOnePlayer, getExternalInfo, addPlayer }

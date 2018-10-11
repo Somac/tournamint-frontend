@@ -29,7 +29,13 @@ const reducer = combineReducers({
     tournamentStandings: tournamentStandingsReducer
 })
 
+const middlewares = [thunk];
+
+if (process.env.NODE_ENV === `development`) {
+    //middlewares.push(logger);
+}
+
 export const store = createStore(
     reducer,
-    applyMiddleware(thunk, logger)
+    applyMiddleware(...middlewares)
 )

@@ -7,7 +7,6 @@
     Rose: #FF4F79
 */
 
-
 .box {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     padding: 10px;
@@ -73,7 +72,42 @@ a:hover {
 }
 
 .completed {
-    border-left: 5px solid #92f764;
+    background: #fafafa;
+    /*border-left: 5px solid #92f764;*/
+}
+
+.away-win {
+    border-left: 3px solid #f77a64;
+    border-right: 3px solid #92f764;
+    background-image: linear-gradient(to right, 
+        rgba(207, 20, 69, 0.1), 
+        rgba(207, 20, 69, 0.05), 
+        rgba(207, 20, 69, 0.01), 
+        #fff,
+        #fff,
+        #fff,
+        #fff,
+        rgba(115, 235, 18, 0.01), 
+        rgba(115, 235, 18, 0.05), 
+        rgba(115, 235, 18, 0.1)
+    );
+}
+
+.home-win {
+    border-right: 3px solid #f77a64;
+    border-left: 3px solid #92f764;
+    background-image: linear-gradient(to left, 
+        rgba(207, 20, 69, 0.1), 
+        rgba(207, 20, 69, 0.05), 
+        rgba(207, 20, 69, 0.01), 
+        #fff,
+        #fff,
+        #fff,
+        #fff,
+        rgba(115, 235, 18, 0.01), 
+        rgba(115, 235, 18, 0.05), 
+        rgba(115, 235, 18, 0.1)
+    );    
 }
 
 .not-completed {
@@ -152,21 +186,26 @@ a:hover {
     text-align: center
 }
 
-.ReactTable .rt-thead .rt-th, .ReactTable .rt-thead .rt-td {
+.ReactTable .rt-thead .rt-th,
+.ReactTable .rt-thead .rt-td {
     padding: 10px 5px
 }
 
 .match-box-img {
     max-width: 100%;
+    height: 100px;
+    object-fit: contain
 }
 
 .team-img {
     width: 150px;
     height: 100px;
-    object-fit: contain 
+    object-fit: contain
 }
 
-.bar1, .bar2, .bar3 {
+.bar1,
+.bar2,
+.bar3 {
     width: 35px;
     height: 2px;
     background-color: #333;
@@ -179,7 +218,9 @@ a:hover {
     transform: rotate(-45deg) translate(-8px, 6px);
 }
 
-.change .bar2 {opacity: 0;}
+.change .bar2 {
+    opacity: 0;
+}
 
 .change .bar3 {
     -webkit-transform: rotate(45deg) translate(-9px, -8px);

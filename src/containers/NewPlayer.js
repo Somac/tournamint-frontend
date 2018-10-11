@@ -9,25 +9,21 @@ class NewPlayer extends Component {
         redirect: false,
         playerId: null
     }
-    componentDidMount = async () => {
-        await this.props.getGames()
-    }
 
     addPlayer = async (values) => {
         await this.props.addPlayer(values)
-        await this.setState({ redirect: true })
     }
 
     render() {
         if (this.state.redirect) {
             return (
-                <Redirect to={`/players/${this.state.playerId}`} />
+                <Redirect to={`/`} />
             )
         }
         return (
             <React.Fragment>
                 <h2 className='text-center my-5'>Lisää uusi Pelaaja</h2>
-                <div className='row d-flex justify-content-center'>
+                <div className='row d-flex justify-content-center mb-5'>
                     <div className='col-6 box'>
                         <PlayerForm onSubmit={this.addPlayer} />
                     </div>
@@ -37,7 +33,13 @@ class NewPlayer extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        player: state.player
+    }
+}
+
 export default connect(
-    null,
+    mapStateToProps,
     { addPlayer }
 )(NewPlayer)
