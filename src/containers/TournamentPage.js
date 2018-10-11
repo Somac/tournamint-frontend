@@ -8,6 +8,8 @@ import TeamList from '../components/TeamList'
 import MatchList from '../components/MatchList'
 import Loading from '../components/Loading'
 import ReactTable from 'react-table'
+import withFixedColumns from 'react-table-hoc-fixed-columns';
+const ReactTableFixedColumns = withFixedColumns(ReactTable);
 
 class TournamentPage extends Component {
     state = {
@@ -27,7 +29,7 @@ class TournamentPage extends Component {
         const { tournaments, tournamentMatches, tournamentMatchesNoFilter, tournamentStandings } = this.props
         const tournament = tournaments.find(tournament => tournament.slug === this.props.tournamentSlug)
         const standingsColumns = [
-            { Header: 'Team', accessor: 'team' },
+            { Header: 'Team', accessor: 'team', fixed: 'left', width: 200 },
             { Header: 'GP', accessor: 'gp' },
             { Header: 'W', accessor: 'w' },
             { Header: 'L', accessor: 'l' },
@@ -35,6 +37,7 @@ class TournamentPage extends Component {
             { Header: 'PTS', accessor: 'pts' },
             { Header: 'GF', accessor: 'gf' },
             { Header: 'GA', accessor: 'ga' },
+            { Header: 'DIFF', accessor: 'diff'},
             { Header: 'HOME', accessor: 'home' },
             { Header: 'AWAY', accessor: 'away' }
         ]
@@ -68,7 +71,7 @@ class TournamentPage extends Component {
                         ]}
                     />
                     <h2 className='text-center mt-5'>Sarjataulukko</h2>
-                    <ReactTable
+                    <ReactTableFixedColumns
                         className='my-5'
                         data={tournamentStandings}
                         columns={standingsColumns}

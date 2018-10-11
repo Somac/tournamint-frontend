@@ -73,7 +73,7 @@ class TeamPage extends Component {
         ]
         return (
             <React.Fragment>
-                <img className="mx-auto mt-5 d-flex" src={`${apiUrl}/${team.logo}`} alt={team.shortHand}></img>
+                <img className="mx-auto mt-5 d-flex team-img" src={`${apiUrl}/${team.logo}`} alt={team.shortHand}></img>
                 <h2 className='text-center mb-5 mt-3'>{team.name}</h2>
                 <Togglable label='Näytä pistepörssi' cancelLabel='Piilota'>
                     <ReactTable
@@ -89,7 +89,7 @@ class TeamPage extends Component {
                         {tournaments.map(tournament => {
                             return (
                                 <CardBox
-                                    key={tournament.id}
+                                    key={tournament._id}
                                     text={tournament.description}
                                     name={tournament.name}
                                     link={`/tournaments/${tournament.slug}`}

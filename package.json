@@ -15,6 +15,7 @@
     "react-scripts": "1.1.4",
     "react-select": "^2.0.0",
     "react-table": "^6.8.6",
+    "react-table-hoc-fixed-columns": "^1.0.2",
     "react-world-flags": "^1.2.4",
     "redux": "^4.0.0",
     "redux-form": "^7.4.2",
