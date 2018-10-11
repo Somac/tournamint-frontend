@@ -10,15 +10,23 @@ const MatchList = ({ matches, rounds, teams }) => {
             .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
         )
     return (
-        <div className='pb-3'>
+        <div className='mb-3'>
             <h2 className='text-center my-5 pb-3'>Ottelut</h2>
             <MatchFilters teams={teams} />
             {roundMatches.map((round, i) => {
+                if (round.length === 0) {
+                    return (
+                        <React.Fragment key={i}>
+                            <h3 className='text-center py-3'>Kierros {i + 1}</h3>
+                            <p className='text-center'>Ei löytynyt otteluita valituilla filttereillä</p>
+                        </React.Fragment>
+                    )
+                }
                 return (
                     <React.Fragment key={i}>
-                        <h3 className='text-center py-5'>Kierros {i + 1}</h3>
+                        <h3 className='text-center py-3'>Kierros {i + 1}</h3>
                         <Togglable label={`Näytä kierroksen ${i + 1} pelit`} cancelLabel='Piilota' visible>
-                            {round.map(match => <MatchBox key={match._id} match={match} />)}
+                                {round.map(match => <MatchBox key={match._id} match={match} />)}
                         </Togglable>
                     </React.Fragment>
                 )

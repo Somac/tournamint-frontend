@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "REACT_APP_API_URL=http://localhost:3001 react-scripts start",
-    "build": "REACT_APP_API_URL=http://94.237.53.200 react-scripts build",
+    "build": "REACT_APP_API_URL=https://tournamint-api.cf react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

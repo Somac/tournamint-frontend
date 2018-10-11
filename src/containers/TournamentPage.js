@@ -29,17 +29,17 @@ class TournamentPage extends Component {
         const { tournaments, tournamentMatches, tournamentMatchesNoFilter, tournamentStandings } = this.props
         const tournament = tournaments.find(tournament => tournament.slug === this.props.tournamentSlug)
         const standingsColumns = [
-            { Header: 'Team', accessor: 'team', fixed: 'left', width: 200 },
-            { Header: 'GP', accessor: 'gp' },
-            { Header: 'W', accessor: 'w' },
-            { Header: 'L', accessor: 'l' },
-            { Header: 'OT', accessor: 'ot' },
-            { Header: 'PTS', accessor: 'pts' },
-            { Header: 'GF', accessor: 'gf' },
-            { Header: 'GA', accessor: 'ga' },
-            { Header: 'DIFF', accessor: 'diff'},
-            { Header: 'HOME', accessor: 'home' },
-            { Header: 'AWAY', accessor: 'away' }
+            { Header: 'Team', accessor: 'team', fixed: 'left', minWidth: 170},
+            { Header: 'GP', accessor: 'gp', minWidth: 60 },
+            { Header: 'W', accessor: 'w', minWidth: 60 },
+            { Header: 'L', accessor: 'l', minWidth: 60 },
+            { Header: 'OT', accessor: 'ot', minWidth: 60 },
+            { Header: 'PTS', accessor: 'pts', minWidth: 60},
+            { Header: 'GF', accessor: 'gf', minWidth: 60 },
+            { Header: 'GA', accessor: 'ga', minWidth: 60 },
+            { Header: 'DIFF', accessor: 'diff', minWidth: 80 },
+            { Header: 'HOME', accessor: 'home', minWidth: 100 },
+            { Header: 'AWAY', accessor: 'away', minWidth: 100 }
         ]
         const defaultSort = [
             {
@@ -55,6 +55,7 @@ class TournamentPage extends Component {
             const createdDate = `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()} klo ${d.getHours()}:${(d.getMinutes() < 10 ? '0' : '')}${d.getMinutes()}:${(d.getSeconds() < 10 ? '0' : '')}${d.getSeconds()}`
             const gamesPlayed =
                 tournamentMatchesNoFilter.filter(({ completed }) => completed === true).length
+            const tournamentStandingsWithDiff = tournamentStandings.map(ts => ({ ...ts, diff: ts.gf - ts.ga }))
             return (
                 <React.Fragment>
                     <h2 className='text-center mt-5'>{tournament.name}</h2>
@@ -73,7 +74,7 @@ class TournamentPage extends Component {
                     <h2 className='text-center mt-5'>Sarjataulukko</h2>
                     <ReactTableFixedColumns
                         className='my-5'
-                        data={tournamentStandings}
+                        data={tournamentStandingsWithDiff}
                         columns={standingsColumns}
                         defaultPageSize={tournament.teams.length}
                         defaultSorted={defaultSort}
@@ -100,31 +101,21 @@ class TournamentPage extends Component {
 
 const matchesToShow = (matches, filterState) => {
     const { filter, team } = filterState
+    let filteredMatches = matches
     if (filter === 'ALL') {
-        if (team === 'ALL') {
-            return matches
-        }
-        const homeMatches = matches.filter(match => match.homeTeam._id === team)
-        const awayMatches = matches.filter(match => match.awayTeam._id === team)
-        return [...homeMatches, ...awayMatches]
+        filteredMatches = matches
     } else if (filter === 'COMPLETED') {
-        const completedMatches = matches.filter(match => match.completed === true)
-        if (team === 'ALL') {
-            return completedMatches
-        }
-        const homeMatches = completedMatches.filter(match => match.homeTeam._id === team)
-        const awayMatches = completedMatches.filter(match => match.awayTeam._id === team)
-        return [...homeMatches, ...awayMatches]
+        filteredMatches = matches.filter(match => match.completed === true)
     } else if (filter === 'NOT_COMPLETED') {
-        const incompleteMatches = matches.filter(match => match.completed !== true)
-        if (team === 'ALL') {
-            return incompleteMatches
-        }
-        const homeMatches = incompleteMatches.filter(match => match.homeTeam._id === team)
-        const awayMatches = incompleteMatches.filter(match => match.awayTeam._id === team)
+        filteredMatches = matches.filter(match => match.completed !== true)
+    }
+    if(team === 'ALL') {
+        return filteredMatches
+    } else {
+        const homeMatches = filteredMatches.filter(match => match.homeTeam._id === team)
+        const awayMatches = filteredMatches.filter(match => match.awayTeam._id === team)
         return [...homeMatches, ...awayMatches]
     }
-    return matches
 }
 
 const mapStateToProps = (state) => {

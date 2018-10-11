@@ -31,6 +31,11 @@ class MainMenu extends Component {
         console.log(this.state.visible)
     }
 
+    closeNavBar = () => {
+        console.log('CLOSE')
+        this.setState({ visible: false })
+    }
+
     render() {
         const showWhenVisible = { display: this.state.visible ? 'block' : 'none' }
         const changed = this.state.visible ? 'change' : ''
@@ -45,10 +50,10 @@ class MainMenu extends Component {
                     </button>
                     <div className='collapse navbar-collapse' style={showWhenVisible}>
                         <ul className='navbar-nav mr-auto'>
-                            <NavLink link='/tournaments' name='Tournaments' />
-                            <NavLink link='/teams' name='Teams' />
-                            <NavLink link='/leagues' name='Leagues' />
-                            <NavLink link='/games' name='Games' />
+                            <NavLink link='/tournaments' name='Tournaments' onClick={this.closeNavBar} />
+                            <NavLink link='/teams' name='Teams' onClick={this.closeNavBar} />
+                            <NavLink link='/leagues' name='Leagues' onClick={this.closeNavBar} />
+                            <NavLink link='/games' name='Games' onClick={this.closeNavBar} />
                         </ul>
                         <ul className='navbar-nav ml-auto'>
                             <RightNav user={this.props.user} />

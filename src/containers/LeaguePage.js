@@ -4,7 +4,7 @@ class LeaguePage extends Component {
     render() {
         return (
             <React.Fragment>
-                
+                TODO
             </React.Fragment>
         )
     }

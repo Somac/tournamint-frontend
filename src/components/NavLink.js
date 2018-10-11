@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const NavLink = ({ link, name }) => {
+const NavLink = ({ link, name, onClick }) => {
     return (
         <li className='nav-item'>
-            <Link className='nav-link' to={link}>{name}</Link>
+            <Link onClick={onClick} className='nav-link' to={link}>{name}</Link>
         </li>
     )
 }

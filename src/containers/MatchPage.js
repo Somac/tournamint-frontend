@@ -69,20 +69,22 @@ class MatchPage extends Component {
                         </div>
                         {match.completed ? '' :
                             <React.Fragment>
-                                <div className='col-6'>
+                                <div className='col-12 col-md-6'>
                                     <div className='box'>
                                         <h3>Lisää maali kotijoukkueelle</h3>
                                         <HomeGoalForm onSubmit={this.addGoal} players={match.homeTeam.players} initialValues={{ homeTeam: true }} />
                                     </div>
                                 </div>
-                                <div className='col-6'>
+                                <div className='col-12 col-md-6'>
                                     <div className='box'>
                                         <h3>Lisää maali vierasjoukkueelle</h3>
                                         <AwayGoalForm onSubmit={this.addGoal} players={match.awayTeam.players} initialValues={{ awayTeam: true }} />
                                     </div>
                                 </div>
                                 <div className='col-12 d-flex justify-content-center my-5'>
-                                    <SubmitMatchForm onSubmit={this.submitMatch} match={match} possibleTie={this.state.possibleTie} scoreEven={this.state.scoreEven} />
+                                    <div className='box'>
+                                        <SubmitMatchForm onSubmit={this.submitMatch} match={match} possibleTie={this.state.possibleTie} scoreEven={this.state.scoreEven} />
+                                    </div>
                                 </div>
                             </React.Fragment>
                         }

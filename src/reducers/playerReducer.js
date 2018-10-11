@@ -6,6 +6,8 @@ const playerReducer = (store = [], action) => {
         return action.data
     case 'GET_ONE_PLAYER':
         return action.data
+    case 'ADD_PLAYER':
+        return action.data
     default:
         return store
     }
@@ -26,6 +28,16 @@ export const getOnePlayer = (id) => {
         const player = await playerService.getOnePlayer(id)
         dispatch({
             type: 'GET_ONE_PLAYER',
+            data: player
+        })
+    }
+}
+
+export const addPlayer = (data) => {
+    return async (dispatch) => {
+        const player = await playerService.addPlayer(data)
+        dispatch({
+            type: 'ADD_PLAYER',
             data: player
         })
     }

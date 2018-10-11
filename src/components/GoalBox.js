@@ -2,7 +2,10 @@ import React from 'react'
 
 const GoalBox = ({ goal }) => {
     const onError = 'https://nhl.bamcontent.com/images/headshots/current/168x168/skater.jpg'
-    let img = `https://nhl.bamcontent.com/images/headshots/current/168x168/${goal.scorer.apiId}.jpg`
+    let img = 'https://nhl.bamcontent.com/images/headshots/current/168x168/skater.jpg'
+    if(goal.scorer) {
+        img = `https://nhl.bamcontent.com/images/headshots/current/168x168/${goal.scorer.apiId}.jpg`
+    }
     let boxClass = ''
     let assists = goal.firstAssist ? goal.firstAssist.name : false
     if(goal.secondAssist) assists += `, ${goal.secondAssist.name}`
