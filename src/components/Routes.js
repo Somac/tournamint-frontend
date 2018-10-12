@@ -20,6 +20,7 @@ import { Route, Switch } from 'react-router-dom'
 import PlayerPage from '../containers/PlayerPage'
 import MatchPage from '../containers/MatchPage'
 import NewPlayer from '../containers/NewPlayer'
+import PlayersPage from '../containers/PlayersPage'
 
 class Routes extends Component {
     render() {
@@ -44,6 +45,7 @@ class Routes extends Component {
                 <Route exact path='/players/:id' render={({ match }) => <PlayerPage playerId={match.params.id} />} />
                 <Route exact path='/matches/:slug' render={({ match }) => <MatchPage matchSlug={match.params.slug} />} />
                 <Route exact path='/new/player' render={() => <NewPlayer />} />
+                <Route exact path='/players' render={() => <PlayersPage />} />
                 <Route render={() => <NotFound />} />
             </Switch>
         );

@@ -8,6 +8,7 @@ import TeamList from '../components/TeamList'
 import MatchList from '../components/MatchList'
 import Loading from '../components/Loading'
 import ReactTable from 'react-table'
+import Togglable from '../components/Togglable'
 import withFixedColumns from 'react-table-hoc-fixed-columns';
 const ReactTableFixedColumns = withFixedColumns(ReactTable);
 
@@ -29,12 +30,12 @@ class TournamentPage extends Component {
         const { tournaments, tournamentMatches, tournamentMatchesNoFilter, tournamentStandings } = this.props
         const tournament = tournaments.find(tournament => tournament.slug === this.props.tournamentSlug)
         const standingsColumns = [
-            { Header: 'Team', accessor: 'team', fixed: 'left', minWidth: 170},
+            { Header: 'Team', accessor: 'team', fixed: 'left', minWidth: 170 },
             { Header: 'GP', accessor: 'gp', minWidth: 60 },
             { Header: 'W', accessor: 'w', minWidth: 60 },
             { Header: 'L', accessor: 'l', minWidth: 60 },
             { Header: 'OT', accessor: 'ot', minWidth: 60 },
-            { Header: 'PTS', accessor: 'pts', minWidth: 60},
+            { Header: 'PTS', accessor: 'pts', minWidth: 60 },
             { Header: 'GF', accessor: 'gf', minWidth: 60 },
             { Header: 'GA', accessor: 'ga', minWidth: 60 },
             { Header: 'DIFF', accessor: 'diff', minWidth: 80 },
@@ -60,17 +61,21 @@ class TournamentPage extends Component {
                 <React.Fragment>
                     <h2 className='text-center mt-5'>{tournament.name}</h2>
                     <p className='text-center mb-5'><small>Luotu: {createdDate}</small></p>
-                    <p className='text-center'>{tournament.description}</p>
-                    <InfoContainer
-                        header={'Turnaus info'}
-                        rows={[
-                            { head: 'Luotu', value: createdDate },
-                            { head: 'Joukkueita', value: `${tournament.teams.length} joukkuetta` },
-                            { head: 'Otteluita pelattu', value: `${gamesPlayed} / ${tournamentMatchesNoFilter.length}` },
-                            { head: 'Kierroksia', value: tournament.rounds },
-                            { head: 'Playoff-viiva', value: tournament.toAdvance }
-                        ]}
-                    />
+                    <Togglable label='Näytä turnauksen tiedot' cancelLabel='Piilota tiedot'>
+                        <InfoContainer
+                            header={'Turnaus info'}
+                            rows={[
+                                { head: 'Luotu', value: createdDate },
+                                { head: 'Joukkueita', value: `${tournament.teams.length} joukkuetta` },
+                                { head: 'Otteluita pelattu', value: `${gamesPlayed} / ${tournamentMatchesNoFilter.length}` },
+                                { head: 'Kierroksia', value: tournament.rounds },
+                                { head: 'Playoff-viiva', value: tournament.toAdvance }
+                            ]}
+                        />
+                    </Togglable>
+                    <Togglable label='Näytä turnauksen joukkueet' cancelLabel='Piilota joukkueet'>
+                        <TeamList teams={tournament.teams} />
+                    </Togglable>
                     <h2 className='text-center mt-5'>Sarjataulukko</h2>
                     <ReactTableFixedColumns
                         className='my-5'
@@ -80,7 +85,6 @@ class TournamentPage extends Component {
                         defaultSorted={defaultSort}
                         showPagination={false}
                     />
-                    <TeamList teams={tournament.teams} />
                     <MatchList matches={tournamentMatches} rounds={tournament.rounds} teams={tournament.teams} />
                 </React.Fragment>
             )
@@ -109,7 +113,7 @@ const matchesToShow = (matches, filterState) => {
     } else if (filter === 'NOT_COMPLETED') {
         filteredMatches = matches.filter(match => match.completed !== true)
     }
-    if(team === 'ALL') {
+    if (team === 'ALL') {
         return filteredMatches
     } else {
         const homeMatches = filteredMatches.filter(match => match.homeTeam._id === team)

@@ -3,19 +3,19 @@ import NavLink from './NavLink'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-const RightNav = ({ user }) => {
+const RightNav = ({ user, clickHandler }) => {
     if (user === null) {
         return (
             <React.Fragment>
-                <NavLink link='/register' name='Register' />
-                <NavLink link='/login' name='Login' />
+                <NavLink link='/register' name='Register' onClick={clickHandler} />
+                <NavLink link='/login' name='Login' onClick={clickHandler} />
             </React.Fragment>
         )
     }
     return (
         <React.Fragment>
-            <NavLink link='/me' name='My profile' />
-            <NavLink link='/logout' name='Logout' />
+            <NavLink link='/me' name='My profile' onClick={clickHandler} />
+            <NavLink link='/logout' name='Logout' onClick={clickHandler} />
         </React.Fragment>
     )
 }
@@ -52,11 +52,15 @@ class MainMenu extends Component {
                         <ul className='navbar-nav mr-auto'>
                             <NavLink link='/tournaments' name='Tournaments' onClick={this.closeNavBar} />
                             <NavLink link='/teams' name='Teams' onClick={this.closeNavBar} />
-                            <NavLink link='/leagues' name='Leagues' onClick={this.closeNavBar} />
-                            <NavLink link='/games' name='Games' onClick={this.closeNavBar} />
+                            {this.props.user === null ? '' :
+                                <React.Fragment>
+                                    <NavLink link='/leagues' name='Leagues' onClick={this.closeNavBar} />
+                                    <NavLink link='/games' name='Games' onClick={this.closeNavBar} />
+                                </React.Fragment>
+                            }
                         </ul>
                         <ul className='navbar-nav ml-auto'>
-                            <RightNav user={this.props.user} />
+                            <RightNav user={this.props.user} clickHandler={this.closeNavBar} />
                         </ul>
                     </div>
                 </div>

@@ -4,7 +4,7 @@ class FrontPage extends Component {
     componentDidMount() {
         document.title = 'tournamint - Etusivu'
     }
-    
+
     render() {
         return (
             <React.Fragment>
@@ -15,14 +15,11 @@ class FrontPage extends Component {
                             <p>Tournamint 0.1 versio</p>
                             <p>Tää on snadisti keskeneräinen, eli paljon asioita puuttuu mm:</p>
                             <ul>
-                                <li><strike>Pelaajien lisääminen manuaalisesti</strike></li>
                                 <li>Pelaajien muokkaaminen</li>
                                 <li>Pelaajan poistaminen</li>
                                 <li>Turnauksen poistaminen</li>
                                 <li>Turnauksen muokkaaminen</li>
-                                <li><strike>Ottelun avaaminen (Nyt kun sen sulkee, niin ei pysty enää muokkaamaan)</strike></li>
                                 <li>Maalin muokkaaminen</li>
-                                <li><strike>Maalin poistaminen</strike></li>
                                 <li>Turnauksen pistepörssi</li>
                                 <li>Pelin poistaminen</li>
                                 <li>Pelin muokkaaminen</li>
@@ -30,12 +27,11 @@ class FrontPage extends Component {
                                 <li>Liigan muokkaaminen</li>
                                 <li>Authentikaatio kaikesta muusta paitsi turnauksen lisäämisestä</li>
                                 <li>Oma profiilisivu</li>
-                                <li><strike>Mobiiliresponsiivisuus suurimmalta osin (mm. navbar ja suurin osa komponenteista)</strike></li>
                                 <li>Fiksumpi layoutti muutenkin saittiin</li>
                                 <li>Formien validointi kaikissa formeissa paitsi rekisteröitymisessä</li>
                                 <li>Ja paljon muuta</li>
                             </ul>
-                            <p>Hitto täähän on aivan kesken :DDDDD no jos listataan asioita jotka tässä on, niin ehkä tulee parempi mieli</p>
+                            <p>Asiat jotka tässä kuitenkin on:</p>
                             <ul>
                                 <li>Rekisteröityminen</li>
                                 <li>Kirjautuminen</li>
@@ -61,9 +57,10 @@ class FrontPage extends Component {
                                 <li>Liigojen listaus</li>
                                 <li>Pelin lisääminen</li>
                                 <li>Pelien listaus</li>
-                                <li>....</li>
-                                <li>Oliko siinä kaikki?</li>
-                                <li>No voi muna :D:D:D</li>
+                                <li>Pelaajien lisääminen manuaalisesti</li>
+                                <li>Ottelun avaaminen</li>
+                                <li>Maalin poistaminen</li>
+                                <li>Mobiiliresponsiivisuus suurimmalta osin (mm. navbar ja suurin osa komponenteista)</li>
                             </ul>
                         </div>
                     </div>
