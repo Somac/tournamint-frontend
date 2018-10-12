@@ -51,4 +51,4 @@ class ApiSelect extends Component {
     }
 }
 
-export default ApiSelect;
+export default ApiSelect

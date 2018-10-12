@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const InfoContainer = ({header, rows}) => {
     return (
@@ -17,7 +17,7 @@ const InfoContainer = ({header, rows}) => {
                 </tbody>
             </table>
         </div>
-    );
-};
+    )
+}
 
-export default InfoContainer;
+export default InfoContainer

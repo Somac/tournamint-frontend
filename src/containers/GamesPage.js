@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { postGame } from './../reducers/gameReducer'
 import CardBox from '../components/CardBox'
 import Togglable from '../components/Togglable'
-import GameForm from '../forms/GameForm';
+import GameForm from '../forms/GameForm'
 
 class GamesPage extends Component {
     componentDidMount = async () => {

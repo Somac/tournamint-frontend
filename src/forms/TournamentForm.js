@@ -33,13 +33,7 @@ let TournamentForm = (props) => {
     const onLeagueChange = () => {
         leagueChange()
     }
-
-    // name: String, XX
-    // description: String, XX
-    // rounds: Number, XX
-    // toAdvance: Number, XX
-    // league: { type: mongoose.Schema.Types.ObjectId, ref: 'League' }, XX
-    // teams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Team' }], XX
+    
     return (
         <form onSubmit={handleSubmit}>
             <Field

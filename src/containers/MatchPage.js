@@ -9,7 +9,7 @@ import HomeGoalForm from '../forms/HomeGoalForm'
 import AwayGoalForm from '../forms/AwayGoalForm'
 import GoalList from '../components/GoalList'
 import SubmitMatchForm from '../forms/SubmitMatchForm'
-import OpenMatchForm from '../forms/OpenMatchForm';
+import OpenMatchForm from '../forms/OpenMatchForm'
 
 class MatchPage extends Component {
     state = {

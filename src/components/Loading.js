@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Loading = () => (
     <React.Fragment>
@@ -6,4 +6,4 @@ const Loading = () => (
         <p className='text-center'>Ladataan...</p>
     </React.Fragment>)
 
-export default Loading;
+export default Loading
