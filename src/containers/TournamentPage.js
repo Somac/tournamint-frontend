@@ -22,6 +22,8 @@ class TournamentPage extends Component {
         await this.props.getOneTournament(slug)
         await this.props.getTournamentMatches(slug)
         await this.props.getTournamentStandings(slug)
+        const tmnt = this.props.tournaments.find(tournament => tournament.slug === this.props.tournamentSlug)
+        document.title = `tournamint - ${tmnt.name}`
         this.setState({ componentDidMount: true })
         this.forceUpdate()
     }

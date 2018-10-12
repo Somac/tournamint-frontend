@@ -9,6 +9,7 @@ import { loadFromState } from './reducers/userReducer'
 
 class App extends Component {
     componentDidMount = async () => {
+        document.title = 'tournamint'
         await this.props.getTournaments()
         await this.props.loadFromState()
     }

@@ -4,6 +4,10 @@ import CardBox from '../components/CardBox'
 import LinkButton from '../components/LinkButton'
 
 class TournamentsPage extends React.Component {
+    componentDidMount() {
+        document.title = 'tournamint - Turnaukset'
+    }
+    
     render() {
         return (
             <div>

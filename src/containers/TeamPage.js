@@ -22,6 +22,7 @@ class TeamPage extends Component {
         await this.props.getOneTeam(slug)
 
         const { team } = this.props
+        document.title = `tournamint - ${team.name}`
         const { players, tournaments, matches } = team
 
         const gamesPlayed = matches.filter(({ completed }) => completed === true).length
@@ -108,7 +109,6 @@ class TeamPage extends Component {
                                 return 0
                             })
                             .map(player => <PlayerBox key={player._id} player={player} />)
-
                         }
                     </div>
                 </Togglable>

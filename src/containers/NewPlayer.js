@@ -11,13 +11,15 @@ class NewPlayer extends Component {
     }
 
     addPlayer = async (values) => {
+        document.title = 'tournamint - Lisää pelaaja'
         await this.props.addPlayer(values)
+        this.setState({playerId: this.props.players._id, redirect: true})
     }
 
     render() {
         if (this.state.redirect) {
             return (
-                <Redirect to={`/`} />
+                <Redirect to={`/players/${this.state.playerId}`} />
             )
         }
         return (
@@ -35,7 +37,7 @@ class NewPlayer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        player: state.player
+        players: state.players
     }
 }
 

@@ -10,6 +10,7 @@ class NewLeague extends Component {
         redirect: false
     }
     componentDidMount = async () => {
+        document.title = 'tournamint - Lisää liiga'
         await this.props.getGames()
     }
 

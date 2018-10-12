@@ -8,6 +8,7 @@ import GameForm from '../forms/GameForm'
 
 class GamesPage extends Component {
     componentDidMount = async () => {
+        document.title = 'tournamint - Pelit'
         await this.props.getGames()
     }
 

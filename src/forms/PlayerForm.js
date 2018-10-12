@@ -11,8 +11,8 @@ class PlayerForm extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         const { handleSubmit, teams } = this.props
+        //TODO kovakoodi pois
         const positionOptions = [
             { value: 'G', name: 'Goalie' },
             { value: 'RW', name: 'Right Wing' },

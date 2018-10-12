@@ -18,6 +18,7 @@ class NewTeam extends Component {
     }
 
     componentDidMount = async () => {
+        document.title = 'tournamint - Lisää joukkue'
         await this.props.getLeagues()
         this.setState({ rendering: false })
     }    

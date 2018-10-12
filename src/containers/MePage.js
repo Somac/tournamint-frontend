@@ -2,6 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 class MePage extends React.Component {
+    componentDidMount() {
+        document.title = 'tournamint - Profiili'
+    }
+    
     render() {
         return (
             <div>

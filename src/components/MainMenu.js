@@ -28,11 +28,9 @@ class MainMenu extends Component {
 
     openNavBar = () => {
         this.setState({ visible: !this.state.visible })
-        console.log(this.state.visible)
     }
 
     closeNavBar = () => {
-        console.log('CLOSE')
         this.setState({ visible: false })
     }
 
@@ -52,6 +50,7 @@ class MainMenu extends Component {
                         <ul className='navbar-nav mr-auto'>
                             <NavLink link='/tournaments' name='Tournaments' onClick={this.closeNavBar} />
                             <NavLink link='/teams' name='Teams' onClick={this.closeNavBar} />
+                            <NavLink link='/players' name='Players' onClick={this.closeNavBar} />
                             {this.props.user === null ? '' :
                                 <React.Fragment>
                                     <NavLink link='/leagues' name='Leagues' onClick={this.closeNavBar} />

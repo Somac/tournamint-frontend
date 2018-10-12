@@ -152,9 +152,11 @@ a:hover {
 }
 
 .bg-logo {
+    object-fit: contain;
     position: absolute;
     width: 100px;
     max-width: 80%;
+    max-height: 70px;
     left: 50%;
     transform: translateX(-50%);
     bottom: 0;

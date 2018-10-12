@@ -27,6 +27,7 @@ class MatchPage extends Component {
         const scoreEven = homeGoals === awayGoals ? true : false
         const possibleTie = homeGoals - awayGoals === 1 || homeGoals - awayGoals === -1 ? true : false
         this.setState({ componentDidMount: true, possibleTie, scoreEven })
+        document.title = `tournamint - ${this.props.match.homeTeam.name} vs ${this.props.match.awayTeam.name}`
     }
 
     componentDidUpdate = async (prevProps) => {
@@ -79,13 +80,13 @@ class MatchPage extends Component {
                             </div> :
                             <React.Fragment>
                                 <div className='col-12 col-md-6'>
-                                    <div className='box'>
+                                    <div className='box my-3'>
                                         <h3>Lisää maali kotijoukkueelle</h3>
                                         <HomeGoalForm onSubmit={this.addGoal} players={match.homeTeam.players} initialValues={{ homeTeam: true }} />
                                     </div>
                                 </div>
                                 <div className='col-12 col-md-6'>
-                                    <div className='box'>
+                                    <div className='box my-3'>
                                         <h3>Lisää maali vierasjoukkueelle</h3>
                                         <AwayGoalForm onSubmit={this.addGoal} players={match.awayTeam.players} initialValues={{ awayTeam: true }} />
                                     </div>

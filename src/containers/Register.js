@@ -16,6 +16,11 @@ class Register extends Component {
         }
     }
 
+    componentDidMount() {
+        document.title = 'tournamint - Rekisteröidy'
+    }
+    
+
     register = async (values) => {
         this.setState({ loading: true })
         if (values.password === values.password2) {

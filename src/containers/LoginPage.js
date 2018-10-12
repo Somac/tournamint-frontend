@@ -9,6 +9,11 @@ class LoginPage extends Component {
         await this.props.login(values)
     }
 
+    componentDidMount() {
+        document.title = 'tournamint - Kirjaudu'
+    }
+    
+
     render() {
         if(this.props.user !== null) {
             return(<Redirect to='/me' />)

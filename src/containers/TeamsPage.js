@@ -7,6 +7,7 @@ import Loading from '../components/Loading'
 
 class TeamsPage extends React.Component {
     componentDidMount = async () => {
+        document.title = 'tournamint - Joukkueet'
         await this.props.getTeams()
     }
 

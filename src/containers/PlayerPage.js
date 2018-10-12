@@ -12,10 +12,10 @@ class PlayerPage extends Component {
         super(props)
         this.state = {
             externalInfo: [],
-            playerHeight: 0,
-            playerAge: 0,
-            playerWeight: 0,
-            birthDate: 0,
+            playerHeight: '?',
+            playerAge: '?',
+            playerWeight: '?',
+            birthDate: '?',
             flag: 'idk',
             img: 'https://nhl.bamcontent.com/images/headshots/current/168x168/skater.jpg',
             onErrorImg: 'https://nhl.bamcontent.com/images/headshots/current/168x168/skater.jpg',
@@ -26,18 +26,22 @@ class PlayerPage extends Component {
     componentDidMount = async () => {
         const id = this.props.playerId
         await this.props.getOnePlayer(id)
-        const externalInfo = await playerService.getExternalInfo(this.props.players.apiId, this.props.players.team.league.apiUrlPlayers)
-        const height = this.convertToCentimeters(externalInfo.people[0].height)
-        this.setState({
-            externalInfo: externalInfo.people[0],
-            playerHeight: height,
-            playerAge: externalInfo.people[0].currentAge,
-            birthDate: externalInfo.people[0].birthDate,
-            playerWeight: this.convertToKilos(externalInfo.people[0].weight),
-            flag: externalInfo.people[0].nationality,
-            img: `https://nhl.bamcontent.com/images/headshots/current/168x168/${this.props.players.apiId}.jpg`,
-            fetching: false
-        })
+        document.title = `tournamint - ${this.props.players.name}`
+        if (this.props.players.apiId) {
+            const externalInfo = await playerService.getExternalInfo(this.props.players.apiId, this.props.players.team.league.apiUrlPlayers)
+            const height = this.convertToCentimeters(externalInfo.people[0].height)
+            this.setState({
+                externalInfo: externalInfo.people[0],
+                playerHeight: height,
+                playerAge: externalInfo.people[0].currentAge,
+                birthDate: externalInfo.people[0].birthDate,
+                playerWeight: this.convertToKilos(externalInfo.people[0].weight),
+                flag: externalInfo.people[0].nationality,
+                img: `https://nhl.bamcontent.com/images/headshots/current/168x168/${this.props.players.apiId}.jpg`,
+                fetching: false
+            })
+        }
+        this.setState({ fetching: false })
     }
 
     convertToCentimeters = (height) => {
@@ -55,25 +59,25 @@ class PlayerPage extends Component {
     }
 
     positionToText = (position) => {
-        switch(position) {
-        case 'G':
-            return 'Goalie'
-        case 'RW':
-            return 'Right Wing'
-        case 'C':
-            return 'Center'
-        case 'LW':
-            return 'Left wing'
-        case 'W':
-            return 'Winger'
-        case 'D':
-            return 'Defenseman'
-        case 'LD':
-            return 'Left defenseman'
-        case 'RD':
-            return 'Right defenseman'
-        default:
-            return position
+        switch (position) {
+            case 'G':
+                return 'Goalie'
+            case 'RW':
+                return 'Right Wing'
+            case 'C':
+                return 'Center'
+            case 'LW':
+                return 'Left wing'
+            case 'W':
+                return 'Winger'
+            case 'D':
+                return 'Defenseman'
+            case 'LD':
+                return 'Left defenseman'
+            case 'RD':
+                return 'Right defenseman'
+            default:
+                return position
         }
     }
 
@@ -87,7 +91,7 @@ class PlayerPage extends Component {
             <div>
                 <img className='mx-auto d-flex rounded-circle my-5' onError={(e) => e.target.src = onErrorImg} src={img} alt={players.name} />
                 <h1 className='text-center'>
-                    <Flag className='rounded-circle flag' code={flag} fallback={<span>Unknown</span>} />
+                    <Flag className='rounded-circle flag' code={flag} fallback={<div></div>} />
                     {players.name}
                 </h1>
                 <h3 className='text-center'>#{players.jerseyNumber} {this.positionToText(players.position)}</h3>
@@ -109,7 +113,8 @@ class PlayerPage extends Component {
                             header={'Turnaustiedot'}
                             rows={[
                                 { head: 'Joukkue', value: players.team.name },
-                                { head: 'Turnaukset', value: players.team.tournaments
+                                {
+                                    head: 'Turnaukset', value: players.team.tournaments
                                         .map(tournament => {
                                             let link = `/tournaments/${tournament.slug}`
                                             return (<Link key={tournament._id} to={link}>{tournament.name}</Link>)

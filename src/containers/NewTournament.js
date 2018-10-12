@@ -20,6 +20,7 @@ class NewTournament extends Component {
     }
 
     componentDidMount = async () => {
+        document.title = 'tournamint - Lisää Turnaus'
         await this.props.getLeagues()
         await this.props.getTeams()
         this.setState({ fetching: false })

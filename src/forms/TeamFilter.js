@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TeamFilter = ({ onChange, teams, name, label }) => {
+const TeamFilter = ({ onChange, teams, name }) => {
     const change = (event) => {
         onChange(event.target.value)
     }
