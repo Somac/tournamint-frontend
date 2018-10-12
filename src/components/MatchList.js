@@ -26,7 +26,7 @@ const MatchList = ({ matches, rounds, teams }) => {
                     <React.Fragment key={i}>
                         <h3 className='text-center py-3'>Kierros {i + 1}</h3>
                         <Togglable label={`Näytä kierroksen ${i + 1} pelit`} cancelLabel='Piilota' visible>
-                            <div className='row row-eq-height'>
+                            <div className='row row-eq-height justify-content-center'>
                                 {round.map(match => <MatchBox key={match._id} match={match} />)}
                             </div>
                         </Togglable>

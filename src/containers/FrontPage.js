@@ -15,14 +15,14 @@ class FrontPage extends Component {
                             <p>Tournamint 0.1 versio</p>
                             <p>Tää on snadisti keskeneräinen, eli paljon asioita puuttuu mm:</p>
                             <ul>
-                                <li>Pelaajien lisääminen manuaalisesti</li>
+                                <li><strike>Pelaajien lisääminen manuaalisesti</strike></li>
                                 <li>Pelaajien muokkaaminen</li>
                                 <li>Pelaajan poistaminen</li>
                                 <li>Turnauksen poistaminen</li>
                                 <li>Turnauksen muokkaaminen</li>
-                                <li>Ottelun avaaminen (Nyt kun sen sulkee, niin ei pysty enää muokkaamaan)</li>
+                                <li><strike>Ottelun avaaminen (Nyt kun sen sulkee, niin ei pysty enää muokkaamaan)</strike></li>
                                 <li>Maalin muokkaaminen</li>
-                                <li>Maalin poistaminen</li>
+                                <li><strike>Maalin poistaminen</strike></li>
                                 <li>Turnauksen pistepörssi</li>
                                 <li>Pelin poistaminen</li>
                                 <li>Pelin muokkaaminen</li>
@@ -30,7 +30,7 @@ class FrontPage extends Component {
                                 <li>Liigan muokkaaminen</li>
                                 <li>Authentikaatio kaikesta muusta paitsi turnauksen lisäämisestä</li>
                                 <li>Oma profiilisivu</li>
-                                <li>Mobiiliresponsiivisuus suurimmalta osin (mm. navbar ja suurin osa komponenteista)</li>
+                                <li><strike>Mobiiliresponsiivisuus suurimmalta osin (mm. navbar ja suurin osa komponenteista)</strike></li>
                                 <li>Fiksumpi layoutti muutenkin saittiin</li>
                                 <li>Formien validointi kaikissa formeissa paitsi rekisteröitymisessä</li>
                                 <li>Ja paljon muuta</li>

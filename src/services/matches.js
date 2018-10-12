@@ -27,6 +27,11 @@ const completeMatch = async (id, data) => {
     return response.data
 }
 
+const openMatch = async (id) => {
+    const response = await axios.put(`${url}/${id}/open`)
+    return response.data
+}
+
 export default {
-    getAllMatches, getOneMatch, getTournamentMatches, completeMatch
+    getAllMatches, getOneMatch, getTournamentMatches, completeMatch, openMatch
 }

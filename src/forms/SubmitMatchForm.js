@@ -7,7 +7,7 @@ let SubmitMatchForm = (props) => {
     return (
         <form onSubmit={handleSubmit}>
             {possibleTie ? <Field component={FormGroupCheckbox} name='ot' label='Tasapeli' /> : ''}
-            <button className='btn btn-primary' disabled={scoreEven}>Submit Match</button>
+            <button className='btn btn-primary' disabled={scoreEven}>Päätä ottelu</button>
         </form>
     )
 }

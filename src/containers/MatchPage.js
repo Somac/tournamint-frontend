@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getOneMatch, completeMatch } from '../reducers/matchReducer'
+import { getOneMatch, completeMatch, openMatch } from '../reducers/matchReducer'
 import { postGoal } from '../reducers/goalReducer'
 import MatchBoxNoLink from '../components/MatchBoxNoLink'
 import Loading from '../components/Loading'
@@ -9,6 +9,7 @@ import HomeGoalForm from '../forms/HomeGoalForm'
 import AwayGoalForm from '../forms/AwayGoalForm'
 import GoalList from '../components/GoalList'
 import SubmitMatchForm from '../forms/SubmitMatchForm'
+import OpenMatchForm from '../forms/OpenMatchForm';
 
 class MatchPage extends Component {
     state = {
@@ -55,19 +56,27 @@ class MatchPage extends Component {
         this.setState({ componendDidUpdate: false })
     }
 
+    openMatch = (values) => {
+        this.props.openMatch(this.props.match._id)
+        this.setState({ componendDidUpdate: false })
+    }
+
     render() {
         const { match } = this.props
         if (this.state.componentDidMount && this.state.componendDidUpdate) {
             return (
                 <React.Fragment>
                     <h2 className='text-center mt-5'>{match.homeTeam.name} vs {match.awayTeam.name}</h2>
-                    <Link to={`/tournaments/${match.tournament.slug}`}><p className='text-center mb-5'><small>Turnaus: {match.tournament.name}</small></p></Link>
+                    <Link to={`/tournaments/${match.tournament.slug}`}><p className='text-center mb-5 btn-link'>Turnaus: {match.tournament.name}</p></Link>
                     <h4 className='text-center'>Kierros: {match.round}</h4>
                     <div className='row'>
                         <div className='col-12'>
                             <MatchBoxNoLink match={match} />
                         </div>
-                        {match.completed ? '' :
+                        {match.completed ?
+                            <div className='col-12 d-flex justify-content-center my-5'>
+                                <OpenMatchForm onSubmit={this.openMatch} match={match} />
+                            </div> :
                             <React.Fragment>
                                 <div className='col-12 col-md-6'>
                                     <div className='box'>
@@ -105,5 +114,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
     mapStateToProps,
-    { getOneMatch, postGoal, completeMatch }
+    { getOneMatch, postGoal, completeMatch, openMatch }
 )(MatchPage)
