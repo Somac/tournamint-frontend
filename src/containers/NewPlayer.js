@@ -4,10 +4,11 @@ import { addPlayer } from '../reducers/playerReducer'
 import PlayerForm from '../forms/PlayerForm'
 import { Redirect } from 'react-router'
 
+
 class NewPlayer extends Component {
     state = {
         redirect: false,
-        playerId: null
+        playerId: null,
     }
 
     addPlayer = async (values) => {

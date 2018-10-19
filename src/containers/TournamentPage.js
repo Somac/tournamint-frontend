@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getOneTournament } from '../reducers/tournamentReducer'
 import { getTournamentMatches } from '../reducers/tournamentMatchReducer'
 import { getTournamentStandings } from '../reducers/tournamentStandingsReducer'
+import { getTournamentPlayerStats } from '../reducers/tournamentPlayerStatsReducer'
 import InfoContainer from '../components/InfoContainer'
 import TeamList from '../components/TeamList'
 import MatchList from '../components/MatchList'
@@ -22,6 +23,7 @@ class TournamentPage extends Component {
         await this.props.getOneTournament(slug)
         await this.props.getTournamentMatches(slug)
         await this.props.getTournamentStandings(slug)
+        await this.props.getTournamentPlayerStats(slug)
         const tmnt = this.props.tournaments.find(tournament => tournament.slug === this.props.tournamentSlug)
         document.title = `tournamint - ${tmnt.name}`
         this.setState({ componentDidMount: true })
@@ -29,7 +31,7 @@ class TournamentPage extends Component {
     }
 
     render() {
-        const { tournaments, tournamentMatches, tournamentMatchesNoFilter, tournamentStandings } = this.props
+        const { tournaments, tournamentMatches, tournamentMatchesNoFilter, tournamentStandings, tournamentPlayerStats } = this.props
         const tournament = tournaments.find(tournament => tournament.slug === this.props.tournamentSlug)
         const standingsColumns = [
             { Header: 'Team', accessor: 'team', fixed: 'left', minWidth: 170 },
@@ -44,9 +46,23 @@ class TournamentPage extends Component {
             { Header: 'HOME', accessor: 'home', minWidth: 100 },
             { Header: 'AWAY', accessor: 'away', minWidth: 100 }
         ]
+        const statsColumns = [
+            { Header: 'Name', accessor: 'name', fixed: 'left', minWidth: 170 },
+            { Header: 'Team', accessor: 'team', minWidth: 170 },
+            { Header: 'GP', accessor: 'gp', minWidth: 60 },
+            { Header: 'G', accessor: 'g', minWidth: 60 },
+            { Header: 'A', accessor: 'a', minWidth: 60 },
+            { Header: 'P', accessor: 'p', minWidth: 60 }
+        ]
         const defaultSort = [
             {
                 id: 'pts',
+                desc: true
+            }
+        ]
+        const defaultSortStats = [
+            {
+                id: 'p',
                 desc: true
             }
         ]
@@ -87,6 +103,14 @@ class TournamentPage extends Component {
                         defaultSorted={defaultSort}
                         showPagination={false}
                     />
+                    <h2 className='text-center mt-5'>Pistepörssi</h2>
+                    <ReactTableFixedColumns
+                        className='my-5'
+                        data={tournamentPlayerStats}
+                        columns={statsColumns}
+                        defaultPageSize={10}
+                        defaultSorted={defaultSortStats}
+                    />
                     <MatchList matches={tournamentMatches} rounds={tournament.rounds} teams={tournament.teams} />
                 </React.Fragment>
             )
@@ -108,9 +132,7 @@ class TournamentPage extends Component {
 const matchesToShow = (matches, filterState) => {
     const { filter, team } = filterState
     let filteredMatches = matches
-    if (filter === 'ALL') {
-        filteredMatches = matches
-    } else if (filter === 'COMPLETED') {
+    if (filter === 'COMPLETED') {
         filteredMatches = matches.filter(match => match.completed === true)
     } else if (filter === 'NOT_COMPLETED') {
         filteredMatches = matches.filter(match => match.completed !== true)
@@ -129,11 +151,12 @@ const mapStateToProps = (state) => {
         tournaments: state.tournaments,
         tournamentMatches: matchesToShow(state.tournamentMatches, state.matchFilters),
         tournamentMatchesNoFilter: state.tournamentMatches,
-        tournamentStandings: state.tournamentStandings
+        tournamentStandings: state.tournamentStandings,
+        tournamentPlayerStats: state.tournamentPlayerStats
     }
 }
 
 export default connect(
     mapStateToProps,
-    { getOneTournament, getTournamentMatches, getTournamentStandings }
+    { getOneTournament, getTournamentMatches, getTournamentStandings, getTournamentPlayerStats }
 )(TournamentPage)

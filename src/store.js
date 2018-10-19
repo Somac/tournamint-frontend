@@ -13,6 +13,7 @@ import matchReducer from './reducers/matchReducer'
 import goalReducer from './reducers/goalReducer'
 import matchFilterReducer from './reducers/matchFilterReducer'
 import tournamentStandingsReducer from './reducers/tournamentStandingsReducer'
+import tournamentPlayerStatsReducer from './reducers/tournamentPlayerStatsReducer'
 
 const reducer = combineReducers({
     tournaments: tournamentReducer,
@@ -26,7 +27,8 @@ const reducer = combineReducers({
     match: matchReducer,
     goals: goalReducer,
     matchFilters: matchFilterReducer,
-    tournamentStandings: tournamentStandingsReducer
+    tournamentStandings: tournamentStandingsReducer,
+    tournamentPlayerStats: tournamentPlayerStatsReducer
 })
 
 const middlewares = [thunk];

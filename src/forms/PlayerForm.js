@@ -4,13 +4,23 @@ import { getTeams } from '../reducers/teamReducer'
 import FormGroup from './formComponents/FormGroup'
 import { reduxForm, Field } from 'redux-form'
 import FormGroupSelect from './formComponents/FormGroupSelect'
+import Loading from '../components/Loading'
 
 class PlayerForm extends React.Component {
+    state = {
+        cdm: false
+    }
     componentDidMount = async () => {
         await this.props.getTeams()
+        this.setState({cdm:true})
     }
 
     render() {
+        if(!this.state.cdm) {
+            return (
+                <Loading />
+            )
+        }
         const { handleSubmit, teams } = this.props
         //TODO kovakoodi pois
         const positionOptions = [
