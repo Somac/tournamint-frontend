@@ -13,7 +13,6 @@ class PlayersPage extends Component {
         document.title = 'tournamint - Pelaajat'
         await this.props.getPlayers()
         this.setState({ cdm: true })
-        console.log(this.props.players)
     }
     render() {
         const { players } = this.props

@@ -2,6 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const PlayerSmallBox = ({ player }) => {
+    if (!player.team) {
+        return false
+    }
     return (
         <div className='col-4 col-md-2'>
             <Link to={`/players/${player._id}`} >
