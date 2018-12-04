@@ -23,33 +23,33 @@ import NewPlayer from '../containers/NewPlayer'
 import PlayersPage from '../containers/PlayersPage'
 
 class Routes extends Component {
-    render() {
-        return (
-            <Switch>
-                <Route exact path="/" render={() => <FrontPage />} />
-                <Route exact path="/tournaments" render={() => <TournamentsPage />} />
-                <Route exact path="/tournaments/:slug" render={({ match }) => <TournamentPage tournamentSlug={(match.params.slug)} />} />
-                <Route exact path="/new/tournament" render={() => <NewTournament />} />
-                <Route exact path='/leagues' render={() => <LeaguesPage />} />
-                <Route exact path='/new/league' render={() => <NewLeague />} />
-                <Route exact path='/games' render={() => <GamesPage />} />
-                <Route exact path='/login' render={() => <LoginPage />} />
-                <Route exact path='/games/:id' render={({ match }) => <GamePage gameId={match.params.id} />} />
-                <Route exact path='/teams' render={() => <TeamsPage />} />
-                <Route exact path='/new/team' render={() => <NewTeam />} />
-                <Route exact path='/register' render={() => <Register />} />
-                <Route exact path='/teams/:slug' render={({ match }) => <TeamPage teamSlug={match.params.slug} />} />
-                <Route exact path='/leagues/:id' render={({ match }) => <LeaguePage leagueId={match.params.id} />} />
-                <Route exact path='/logout' render={() => <Logout />} />
-                <Route exact path='/me' render={() => <MePage />} />
-                <Route exact path='/players/:id' render={({ match }) => <PlayerPage playerId={match.params.id} />} />
-                <Route exact path='/matches/:slug' render={({ match }) => <MatchPage matchSlug={match.params.slug} />} />
-                <Route exact path='/new/player' render={() => <NewPlayer />} />
-                <Route exact path='/players' render={() => <PlayersPage />} />
-                <Route render={() => <NotFound />} />
-            </Switch>
-        );
-    }
+  render() {
+    return (
+      <Switch>
+        <Route exact path="/" render={() => <FrontPage />} />
+        <Route exact path="/tournaments" render={() => <TournamentsPage />} />
+        <Route exact path="/tournaments/:slug" render={({ match }) => <TournamentPage tournamentSlug={(match.params.slug)} />} />
+        <Route exact path="/new/tournament" render={() => <NewTournament />} />
+        <Route exact path='/leagues' render={() => <LeaguesPage />} />
+        <Route exact path='/new/league' render={() => <NewLeague />} />
+        <Route exact path='/games' render={() => <GamesPage />} />
+        <Route exact path='/login' render={() => <LoginPage />} />
+        <Route exact path='/games/:id' render={({ match }) => <GamePage gameId={match.params.id} />} />
+        <Route exact path='/teams' render={() => <TeamsPage />} />
+        <Route exact path='/new/team' render={() => <NewTeam />} />
+        <Route exact path='/register' render={() => <Register />} />
+        <Route exact path='/teams/:slug' render={({ match }) => <TeamPage teamSlug={match.params.slug} />} />
+        <Route exact path='/leagues/:id' render={({ match }) => <LeaguePage leagueId={match.params.id} />} />
+        <Route exact path='/logout' render={() => <Logout />} />
+        <Route exact path='/me' render={() => <MePage />} />
+        <Route exact path='/players/:id' render={({ match }) => <PlayerPage playerId={match.params.id} />} />
+        <Route exact path='/matches/:slug' render={({ match }) => <MatchPage matchSlug={match.params.slug} />} />
+        <Route exact path='/new/player' render={() => <NewPlayer />} />
+        <Route exact path='/players' render={() => <PlayersPage />} />
+        <Route render={() => <NotFound />} />
+      </Switch>
+    );
+  }
 }
 
 export default Routes

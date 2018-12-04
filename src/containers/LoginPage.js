@@ -5,39 +5,39 @@ import { login } from '../reducers/userReducer'
 import { Redirect } from 'react-router'
 
 class LoginPage extends Component {
-    login = async (values) => {
-        await this.props.login(values)
-    }
+  login = async (values) => {
+    await this.props.login(values)
+  }
 
-    componentDidMount() {
-        document.title = 'tournamint - Kirjaudu'
-    }
-    
+  componentDidMount() {
+    document.title = 'tournamint - Kirjaudu'
+  }
 
-    render() {
-        if(this.props.user !== null) {
-            return(<Redirect to='/me' />)
-        }
-        return (
-            <div>
-                <h2 className='text-center my-5'>Kirjaudu sisään</h2>
-                <div className='row d-flex justify-content-center'>
-                    <div className='col-12 col-md-6 box'>
-                        <LoginForm onSubmit={this.login} />
-                    </div>
-                </div>
-            </div>
-        )
+
+  render() {
+    if (this.props.user !== null) {
+      return (<Redirect to='/me' />)
     }
+    return (
+      <div>
+        <h2 className='text-center my-5'>Kirjaudu sisään</h2>
+        <div className='row d-flex justify-content-center'>
+          <div className='col-12 col-md-6 box'>
+            <LoginForm onSubmit={this.login} />
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = (state) => {
-    return {
-        user: state.user
-    }
+  return {
+    user: state.user
+  }
 }
 
 export default connect(
-    mapStateToProps,
-    { login }
+  mapStateToProps,
+  { login }
 )(LoginPage)

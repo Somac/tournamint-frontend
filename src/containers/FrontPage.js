@@ -1,74 +1,74 @@
 import React, { Component } from 'react'
 
 class FrontPage extends Component {
-    componentDidMount() {
-        document.title = 'tournamint - Etusivu'
-    }
+  componentDidMount() {
+    document.title = 'tournamint - Etusivu'
+  }
 
-    render() {
-        return (
-            <React.Fragment>
-                <h2 className='my-5 text-center'>tournamint</h2>
-                <div className='row d-flex justify-content-center my-5'>
-                    <div className='col-12 col-xl-6'>
-                        <div className='box'>
-                            <p>Tournamint 0.1 versio</p>
-                            <p>Tää on snadisti keskeneräinen, eli paljon asioita puuttuu mm:</p>
-                            <ul>
-                                <li>Pelaajien muokkaaminen</li>
-                                <li>Pelaajan poistaminen</li>
-                                <li>Turnauksen poistaminen</li>
-                                <li>Turnauksen muokkaaminen</li>
-                                <li>Maalin muokkaaminen</li>
-                                <li>Turnauksen pistepörssi</li>
-                                <li>Pelin poistaminen</li>
-                                <li>Pelin muokkaaminen</li>
-                                <li>Liigan poistaminen</li>
-                                <li>Liigan muokkaaminen</li>
-                                <li>Authentikaatio kaikesta muusta paitsi turnauksen lisäämisestä</li>
-                                <li>Oma profiilisivu</li>
-                                <li>Fiksumpi layoutti muutenkin saittiin</li>
-                                <li>Formien validointi kaikissa formeissa paitsi rekisteröitymisessä</li>
-                                <li>Ja paljon muuta</li>
-                            </ul>
-                            <p>Asiat jotka tässä kuitenkin on:</p>
-                            <ul>
-                                <li>Rekisteröityminen</li>
-                                <li>Kirjautuminen</li>
-                                <li>Turnauksen listaaminen</li>
-                                <li>Turnauksen lisääminen</li>
-                                <li>Turnauskohtainen sivu</li>
-                                <li>Turnauksen sarjataulukko</li>
-                                <li>Turnauksen joukkueet ja ottelut listattu</li>
-                                <li>Otteluiden filtteröinti statuksen mukaan</li>
-                                <li>Otteluiden filtteröinti tiimikohtaisesti</li>
-                                <li>Ottelusivu</li>
-                                <li>Maalin lisääminen</li>
-                                <li>Maalien listaaminen</li>
-                                <li>Ottelun päättäminen</li>
-                                <li>Tiimin lisääminen</li>
-                                <li>Pelaajien haku API:sta</li>
-                                <li>Tiimikohtainen sivu</li>
-                                <li>Tiimilistaus</li>
-                                <li>Tiimin kokonaispistepörssi</li>
-                                <li>Pelaajien listaus tiimeissä</li>
-                                <li>Pelaajan oma sivu</li>
-                                <li>Liigan lisääminen</li>
-                                <li>Liigojen listaus</li>
-                                <li>Pelin lisääminen</li>
-                                <li>Pelien listaus</li>
-                                <li>Pelaajien lisääminen manuaalisesti</li>
-                                <li>Ottelun avaaminen</li>
-                                <li>Maalin poistaminen</li>
-                                <li>Mobiiliresponsiivisuus suurimmalta osin (mm. navbar ja suurin osa komponenteista)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+  render() {
+    return (
+      <React.Fragment>
+        <h2 className='my-5 text-center'>tournamint</h2>
+        <div className='row d-flex justify-content-center my-5'>
+          <div className='col-12 col-xl-6'>
+            <div className='box'>
+              <p>Tournamint 0.1 versio</p>
+              <p>Tää on snadisti keskeneräinen, eli paljon asioita puuttuu mm:</p>
+              <ul>
+                <li>Pelaajien muokkaaminen</li>
+                <li>Pelaajan poistaminen</li>
+                <li>Turnauksen poistaminen</li>
+                <li>Turnauksen muokkaaminen</li>
+                <li>Maalin muokkaaminen</li>
+                <li>Turnauksen pistepörssi</li>
+                <li>Pelin poistaminen</li>
+                <li>Pelin muokkaaminen</li>
+                <li>Liigan poistaminen</li>
+                <li>Liigan muokkaaminen</li>
+                <li>Authentikaatio kaikesta muusta paitsi turnauksen lisäämisestä</li>
+                <li>Oma profiilisivu</li>
+                <li>Fiksumpi layoutti muutenkin saittiin</li>
+                <li>Formien validointi kaikissa formeissa paitsi rekisteröitymisessä</li>
+                <li>Ja paljon muuta</li>
+              </ul>
+              <p>Asiat jotka tässä kuitenkin on:</p>
+              <ul>
+                <li>Rekisteröityminen</li>
+                <li>Kirjautuminen</li>
+                <li>Turnauksen listaaminen</li>
+                <li>Turnauksen lisääminen</li>
+                <li>Turnauskohtainen sivu</li>
+                <li>Turnauksen sarjataulukko</li>
+                <li>Turnauksen joukkueet ja ottelut listattu</li>
+                <li>Otteluiden filtteröinti statuksen mukaan</li>
+                <li>Otteluiden filtteröinti tiimikohtaisesti</li>
+                <li>Ottelusivu</li>
+                <li>Maalin lisääminen</li>
+                <li>Maalien listaaminen</li>
+                <li>Ottelun päättäminen</li>
+                <li>Tiimin lisääminen</li>
+                <li>Pelaajien haku API:sta</li>
+                <li>Tiimikohtainen sivu</li>
+                <li>Tiimilistaus</li>
+                <li>Tiimin kokonaispistepörssi</li>
+                <li>Pelaajien listaus tiimeissä</li>
+                <li>Pelaajan oma sivu</li>
+                <li>Liigan lisääminen</li>
+                <li>Liigojen listaus</li>
+                <li>Pelin lisääminen</li>
+                <li>Pelien listaus</li>
+                <li>Pelaajien lisääminen manuaalisesti</li>
+                <li>Ottelun avaaminen</li>
+                <li>Maalin poistaminen</li>
+                <li>Mobiiliresponsiivisuus suurimmalta osin (mm. navbar ja suurin osa komponenteista)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-            </React.Fragment>
-        )
-    }
+      </React.Fragment>
+    )
+  }
 }
 
 export default FrontPage

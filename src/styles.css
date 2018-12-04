@@ -8,213 +8,213 @@
 */
 
 .box {
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    padding: 10px;
-    background-color: #fff
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  padding: 10px;
+  background-color: #fff
 }
 
 .box-hover {
-    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 }
 
 .box-hover:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 .box-2 {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    padding: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  padding: 10px;
 }
 
 html {
-    position: relative;
-    min-height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
 body {
-    margin-bottom: 56px;
-    font-family: 'Open Sans', sans-serif;
-    background-color: #f2f2f2
+  margin-bottom: 56px;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f2f2f2
 }
 
 .footer {
-    position: absolute;
-    bottom: 0;
-    box-shadow: 0 -1px 6px rgba(0, 0, 0, 0.16), 0 -1px 6px rgba(0, 0, 0, 0.23);
-    width: 100%;
-    min-height: 56px;
-    background-color: #f8f9fa;
+  position: absolute;
+  bottom: 0;
+  box-shadow: 0 -1px 6px rgba(0, 0, 0, 0.16), 0 -1px 6px rgba(0, 0, 0, 0.23);
+  width: 100%;
+  min-height: 56px;
+  background-color: #f8f9fa;
 }
 
 .navbar-tournamint {
-    background-color: #fff;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    color: #000;
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  color: #000;
 }
 
 .navbar-tournamint ul li a {
-    color: #000;
+  color: #000;
 }
 
 .card-img-top {
-    width: 100%;
-    height: 150px;
-    object-fit: contain;
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
 }
 
 a {
-    color: #000
+  color: #000
 }
 
 a:hover {
-    color: #000;
-    text-decoration: none
+  color: #000;
+  text-decoration: none
 }
 
 .completed {
-    background: #fafafa;
-    /*border-left: 5px solid #92f764;*/
+  background: #fafafa;
+  /*border-left: 5px solid #92f764;*/
 }
 
 .losing-team {
-    filter: grayscale(100%);
+  filter: grayscale(100%);
 }
 
 .away-win {
-    border-right: 3px solid #92f764;
-    background-image: linear-gradient(to right, #ccc, #fff, #fff, #fff, #fff, #fff, #fff, rgba(115, 235, 18, 0.01), rgba(115, 235, 18, 0.05), rgba(115, 235, 18, 0.1));
+  border-right: 3px solid #92f764;
+  background-image: linear-gradient(to right, #ccc, #fff, #fff, #fff, #fff, #fff, #fff, rgba(115, 235, 18, 0.01), rgba(115, 235, 18, 0.05), rgba(115, 235, 18, 0.1));
 }
 
 .home-win {
-    border-left: 3px solid #92f764;
-    background-image: linear-gradient(to left, #ccc, #fff, #fff, #fff, #fff, #fff, #fff, rgba(115, 235, 18, 0.01), rgba(115, 235, 18, 0.05), rgba(115, 235, 18, 0.1));
+  border-left: 3px solid #92f764;
+  background-image: linear-gradient(to left, #ccc, #fff, #fff, #fff, #fff, #fff, #fff, rgba(115, 235, 18, 0.01), rgba(115, 235, 18, 0.05), rgba(115, 235, 18, 0.1));
 }
 
 .not-completed {
-    border-left: 5px solid rgb(255, 251, 14);
+  border-left: 5px solid rgb(255, 251, 14);
 }
 
 .lds-circle {
-    display: inline-block;
-    width: 51px;
-    height: 51px;
-    margin: 6px;
-    border-radius: 50%;
-    background: rgb(0, 225, 255);
-    animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  display: inline-block;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border-radius: 50%;
+  background: rgb(0, 225, 255);
+  animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
 
 @keyframes lds-circle {
-    0%,
-    100% {
-        animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
-    }
-    0% {
-        transform: rotateY(0deg);
-    }
-    50% {
-        transform: rotateY(1800deg);
-        animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
-    }
-    100% {
-        transform: rotateY(3600deg);
-    }
+  0%,
+  100% {
+    animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+  }
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(1800deg);
+    animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+  }
+  100% {
+    transform: rotateY(3600deg);
+  }
 }
 
 .error-fdbck {
-    color: rgb(219, 63, 63)
+  color: rgb(219, 63, 63)
 }
 
 .flag {
-    object-fit: contain;
-    width: 64px;
-    height: 40px;
-    margin-right: 10px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  object-fit: contain;
+  width: 64px;
+  height: 40px;
+  margin-right: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .form-control::-webkit-input-placeholder {
-    color: #ccc;
+  color: #ccc;
 }
 
 .card {
-    border: 0px;
-    border-radius: 0;
+  border: 0px;
+  border-radius: 0;
 }
 
 .small-img {
-    width: 70px
+  width: 70px
 }
 
 .medium-img {
-    width: 140px;
-    max-width: 100%;
+  width: 140px;
+  max-width: 100%;
 }
 
 .bg-logo {
-    object-fit: contain;
-    position: absolute;
-    width: 100px;
-    max-width: 80%;
-    max-height: 70px;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 0;
-    z-index: 0;
-    opacity: .1;
+  object-fit: contain;
+  position: absolute;
+  width: 100px;
+  max-width: 80%;
+  max-height: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  z-index: 0;
+  opacity: .1;
 }
 
 .ReactTable .rt-tbody .rt-td {
-    text-align: center
+  text-align: center
 }
 
 .ReactTable .rt-thead .rt-th,
 .ReactTable .rt-thead .rt-td {
-    padding: 10px 5px
+  padding: 10px 5px
 }
 
 .match-box-img {
-    max-width: 100%;
-    height: 100px;
-    object-fit: contain
+  max-width: 100%;
+  height: 100px;
+  object-fit: contain
 }
 
 .team-img {
-    width: 150px;
-    height: 100px;
-    object-fit: contain
+  width: 150px;
+  height: 100px;
+  object-fit: contain
 }
 
 .bar1,
 .bar2,
 .bar3 {
-    width: 35px;
-    height: 2px;
-    background-color: #333;
-    margin: 9px 0;
-    transition: 0.4s;
+  width: 35px;
+  height: 2px;
+  background-color: #333;
+  margin: 9px 0;
+  transition: 0.4s;
 }
 
 .change .bar1 {
-    -webkit-transform: rotate(-45deg) translate(-8px, 6px);
-    transform: rotate(-45deg) translate(-8px, 6px);
+  -webkit-transform: rotate(-45deg) translate(-8px, 6px);
+  transform: rotate(-45deg) translate(-8px, 6px);
 }
 
 .change .bar2 {
-    opacity: 0;
+  opacity: 0;
 }
 
 .change .bar3 {
-    -webkit-transform: rotate(45deg) translate(-9px, -8px);
-    transform: rotate(45deg) translate(-9px, -8px);
+  -webkit-transform: rotate(45deg) translate(-9px, -8px);
+  transform: rotate(45deg) translate(-9px, -8px);
 }
 
 .ReactTable {
-    background-color: #fff
+  background-color: #fff
 }
 
 .github-logo {
-    width: 24px;
-    height: 24px;
-    color: #ccc
+  width: 24px;
+  height: 24px;
+  color: #ccc
 }

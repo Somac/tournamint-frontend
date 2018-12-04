@@ -16,28 +16,28 @@ import tournamentStandingsReducer from './reducers/tournamentStandingsReducer'
 import tournamentPlayerStatsReducer from './reducers/tournamentPlayerStatsReducer'
 
 const reducer = combineReducers({
-    tournaments: tournamentReducer,
-    leagues: leagueReducer,
-    games: gameReducer,
-    form: formReducer,
-    teams: teamReducer,
-    user: userReducer,
-    players: playerReducer,
-    tournamentMatches: tournamentMatchReducer,
-    match: matchReducer,
-    goals: goalReducer,
-    matchFilters: matchFilterReducer,
-    tournamentStandings: tournamentStandingsReducer,
-    tournamentPlayerStats: tournamentPlayerStatsReducer
+  tournaments: tournamentReducer,
+  leagues: leagueReducer,
+  games: gameReducer,
+  form: formReducer,
+  teams: teamReducer,
+  user: userReducer,
+  players: playerReducer,
+  tournamentMatches: tournamentMatchReducer,
+  match: matchReducer,
+  goals: goalReducer,
+  matchFilters: matchFilterReducer,
+  tournamentStandings: tournamentStandingsReducer,
+  tournamentPlayerStats: tournamentPlayerStatsReducer
 })
 
 const middlewares = [thunk];
 
 if (process.env.NODE_ENV === `development`) {
-    middlewares.push(logger);
+  middlewares.push(logger);
 }
 
 export const store = createStore(
-    reducer,
-    applyMiddleware(...middlewares)
+  reducer,
+  applyMiddleware(...middlewares)
 )
