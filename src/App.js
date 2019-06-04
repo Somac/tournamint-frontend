@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
 import MainMenu from './components/MainMenu'
+import PageWrapper from './components/PageWrapper'
 import Footer from './components/Footer'
 import Routes from './components/Routes'
 import { getTournaments } from './reducers/tournamentReducer'
@@ -19,15 +20,9 @@ class App extends Component {
       <Router>
         <React.Fragment>
           <MainMenu />
-          <div className='container-fluid'>
-            <div className='row'>
-              <div className='d-none d-xl-flex  col-xl-1'></div>
-              <div className='col-12 col-lg-12 col-xl-10'>
-                <Routes />
-              </div>
-              <div className='d-none d-xl-flex col-xl-1'></div>
-            </div>
-          </div>
+          <PageWrapper>
+            <Routes />
+          </PageWrapper>
           <Footer />
         </React.Fragment>
       </Router>
