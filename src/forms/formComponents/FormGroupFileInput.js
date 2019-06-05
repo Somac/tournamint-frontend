@@ -11,8 +11,8 @@ const FileInput = ({
     ...inputProps,
   },
   meta: omitMeta,
-  ...props,
-  name, label
+  name, label,
+  ...props
 }) => {
   return (
     <div className="form-group">

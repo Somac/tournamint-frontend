@@ -17,7 +17,7 @@ const CardBox = ({ link, name, text, logo, table, size }) => {
           <h5 className='card-title text-center'>{name}</h5>
           <p className='card-text text-center'><em>{text}</em></p>
           {table ? table : ''}
-          <Link className='btn btn-primary mx-auto d-flex' to={link}>Lue lisää</Link>
+          <Link className='btn btn-primary mx-auto d-flex' to={link}>Read more</Link>
         </div>
       </div>
     </div>

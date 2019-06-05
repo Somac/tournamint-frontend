@@ -11,6 +11,7 @@ import Loading from '../components/Loading'
 import ReactTable from 'react-table'
 import Togglable from '../components/Togglable'
 import withFixedColumns from 'react-table-hoc-fixed-columns';
+import NavigationBlock from '../components/NavigationBlock';
 const ReactTableFixedColumns = withFixedColumns(ReactTable);
 
 class TournamentPage extends Component {
@@ -54,6 +55,10 @@ class TournamentPage extends Component {
       { Header: 'A', accessor: 'a', minWidth: 60 },
       { Header: 'P', accessor: 'p', minWidth: 60 }
     ]
+    const links = [
+      { name: 'test', link: "#" },
+      { name: 'test2', link: "#"}
+    ]
     const defaultSort = [
       {
         id: 'pts',
@@ -79,6 +84,7 @@ class TournamentPage extends Component {
         <React.Fragment>
           <h2 className='text-center mt-5'>{tournament.name}</h2>
           <p className='text-center mb-5'><small>Luotu: {createdDate}</small></p>
+          <NavigationBlock links={links} />
           <Togglable label='Näytä turnauksen tiedot' cancelLabel='Piilota tiedot'>
             <InfoContainer
               header={'Turnaus info'}
