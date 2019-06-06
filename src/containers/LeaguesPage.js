@@ -6,7 +6,7 @@ import LinkButton from '../components/LinkButton'
 
 class LeaguesPage extends Component {
   componentDidMount = async () => {
-    document.title = 'tournamint - Liigat'
+    document.title = 'tournamint - Leagues'
     await this.props.getLeagues()
   }
 

@@ -10,7 +10,7 @@ class LoginPage extends Component {
   }
 
   componentDidMount() {
-    document.title = 'tournamint - Kirjaudu'
+    document.title = 'tournamint - Login'
   }
 
 
@@ -20,7 +20,7 @@ class LoginPage extends Component {
     }
     return (
       <div>
-        <h2 className='text-center my-5'>Kirjaudu sisään</h2>
+        <h2 className='text-center my-5'>Login</h2>
         <div className='row d-flex justify-content-center'>
           <div className='col-12 col-md-6 box'>
             <LoginForm onSubmit={this.login} />

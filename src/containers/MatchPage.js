@@ -68,8 +68,8 @@ class MatchPage extends Component {
       return (
         <React.Fragment>
           <h2 className='text-center mt-5'>{match.homeTeam.name} vs {match.awayTeam.name}</h2>
-          <Link to={`/tournaments/${match.tournament.slug}`}><p className='text-center mb-5 btn-link'>Turnaus: {match.tournament.name}</p></Link>
-          <h4 className='text-center'>Kierros: {match.round}</h4>
+          <Link to={`/tournaments/${match.tournament.slug}`}><p className='text-center mb-5 btn-link'>Tournament: {match.tournament.name}</p></Link>
+          <h4 className='text-center'>Round: {match.round}</h4>
           <div className='row'>
             <div className='col-12'>
               <MatchBoxNoLink match={match} />
@@ -81,13 +81,13 @@ class MatchPage extends Component {
               <React.Fragment>
                 <div className='col-12 col-md-6'>
                   <div className='box my-3'>
-                    <h3>Lisää maali kotijoukkueelle</h3>
+                    <h3>Add goal to home team</h3>
                     <HomeGoalForm onSubmit={this.addGoal} players={match.homeTeam.players} initialValues={{ homeTeam: true }} />
                   </div>
                 </div>
                 <div className='col-12 col-md-6'>
                   <div className='box my-3'>
-                    <h3>Lisää maali vierasjoukkueelle</h3>
+                    <h3>Add goal to away team</h3>
                     <AwayGoalForm onSubmit={this.addGoal} players={match.awayTeam.players} initialValues={{ awayTeam: true }} />
                   </div>
                 </div>

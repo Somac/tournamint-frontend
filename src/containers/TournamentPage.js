@@ -83,24 +83,24 @@ class TournamentPage extends Component {
       return (
         <React.Fragment>
           <h2 className='text-center mt-5'>{tournament.name}</h2>
-          <p className='text-center mb-5'><small>Luotu: {createdDate}</small></p>
+          <p className='text-center mb-5'><small>Created: {createdDate}</small></p>
           <NavigationBlock links={links} />
-          <Togglable label='Näytä turnauksen tiedot' cancelLabel='Piilota tiedot'>
+          <Togglable label='Show tournament info' cancelLabel='Hide info'>
             <InfoContainer
-              header={'Turnaus info'}
+              header={'Tournament info'}
               rows={[
-                { head: 'Luotu', value: createdDate },
-                { head: 'Joukkueita', value: `${tournament.teams.length} joukkuetta` },
-                { head: 'Otteluita pelattu', value: `${gamesPlayed} / ${tournamentMatchesNoFilter.length}` },
-                { head: 'Kierroksia', value: tournament.rounds },
-                { head: 'Playoff-viiva', value: tournament.toAdvance }
+                { head: 'Created', value: createdDate },
+                { head: 'Teams', value: `${tournament.teams.length}` },
+                { head: 'Games played', value: `${gamesPlayed} / ${tournamentMatchesNoFilter.length}` },
+                { head: 'Rounds', value: tournament.rounds },
+                { head: 'Playoff cutoff', value: tournament.toAdvance }
               ]}
             />
           </Togglable>
-          <Togglable label='Näytä turnauksen joukkueet' cancelLabel='Piilota joukkueet'>
+          <Togglable label='Show tournament teams' cancelLabel='Hide teams'>
             <TeamList teams={tournament.teams} />
           </Togglable>
-          <h2 className='text-center mt-5'>Sarjataulukko</h2>
+          <h2 className='text-center mt-5'>Standings</h2>
           <ReactTableFixedColumns
             className='my-5'
             data={tournamentStandingsWithDiff}
@@ -109,7 +109,7 @@ class TournamentPage extends Component {
             defaultSorted={defaultSort}
             showPagination={false}
           />
-          <h2 className='text-center mt-5'>Pistepörssi</h2>
+          <h2 className='text-center mt-5'>Player statistics</h2>
           <ReactTableFixedColumns
             className='my-5'
             data={tournamentPlayerStats}

@@ -7,15 +7,15 @@ import Loading from '../components/Loading'
 
 class TeamsPage extends React.Component {
   componentDidMount = async () => {
-    document.title = 'tournamint - Joukkueet'
+    document.title = 'tournamint - Teams'
     await this.props.getTeams()
   }
 
   render() {
     return (
       <React.Fragment>
-        <h2 className='text-center my-5'>Joukkueet</h2>
-        <LinkButton link='/new/team' text='Lisää uusi' />
+        <h2 className='text-center my-5'>Teams</h2>
+        <LinkButton link='/new/team' text='Add new' />
         <div className='row justify-content-center'>
           {Array.isArray(this.props.teams) ?
             this.props.teams.map(team => {

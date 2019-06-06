@@ -20,7 +20,7 @@ class NewTournament extends Component {
   }
 
   componentDidMount = async () => {
-    document.title = 'tournamint - Lisää Turnaus'
+    document.title = 'tournamint - New tournament'
     await this.props.getLeagues()
     await this.props.getTeams()
     this.setState({ fetching: false })
@@ -66,7 +66,7 @@ class NewTournament extends Component {
     }
     return (
       <React.Fragment>
-        <h2 className='text-center my-5'>Lisää uusi turnaus</h2>
+        <h2 className='text-center my-5'>Add new tournament</h2>
         <div className='row d-flex justify-content-center my-5'>
           <div className='col-12 col-md-6 box'>
             <TournamentForm

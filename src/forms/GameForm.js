@@ -6,8 +6,8 @@ let GameForm = (props) => {
   const { handleSubmit } = props
   return (
     <form onSubmit={handleSubmit}>
-      <Field name='name' type='text' component={FormGroup} label='Pelin nimi' />
-      <button className='btn btn-primary'>Tallenna</button>
+      <Field name='name' type='text' component={FormGroup} label='Game name' />
+      <button className='btn btn-primary'>Submit</button>
     </form>
   )
 }

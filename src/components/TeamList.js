@@ -5,7 +5,7 @@ const TeamList = ({ teams }) => {
   return (
     <div className='row d-flex justify-content-center'>
       <div className='col-12'>
-        <h2 className='my-5 text-center'>Turnauksen joukkueet</h2>
+        <h2 className='my-5 text-center'>Teams participating</h2>
       </div>
       {teams.map(team =>
         <CardBox

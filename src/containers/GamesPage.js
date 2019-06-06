@@ -8,7 +8,7 @@ import GameForm from '../forms/GameForm'
 
 class GamesPage extends Component {
   componentDidMount = async () => {
-    document.title = 'tournamint - Pelit'
+    document.title = 'tournamint - Games'
     await this.props.getGames()
   }
 
@@ -19,8 +19,8 @@ class GamesPage extends Component {
   render() {
     return (
       <div>
-        <h2 className='text-center my-5'>Pelit</h2>
-        <Togglable label='Lisää uusi peli' cancelLabel='x'>
+        <h2 className='text-center my-5'>Games</h2>
+        <Togglable label='Add new game' cancelLabel='x'>
           <div className='box'>
             <GameForm onSubmit={this.addGame} />
           </div>

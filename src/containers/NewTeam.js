@@ -60,10 +60,10 @@ class NewTeam extends Component {
     }
     return (
       <div>
-        <h2 className='text-center my-5'>Lisää uusi joukkue</h2>
+        <h2 className='text-center my-5'>Add new team</h2>
         <div className='row d-flex justify-content-center'>
           <div className='col-12 col-md-6 box'>
-            <h1>Lisää uusi joukkue</h1>
+            <h1>Add new team</h1>
             <TeamForm
               onSubmit={this.addTeam}
               leagues={this.props.leagues}

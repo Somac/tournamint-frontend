@@ -11,11 +11,11 @@ class TournamentsPage extends React.Component {
   render() {
     return (
       <div>
-        <h2 className='text-center my-5'>Turnaukset</h2>
+        <h2 className='text-center my-5'>Tournaments</h2>
         <LinkButton link='/new/tournament' text='Lisää uusi' />
         <div className='row d-flex justify-content-center'>
           {this.props.tournaments.length === 0 ?
-            <p>Ei turnauksia vielä.</p> :
+            <p>No tournaments yet</p> :
             this.props.tournaments.map(tournament =>
               <CardBox
                 key={tournament.id}

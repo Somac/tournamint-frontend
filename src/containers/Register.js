@@ -17,7 +17,7 @@ class Register extends Component {
   }
 
   componentDidMount() {
-    document.title = 'tournamint - Rekisteröidy'
+    document.title = 'tournamint - Register'
   }
 
 

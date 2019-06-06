@@ -76,7 +76,7 @@ class TeamPage extends Component {
       <React.Fragment>
         <img className="mx-auto mt-5 d-flex team-img" src={`${apiUrl}/${team.logo}`} alt={team.shortHand}></img>
         <h2 className='text-center mb-5 mt-3'>{team.name}</h2>
-        <Togglable label='Näytä pistepörssi' cancelLabel='Piilota'>
+        <Togglable label='Show player statistics' cancelLabel='Hide'>
           <ReactTable
             data={reactPlayerArray}
             columns={reactColumns}
@@ -84,8 +84,8 @@ class TeamPage extends Component {
             defaultSorted={defaultSort}
           />
         </Togglable>
-        <Togglable label='Näytä turnaukset' cancelLabel='Piilota'>
-          <h3 className='text-center my-5'>Turnaukset</h3>
+        <Togglable label='Show tournaments' cancelLabel='Hide'>
+          <h3 className='text-center my-5'>Tournaments</h3>
           <div className='row justify-content-center'>
             {tournaments.map(tournament => {
               return (
@@ -99,8 +99,8 @@ class TeamPage extends Component {
             })}
           </div>
         </Togglable>
-        <Togglable label='Näytä pelaajat' cancelLabel='Piilota'>
-          <h3 className='text-center my-5'>Pelaajat</h3>
+        <Togglable label='Show players' cancelLabel='Hide'>
+          <h3 className='text-center my-5'>Players</h3>
           <div className='row'>
             {players
               .sort((a, b) => {

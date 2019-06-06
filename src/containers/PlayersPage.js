@@ -10,7 +10,7 @@ class PlayersPage extends Component {
     cdm: false
   }
   componentDidMount = async () => {
-    document.title = 'tournamint - Pelaajat'
+    document.title = 'tournamint - Players'
     await this.props.getPlayers()
     this.setState({ cdm: true })
   }
@@ -19,8 +19,8 @@ class PlayersPage extends Component {
     if (this.state.cdm) {
       return (
         <React.Fragment>
-          <h2 className='text-center my-5'>Pelaajat</h2>
-          <LinkButton link='/new/player' text='Lisää uusi' />
+          <h2 className='text-center my-5'>Players</h2>
+          <LinkButton link='/new/player' text='Add new' />
           <div className='row'>
             {players
               .sort((a, b) => {

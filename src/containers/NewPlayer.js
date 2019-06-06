@@ -25,7 +25,7 @@ class NewPlayer extends Component {
     }
     return (
       <React.Fragment>
-        <h2 className='text-center my-5'>Lisää uusi Pelaaja</h2>
+        <h2 className='text-center my-5'>Add new player</h2>
         <div className='row d-flex justify-content-center mb-5'>
           <div className='col-6 box'>
             <PlayerForm onSubmit={this.addPlayer} />

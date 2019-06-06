@@ -98,31 +98,31 @@ class PlayerPage extends Component {
         <div className='row mt-5'>
           <div className='col-12 col-md-6'>
             <InfoContainer
-              header={'Pelaajan tiedot'}
+              header={'Player info'}
               rows={[
-                { head: 'Pituus', value: `${playerHeight} cm` },
-                { head: 'Paino', value: `${playerWeight} kg` },
-                { head: 'Ikä', value: playerAge },
-                { head: 'Syntymäaika', value: birthDate },
-                { head: 'Kansallisuus', value: flag }
+                { head: 'Height', value: `${playerHeight} cm` },
+                { head: 'Weight', value: `${playerWeight} kg` },
+                { head: 'Age', value: playerAge },
+                { head: 'Date of birth', value: birthDate },
+                { head: 'Nationality', value: flag }
               ]}
             />
           </div>
           <div className='col-12 col-md-6'>
             <InfoContainer
-              header={'Turnaustiedot'}
+              header={'Tournament info'}
               rows={[
-                { head: 'Joukkue', value: players.team.name },
+                { head: 'Team', value: players.team.name },
                 {
-                  head: 'Turnaukset', value: players.team.tournaments
+                  head: 'Tournaments', value: players.team.tournaments
                     .map(tournament => {
                       let link = `/tournaments/${tournament.slug}`
                       return (<Link key={tournament._id} to={link}>{tournament.name}</Link>)
                     })
                 },
-                { head: 'Maalit', value: players.goals.length },
-                { head: 'Syötöt', value: players.assists.length },
-                { head: 'Pisteet', value: players.goals.length + players.assists.length }
+                { head: 'Goals', value: players.goals.length },
+                { head: 'Assists', value: players.assists.length },
+                { head: 'Points', value: players.goals.length + players.assists.length }
               ]}
             />
           </div>
