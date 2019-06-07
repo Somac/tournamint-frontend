@@ -25,7 +25,7 @@ class GoalList extends Component {
     })
     return (
       <div className='col-12 my-5'>
-        <h1 className='text-center mb-5'>Maalit</h1>
+        <h1 className='text-center mb-5'>Goals</h1>
         {goals.map(goal => <GoalBox key={goal._id} goal={goal} logo={logo} deleteGoal={this.removeGoal} />)}
       </div>
     )

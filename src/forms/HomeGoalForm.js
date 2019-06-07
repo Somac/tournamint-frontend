@@ -15,12 +15,12 @@ let HomeGoalForm = (props) => {
   const secondAssister = assisters.map(assister => assister.value === firstAssist ? { ...assister, disabled: true } : assister)
   return (
     <form onSubmit={handleSubmit}>
-      <Field name='scorer' component={FormGroupSelect} label='Maalintekijä' options={scorers} />
+      <Field name='scorer' component={FormGroupSelect} label='Scorer' options={scorers} />
       {scorer === undefined || scorer === 'null' ? '' :
-        <Field name='firstAssist' component={FormGroupSelect} label='1. syöttäjä' options={assisters} />}
+        <Field name='firstAssist' component={FormGroupSelect} label='First assist' options={assisters} />}
       {firstAssist === undefined || firstAssist === 'null' ? '' :
-        <Field name='secondAssist' component={FormGroupSelect} label='2. syöttäjä' options={secondAssister} />}
-      <button className='btn btn-primary'>Tallenna</button>
+        <Field name='secondAssist' component={FormGroupSelect} label='Second assist' options={secondAssister} />}
+      <button className='btn btn-primary'>Save</button>
     </form>
   )
 }

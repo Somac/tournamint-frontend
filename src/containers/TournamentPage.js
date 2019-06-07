@@ -56,8 +56,11 @@ class TournamentPage extends Component {
       { Header: 'P', accessor: 'p', minWidth: 60 }
     ]
     const links = [
-      { name: 'test', link: "#" },
-      { name: 'test2', link: "#"}
+      { name: 'Info', link: "#" },
+      { name: 'Teams', link: "#"},
+      { name: 'Standings', link: "#"},
+      { name: 'Statistics', link: "#"},
+      { name: 'Matches', link: "#"}
     ]
     const defaultSort = [
       {

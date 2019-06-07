@@ -13,11 +13,13 @@ const NavigationBlock = props => {
   const { links } = props;
   console.log(links)
   return (
-    <ul className="nav">
-      {links.map(link => {
-        return <LinkBlock key={link.name} name={link.name} href={link.link} />
-      })}
-    </ul>
+    <div className="mx-auto d-flex">
+      <ul className="nav">
+        {links.map(link => {
+          return <LinkBlock key={link.name} name={link.name} href={link.link} />
+        })}
+      </ul>
+    </div >
   );
 };
 
