@@ -9,14 +9,16 @@ import TeamList from '../components/TeamList'
 import MatchList from '../components/MatchList'
 import Loading from '../components/Loading'
 import ReactTable from 'react-table'
-import Togglable from '../components/Togglable'
 import withFixedColumns from 'react-table-hoc-fixed-columns';
 import NavigationBlock from '../components/NavigationBlock';
+import TogglableNoActions from '../components/TogglableNoActions';
+
 const ReactTableFixedColumns = withFixedColumns(ReactTable);
 
 class TournamentPage extends Component {
   state = {
-    componentDidMount: false
+    componentDidMount: false,
+    visiblePage: 0,
   }
 
   componentDidMount = async () => {
@@ -27,8 +29,13 @@ class TournamentPage extends Component {
     await this.props.getTournamentPlayerStats(slug)
     const tmnt = this.props.tournaments.find(tournament => tournament.slug === this.props.tournamentSlug)
     document.title = `tournamint - ${tmnt.name}`
-    this.setState({ componentDidMount: true })
+    this.setState({ ...this.state, componentDidMount: true })
     this.forceUpdate()
+  }
+
+  makeVisible = (id) => {
+    console.log(id)
+    this.setState({ visiblePage: id })
   }
 
   render() {
@@ -57,10 +64,10 @@ class TournamentPage extends Component {
     ]
     const links = [
       { name: 'Info', link: "#" },
-      { name: 'Teams', link: "#"},
-      { name: 'Standings', link: "#"},
-      { name: 'Statistics', link: "#"},
-      { name: 'Matches', link: "#"}
+      { name: 'Teams', link: "#" },
+      { name: 'Standings', link: "#" },
+      { name: 'Statistics', link: "#" },
+      { name: 'Matches', link: "#" }
     ]
     const defaultSort = [
       {
@@ -88,7 +95,7 @@ class TournamentPage extends Component {
           <h2 className='text-center mt-5'>{tournament.name}</h2>
           <p className='text-center mb-5'><small>Created: {createdDate}</small></p>
           <NavigationBlock links={links} />
-          <Togglable label='Show tournament info' cancelLabel='Hide info'>
+          <TogglableNoActions visible>
             <InfoContainer
               header={'Tournament info'}
               rows={[
@@ -99,28 +106,34 @@ class TournamentPage extends Component {
                 { head: 'Playoff cutoff', value: tournament.toAdvance }
               ]}
             />
-          </Togglable>
-          <Togglable label='Show tournament teams' cancelLabel='Hide teams'>
+          </TogglableNoActions>
+          <TogglableNoActions>
             <TeamList teams={tournament.teams} />
-          </Togglable>
-          <h2 className='text-center mt-5'>Standings</h2>
-          <ReactTableFixedColumns
-            className='my-5'
-            data={tournamentStandingsWithDiff}
-            columns={standingsColumns}
-            defaultPageSize={tournament.teams.length}
-            defaultSorted={defaultSort}
-            showPagination={false}
-          />
-          <h2 className='text-center mt-5'>Player statistics</h2>
-          <ReactTableFixedColumns
-            className='my-5'
-            data={tournamentPlayerStats}
-            columns={statsColumns}
-            defaultPageSize={10}
-            defaultSorted={defaultSortStats}
-          />
-          <MatchList matches={tournamentMatches} rounds={tournament.rounds} teams={tournament.teams} />
+          </TogglableNoActions>
+          <TogglableNoActions>
+            <h2 className='text-center mt-5'>Standings</h2>
+            <ReactTableFixedColumns
+              className='my-5'
+              data={tournamentStandingsWithDiff}
+              columns={standingsColumns}
+              defaultPageSize={tournament.teams.length}
+              defaultSorted={defaultSort}
+              showPagination={false}
+            />
+          </TogglableNoActions>
+          <TogglableNoActions>
+            <h2 className='text-center mt-5'>Player statistics</h2>
+            <ReactTableFixedColumns
+              className='my-5'
+              data={tournamentPlayerStats}
+              columns={statsColumns}
+              defaultPageSize={10}
+              defaultSorted={defaultSortStats}
+            />
+          </TogglableNoActions>
+          <TogglableNoActions>
+            <MatchList matches={tournamentMatches} rounds={tournament.rounds} teams={tournament.teams} />
+          </TogglableNoActions>
         </React.Fragment>
       )
     }

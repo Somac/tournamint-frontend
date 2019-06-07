@@ -218,3 +218,7 @@ a:hover {
   height: 24px;
   color: #ccc
 }
+
+.active-link {
+  background-color: #fff;
+}

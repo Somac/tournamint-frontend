@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { apiUrl } from '../config'
+import PropTypes from 'prop-types'
 
 const CardBox = ({ link, name, text, logo, table, size }) => {
   if (size === undefined) {
@@ -24,4 +25,13 @@ const CardBox = ({ link, name, text, logo, table, size }) => {
   )
 }
 
-export default CardBox
+CardBox.propTypes = {
+  link: PropTypes.string,
+  name: PropTypes.string,
+  text: PropTypes.string,
+  logo: PropTypes.string,
+  table: PropTypes.bool,
+  size: PropTypes.number,
+};
+
+export default CardBox;
