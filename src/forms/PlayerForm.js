@@ -38,30 +38,30 @@ class PlayerForm extends React.Component {
       <form onSubmit={handleSubmit}>
         <Field
           name='name'
-          label='Pelaajan nimi'
+          label='Player name'
           type='text'
           component={FormGroup} />
         <Field
           name='jerseyNumber'
-          label='Pelipaidan numero'
+          label='Jersey number'
           type='number'
           component={FormGroup} />
         <Field
           name='position'
-          label='Pelipaikka'
+          label='Position'
           component={FormGroupSelect}
           options={positionOptions} />
         <Field
           name='team'
-          label='Joukkue'
+          label='Team'
           component={FormGroupSelect}
           options={teamOptions} />
         <Field
           name='apiId'
-          label='Pelaajan API id'
+          label='Players API id'
           type='number'
           component={FormGroup} />
-        <button className='btn btn-primary'>Tallenna</button>
+        <button className='btn btn-primary'>Save</button>
       </form>
     )
   }

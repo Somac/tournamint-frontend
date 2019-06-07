@@ -40,24 +40,24 @@ let TournamentForm = (props) => {
         name='name'
         type='text'
         component={FormGroup}
-        label='Turnauksen nimi'
+        label='Tournament name'
       />
       <Field
         name='description'
         component={FormGroupTextArea}
-        label='Kuvaus'
+        label='Description'
       />
       <Field
         name='rounds'
         component={FormGroup}
         type='number'
-        label='Runkosarjan kierrokset'
+        label='Regular season rounds'
       />
       <hr />
       <Field
         name='league'
         component={FormGroupSelect}
-        label='Liiga'
+        label='League'
         options={leagueOptions}
         onChange={onLeagueChange}
       />
@@ -65,12 +65,12 @@ let TournamentForm = (props) => {
         name='team'
         onChange={onTeamChange}
         component={FormGroupSelect}
-        label='Joukkueet'
+        label='Teams'
         options={teamOptions}
       />
       {selectedTeams.length === 0 ? '' :
         <div className='box-2 my-3'>
-          <h3 className='text-center'>Valitut joukkueet:</h3>
+          <h3 className='text-center'>Selected teams:</h3>
           <div className='row d-flex justify-content-center'>
             {selectedTeams
               .map(t =>
@@ -83,16 +83,16 @@ let TournamentForm = (props) => {
       <Field
         name='toAdvance'
         component={FormGroupSelect}
-        label='Playoff viivan yläpuolella'
+        label='Playoff line'
         options={advanceOptions}
       />
       <Field
         name='generateMatches'
         component={FormGroupCheckbox}
-        label='Generoi turnauksen ottelut automaattisesti'
+        label='Generate matches automatically'
         isChecked
       />
-      <button className='btn btn-primary'>Tallenna</button>
+      <button className='btn btn-primary'>Save</button>
     </form>
   )
 }

@@ -7,7 +7,7 @@ const TeamFilter = ({ onChange, teams, name }) => {
   return (
     <div className="form-group">
       <select className="form-control" name={name} onChange={change} >
-        <option defaultValue value='ALL'>Kaikki</option>
+        <option defaultValue value='ALL'>All</option>
         {teams ? teams.map(o => <option key={o.value} value={o.value}>{o.name}</option>) : ''}
       </select>
     </div>

@@ -6,8 +6,8 @@ let LoginForm = (props) => {
   const { handleSubmit } = props
   return (
     <form onSubmit={handleSubmit}>
-      <Field name='username' label='Käyttäjätunnus' type='text' component={FormGroup} />
-      <Field name='password' label='Salasana' type='password' component={FormGroup} />
+      <Field name='username' label='Username' type='text' component={FormGroup} />
+      <Field name='password' label='Password' type='password' component={FormGroup} />
       <button className='btn btn-primary'>Login</button>
     </form>
   )

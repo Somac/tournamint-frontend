@@ -5,7 +5,7 @@ let OpenMatchForm = (props) => {
   const { handleSubmit } = props
   return (
     <form onSubmit={handleSubmit}>
-      <button className='btn btn-primary'>Avaa ottelu</button>
+      <button className='btn btn-primary'>Open match</button>
     </form>
   )
 }

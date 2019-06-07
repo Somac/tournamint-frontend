@@ -29,10 +29,10 @@ let RegisterForm = (props) => {
   const { handleSubmit } = props
   return (
     <form onSubmit={handleSubmit}>
-      <Field name='name' type='text' component={FormGroup} label='Nimi' />
-      <Field name='username' type='text' component={FormGroup} label='Käyttäjätunnus' />
-      <Field name='password' type='password' component={FormGroup} label='Salasana' />
-      <Field name='password2' type='password' component={FormGroup} label='Salasana uudestaan' />
+      <Field name='name' type='text' component={FormGroup} label='Name' />
+      <Field name='username' type='text' component={FormGroup} label='Username' />
+      <Field name='password' type='password' component={FormGroup} label='Password' />
+      <Field name='password2' type='password' component={FormGroup} label='Password again' />
       <button className='btn btn-primary'>Register</button>
     </form>
   )
