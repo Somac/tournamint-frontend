@@ -35,7 +35,6 @@ class TournamentPage extends Component {
 
   makeVisible = (id) => {
     console.log(id)
-    this.setState({ visiblePage: id })
   }
 
   render() {
@@ -63,11 +62,11 @@ class TournamentPage extends Component {
       { Header: 'P', accessor: 'p', minWidth: 60 }
     ]
     const links = [
-      { name: 'Info', link: "#" },
-      { name: 'Teams', link: "#" },
-      { name: 'Standings', link: "#" },
-      { name: 'Statistics', link: "#" },
-      { name: 'Matches', link: "#" }
+      { name: 'Info', link: "#", id: 0},
+      { name: 'Teams', link: "#", id: 1 },
+      { name: 'Standings', link: "#", id: 2 },
+      { name: 'Statistics', link: "#", id: 3 },
+      { name: 'Matches', link: "#", id: 4 }
     ]
     const defaultSort = [
       {
@@ -94,7 +93,7 @@ class TournamentPage extends Component {
         <React.Fragment>
           <h2 className='text-center mt-5'>{tournament.name}</h2>
           <p className='text-center mb-5'><small>Created: {createdDate}</small></p>
-          <NavigationBlock links={links} />
+          <NavigationBlock links={links} action={this.makeVisible} />
           <TogglableNoActions visible>
             <InfoContainer
               header={'Tournament info'}

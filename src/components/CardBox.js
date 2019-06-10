@@ -31,7 +31,7 @@ CardBox.propTypes = {
   text: PropTypes.string,
   logo: PropTypes.string,
   table: PropTypes.bool,
-  size: PropTypes.number,
+  size: PropTypes.string,
 };
 
 export default CardBox;
