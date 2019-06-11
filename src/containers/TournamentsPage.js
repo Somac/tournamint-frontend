@@ -12,7 +12,7 @@ class TournamentsPage extends React.Component {
     return (
       <div>
         <h2 className='text-center my-5'>Tournaments</h2>
-        <LinkButton link='/new/tournament' text='Lisää uusi' />
+        <LinkButton link='/new/tournament' text='Add new' />
         <div className='row d-flex justify-content-center'>
           {this.props.tournaments.length === 0 ?
             <p>No tournaments yet</p> :

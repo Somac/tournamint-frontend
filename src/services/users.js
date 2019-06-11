@@ -8,6 +8,11 @@ const addUser = async (data) => {
   return response.data
 }
 
+const getUser = async (id) => {
+  const response = await axios.get(`${url}/${id}`)
+  return response.data
+}
+
 export default {
-  addUser
+  addUser, getUser
 }

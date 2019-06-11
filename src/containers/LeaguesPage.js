@@ -14,7 +14,7 @@ class LeaguesPage extends Component {
     return (
       <div>
         <h2 className='text-center my-5'>Leagues</h2>
-        <LinkButton link='/new/league' text='Lisää uusi' />
+        <LinkButton link='/new/league' text='Add new' />
         <div className='row justify-content-center'>
           {this.props.leagues.map(x =>
             <CardBox
