@@ -14,6 +14,16 @@ class TogglableNoActions extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      if (this.props.visible) {
+        this.setState({ visible: true })
+      } else {
+        this.setState({ visible: false })
+      }
+    }
+  }
+
   render() {
     const showWhenVisible = { display: this.state.visible ? '' : 'none' }
     return (

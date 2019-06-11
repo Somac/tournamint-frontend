@@ -9,9 +9,8 @@ import TeamList from '../components/TeamList'
 import MatchList from '../components/MatchList'
 import Loading from '../components/Loading'
 import ReactTable from 'react-table'
-import withFixedColumns from 'react-table-hoc-fixed-columns';
-import NavigationBlock from '../components/NavigationBlock';
-import TogglableNoActions from '../components/TogglableNoActions';
+import withFixedColumns from 'react-table-hoc-fixed-columns'
+import TogglableNoActions from '../components/TogglableNoActions'
 
 const ReactTableFixedColumns = withFixedColumns(ReactTable);
 
@@ -30,11 +29,14 @@ class TournamentPage extends Component {
     const tmnt = this.props.tournaments.find(tournament => tournament.slug === this.props.tournamentSlug)
     document.title = `tournamint - ${tmnt.name}`
     this.setState({ ...this.state, componentDidMount: true })
-    this.forceUpdate()
   }
 
   makeVisible = (id) => {
-    console.log(id)
+    this.setState({ visiblePage: id })
+  }
+
+  isVisible = (id) => {
+    return id === this.state.visiblePage ? true : false
   }
 
   render() {
@@ -61,12 +63,12 @@ class TournamentPage extends Component {
       { Header: 'A', accessor: 'a', minWidth: 60 },
       { Header: 'P', accessor: 'p', minWidth: 60 }
     ]
-    const links = [
-      { name: 'Info', link: "#", id: 0},
-      { name: 'Teams', link: "#", id: 1 },
-      { name: 'Standings', link: "#", id: 2 },
-      { name: 'Statistics', link: "#", id: 3 },
-      { name: 'Matches', link: "#", id: 4 }
+    const buttons = [
+      { name: 'Info', id: 0 },
+      { name: 'Teams', id: 1 },
+      { name: 'Standings', id: 2 },
+      { name: 'Statistics', id: 3 },
+      { name: 'Matches', id: 4 }
     ]
     const defaultSort = [
       {
@@ -81,7 +83,7 @@ class TournamentPage extends Component {
       }
     ]
     const noTournament = () => (
-      <div>Turnausta ei löytynyt</div>
+      <div>Tournament not found</div>
     )
     const yesTournament = () => {
       const d = new Date(tournament.createdAt)
@@ -93,10 +95,14 @@ class TournamentPage extends Component {
         <React.Fragment>
           <h2 className='text-center mt-5'>{tournament.name}</h2>
           <p className='text-center mb-5'><small>Created: {createdDate}</small></p>
-          <NavigationBlock links={links} action={this.makeVisible} />
-          <TogglableNoActions visible>
+          <div className="mx-auto d-flex justify-content-center">
+            {buttons ? buttons.map(link => {
+              return <button key={link.id} className="btn btn-light mx-1 my-3" onClick={() => this.makeVisible(link.id)}>{link.name}</button>
+            }) : ''}
+          </div >
+          <TogglableNoActions visible={this.isVisible(0)}>
+            <h2 className='text-center mt-5'>Tournament info</h2>
             <InfoContainer
-              header={'Tournament info'}
               rows={[
                 { head: 'Created', value: createdDate },
                 { head: 'Teams', value: `${tournament.teams.length}` },
@@ -106,10 +112,10 @@ class TournamentPage extends Component {
               ]}
             />
           </TogglableNoActions>
-          <TogglableNoActions>
+          <TogglableNoActions visible={this.isVisible(1)}>
             <TeamList teams={tournament.teams} />
           </TogglableNoActions>
-          <TogglableNoActions>
+          <TogglableNoActions visible={this.isVisible(2)}>
             <h2 className='text-center mt-5'>Standings</h2>
             <ReactTableFixedColumns
               className='my-5'
@@ -120,7 +126,7 @@ class TournamentPage extends Component {
               showPagination={false}
             />
           </TogglableNoActions>
-          <TogglableNoActions>
+          <TogglableNoActions visible={this.isVisible(3)}>
             <h2 className='text-center mt-5'>Player statistics</h2>
             <ReactTableFixedColumns
               className='my-5'
@@ -130,7 +136,7 @@ class TournamentPage extends Component {
               defaultSorted={defaultSortStats}
             />
           </TogglableNoActions>
-          <TogglableNoActions>
+          <TogglableNoActions visible={this.isVisible(4)}>
             <MatchList matches={tournamentMatches} rounds={tournament.rounds} teams={tournament.teams} />
           </TogglableNoActions>
         </React.Fragment>

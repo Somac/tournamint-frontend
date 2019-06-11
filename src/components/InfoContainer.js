@@ -1,9 +1,8 @@
 import React from 'react'
 
-const InfoContainer = ({ header, rows }) => {
+const InfoContainer = ({ rows }) => {
   return (
-    <div className='box'>
-      <h5 className='text-center my-3'>{header}</h5>
+    <div className='box my-5'>
       <table className='table'>
         <tbody>
           {rows.map(row => {
