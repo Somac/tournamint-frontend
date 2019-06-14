@@ -222,3 +222,12 @@ a:hover {
 .active-link {
   background-color: #fff;
 }
+
+.table td {
+  border-top: 0px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.search-input {
+  width: 50%;
+}

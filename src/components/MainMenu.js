@@ -51,12 +51,6 @@ class MainMenu extends Component {
               <NavLink link='/tournaments' name='Tournaments' onClick={this.closeNavBar} />
               <NavLink link='/teams' name='Teams' onClick={this.closeNavBar} />
               <NavLink link='/players' name='Players' onClick={this.closeNavBar} />
-              {this.props.user === null ? '' :
-                <React.Fragment>
-                  <NavLink link='/leagues' name='Leagues' onClick={this.closeNavBar} />
-                  <NavLink link='/games' name='Games' onClick={this.closeNavBar} />
-                </React.Fragment>
-              }
             </ul>
             <ul className='navbar-nav ml-auto'>
               <RightNav user={this.props.user} clickHandler={this.closeNavBar} />

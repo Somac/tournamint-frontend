@@ -20,6 +20,7 @@ class MePage extends React.Component {
 
   render() {
     if (this.state.componentDidMount) {
+      console.log(this.props.profile)
       return (
         <div>
           <h2 className='text-center mb-5 mt-3'>
@@ -29,7 +30,6 @@ class MePage extends React.Component {
           <LinkButton link='/new/tournament' text='Add new' />
           <div className='row d-flex justify-content-center'>
             {this.props.profile.tournaments ?
-              <p>No tournaments yet</p> :
               this.props.profile.tournaments.map(tournament =>
                 <CardBox
                   key={tournament.id}
@@ -37,7 +37,8 @@ class MePage extends React.Component {
                   name={tournament.name}
                   link={`/tournaments/${tournament.slug}`}
                 />
-              )
+              ) :
+              <p>No tournaments yet</p>
             }
           </div>
         </div>

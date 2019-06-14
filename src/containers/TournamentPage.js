@@ -97,7 +97,8 @@ class TournamentPage extends Component {
           <p className='text-center mb-5'><small>Created: {createdDate}</small></p>
           <div className="mx-auto d-flex justify-content-center">
             {buttons ? buttons.map(link => {
-              return <button key={link.id} className="btn btn-light mx-1 my-3" onClick={() => this.makeVisible(link.id)}>{link.name}</button>
+              const buttonClass = this.state.visiblePage === link.id ? 'btn-primary' : 'btn-light'
+              return <button key={link.id} className={`btn mx-1 my-3 ${buttonClass}`} onClick={() => this.makeVisible(link.id)}>{link.name}</button>
             }) : ''}
           </div >
           <TogglableNoActions visible={this.isVisible(0)}>

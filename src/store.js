@@ -15,6 +15,7 @@ import matchFilterReducer from './reducers/matchFilterReducer'
 import tournamentStandingsReducer from './reducers/tournamentStandingsReducer'
 import tournamentPlayerStatsReducer from './reducers/tournamentPlayerStatsReducer'
 import profileReducer from './reducers/profileReducer';
+import playerFilterReducer from './reducers/playerFilterReducer';
 
 const logger = createLogger({
   level: 'debug' 
@@ -35,6 +36,7 @@ const reducer = combineReducers({
   tournamentStandings: tournamentStandingsReducer,
   tournamentPlayerStats: tournamentPlayerStatsReducer,
   profile: profileReducer,
+  playerFilters: playerFilterReducer,
 })
 
 const middlewares = [thunk];
